@@ -6,6 +6,7 @@ $single_quote: "'";
 $double_quote: '"';
 
 .tei {
+  @import "compass/reset";
   margin: $margin;
   margin-top: $indent;
   margin-bottom: $indent;

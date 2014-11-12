@@ -1,0 +1,180 @@
+$indent:  .5in;
+$margin: 25%;
+$grey: #7f7f7f;
+$highlight: yellow;
+$single_quote: "'";
+$double_quote: '"';
+
+.tei {
+  margin: $margin;
+  margin-top: $indent;
+  margin-bottom: $indent;
+  color: black;
+  .p {
+    text-indent: $indent * 1;
+  }
+
+  // Text styles and alignment.
+  .class--rend--bold {
+    font-weight: bold;
+  }
+  .class--rend--italic {
+    font-style: italic;
+  }
+  .class--rend--underline {
+    text-decoration: underline;
+  }
+  .class--rend--center {
+    text-align: center;
+  }
+  .class--rend--right {
+    text-align: right;
+  }
+  .class--rend--left {
+    text-align: left;
+  }
+  .class--rend--small-caps {
+    font-variant: small-caps;
+  }
+  .class--rend--strikethrough {
+    text-decoration: line-through;
+    color: $grey;
+  }
+  .class--rend--superscript {
+    vertical-align: super;
+    font-size: smaller;
+  }
+  .class--rend--subscript {
+    vertical-align: sub;
+    font-size: smaller;
+  }
+  .class--place--sublinear {
+    vertical-align: -100%;
+  }
+  .class--place--superlinear {
+    vertical-align: 100%;
+  }
+
+  // Quotations.
+  q.class--style--single {
+    &:before, &:after {
+      content: $single_quote;
+    }
+  }
+  q:not(.class--style--single) {
+    &:before, &:after {
+      content: $double_quote;
+    }
+  }
+
+  .unclear, .damage {
+    color: $grey;
+
+    &.class--rend--illegible,
+    &.class--rend--inaudible,
+    &.class--reason--illegible,
+    &.class--reason--inaudible {
+      &:before {
+        content: "<";
+      }
+      &:after {
+        content: ">";
+      }
+    }
+  }
+
+  .head {
+    font-size: larger;
+  }
+  .label {
+    @extend .head;
+    margin-top: .5em;
+    text-indent: 0;
+  }
+
+  .hi {
+    background-color: $highlight;
+  }
+
+  // Indentation.
+  .class--rend--no-indent,
+  .class--rend--no_indent {
+    text-indent: $indent * 0;
+  }
+  .class--rend--indent1 {
+    text-indent: $indent * 1;
+  }
+  .class--rend--indent2 {
+    text-indent: $indent * 2;
+  }
+  .class--rend--indent3 {
+    text-indent: $indent * 3;
+  }
+  .class--rend--indent4 {
+    text-indent: $indent * 4;
+  }
+  .listBibl {
+    .bibl {
+      padding-left: $indent;
+      text-indent: -$indent;
+    }
+  }
+
+  .list {
+    list-style-position: inside;
+
+    &.class--type--ordered {
+      list-style-type: decimal;
+    }
+    &.class--type--bulleted {
+      list-style-type: disc;
+    }
+  }
+
+  ul.lg.class--type--stanza > li {
+    text-indent: $indent;
+  }
+
+  .class--place--left_margin {
+    text-indent: 0;
+    float: left;
+    clear: left;
+    margin-left: (-2 * $margin) + 5%;
+    width: (2 * $margin) - 10%;
+    word-wrap: break-word;
+  }
+  .class--place--right_margin {
+    text-indent: 0;
+    float: right;
+    clear: right;
+    margin-right: (-2 * $margin) + 5%;
+    width: (2 * $margin) - 10%;
+    word-wrap: break-word;
+  }
+
+  *:not(dt) > a.note.class--place--footnote {
+    vertical-align: super;
+    font-size: smaller;
+  }
+
+  footer {
+    border-top: thin solid black;
+    margin-top: 1em;
+    padding-top: 1em;
+    dl {
+      dt {
+        float: left;
+        clear: left;
+      }
+      dd {
+        margin-left: $indent;
+        text-indent: -$indent;
+        float: left;
+        &:before {
+          content: ":";
+          padding-right: .5 * $indent;
+        }
+      }
+    }
+  }
+}

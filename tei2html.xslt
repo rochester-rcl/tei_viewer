@@ -6,16 +6,15 @@
     exclude-result-prefixes="tei">
   <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
 
-  <xsl:param name="reading_transcript" select="true()"/>
+  <xsl:param name="type">reading</xsl:param>
   <xsl:variable name="footnotes" select="//tei:note[@place='footnote']"/>
 
   <xsl:template match="/">
     <div class="tei">
       <xsl:attribute name="class">
         <xsl:text>tei</xsl:text>
-        <xsl:if test="$reading_transcript">
-          <xsl:text> reading</xsl:text>
-        </xsl:if>
+        <xsl:text> </xsl:text>
+        <xsl:value-of select="$type"/>
       </xsl:attribute>
       <xsl:apply-templates select="tei:TEI/tei:text"/>
 
@@ -173,7 +172,7 @@
 
   <xsl:template match="tei:choice">
     <xsl:choose>
-      <xsl:when test="$reading_transcript">
+      <xsl:when test="$type = 'reading'">
         <xsl:choose>
           <xsl:when test="tei:reg | tei:expan | tei:corr">
             <xsl:apply-templates select="(tei:reg | tei:expan | tei:corr)[1]"/>

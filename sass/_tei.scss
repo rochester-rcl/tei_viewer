@@ -7,6 +7,7 @@ $double_quote: '"';
 
 .tei {
   @import "compass/reset";
+
   margin: $margin;
   margin-top: $indent;
   margin-bottom: $indent;
@@ -176,6 +177,12 @@ $double_quote: '"';
           padding-right: .5 * $indent;
         }
       }
+    }
+  }
+
+  &:not(.reading) {
+    .del {
+      @extend .class--rend--strikethrough;
     }
   }
 }

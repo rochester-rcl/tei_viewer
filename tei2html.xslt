@@ -19,11 +19,16 @@
       </xsl:attribute>
       <xsl:apply-templates select="tei:TEI/tei:text"/>
 
-      <footer>
-        <dl>
-          <xsl:apply-templates select="$footnotes" mode="footnotes"/>
-        </dl>
-      </footer>
+      <xsl:variable name="footnote_items">
+        <xsl:apply-templates select="$footnotes" mode="footnotes"/>
+      </xsl:variable>
+      <xsl:if test="normalize-space($footnote_items)">
+        <footer>
+          <dl>
+            <xsl:copy-of select="$footnote_items"/>
+          </dl>
+        </footer>
+      </xsl:if>
     </div>
   </xsl:template>
 

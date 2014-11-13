@@ -11,7 +11,7 @@ $double_quote: '"';
   margin-top: $indent;
   margin-bottom: $indent;
   color: black;
-  .p {
+  .p, p.epigraph {
     text-indent: $indent * 1;
   }
 

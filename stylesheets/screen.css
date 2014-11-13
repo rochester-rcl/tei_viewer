@@ -67,7 +67,7 @@
   display: block;
 }
 /* line 14, ../sass/_tei.scss */
-.tei .p {
+.tei .p, .tei p.epigraph {
   text-indent: 0.5in;
 }
 /* line 19, ../sass/_tei.scss */

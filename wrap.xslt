@@ -5,6 +5,8 @@
   xmlns:wrap="http://islandora.ca/ontology/tei-text-wrapper">
   <xsl:output method="xml" indent="no"/>
 
+  <!-- Wrap all text nodes in a document, to facilitate flagging for removal. -->
+
   <xsl:template match="tei:TEI">
     <tei:TEI
       xmlns:tei="http://www.tei-c.org/ns/1.0"

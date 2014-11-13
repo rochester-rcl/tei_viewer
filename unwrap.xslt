@@ -5,6 +5,8 @@
   xmlns:wrap="http://islandora.ca/ontology/tei-text-wrapper">
   <xsl:output method="xml" indent="no"/>
 
+  <!-- Remove the wrapper elements which have been flagged for deletion. -->
+
   <xsl:template match="*">
     <xsl:copy>
       <xsl:copy-of select="@*"/>

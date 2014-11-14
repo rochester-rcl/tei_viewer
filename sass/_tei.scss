@@ -1,9 +1,10 @@
 $indent:  .5in;
-$margin: 25%;
+$margin: 15%;
 $grey: #7f7f7f;
 $highlight: yellow;
 $single_quote: "'";
 $double_quote: '"';
+$line_height: 3em;
 
 .tei {
   @import "compass/reset";
@@ -13,6 +14,53 @@ $double_quote: '"';
   color: black;
   .p, p.epigraph {
     text-indent: $indent * 1;
+  }
+
+  & > div {
+    position: relative;
+    line-height: $line_height;
+    margin-right: auto;
+    margin-left: auto;
+
+    & > div.line-magic {
+      position: relative;
+      z-index: 2;
+      top: 0;
+      .class--place--superlinear, .class--place--sublinear {
+        visibility: hidden;
+      }
+    }
+    & > div.super-magic {
+      position: absolute;
+      top: -($line_height / 3);
+      left: 0;
+      z-index: 1;
+      * {
+        visibility: hidden;
+      }
+      .class--place--superlinear {
+        visibility: visible;
+      }
+    }
+    & > div.sub-magic {
+      top:  $line_height / 3;
+      left: 0;
+      position: absolute;
+      z-index: 1;
+      * {
+        visibility: hidden;
+      }
+      .class--place--sublinear {
+        visibility: visible;
+      }
+    }
+  }
+
+  .byline {
+    display: block;
+    text-indent: $indent;
+    font-style: italic;
+    margin-bottom: 0.5em;
   }
 
   // Text styles and alignment.
@@ -48,12 +96,6 @@ $double_quote: '"';
   .class--rend--subscript {
     vertical-align: sub;
     font-size: smaller;
-  }
-  .class--place--sublinear {
-    vertical-align: -100%;
-  }
-  .class--place--superlinear {
-    vertical-align: 100%;
   }
 
   // Quotations.
@@ -136,21 +178,28 @@ $double_quote: '"';
     text-indent: $indent;
   }
 
-  .class--place--left_margin {
+  @mixin margin_base($direction) {
+    $margin_padding: 0.1;
+    $margin_width: ($margin * 100%) / (100% - (2 * $margin));
+    $margin_offset: -$margin_width * (1 - (1 * $margin_padding));
+
+    @if $direction == left {
+      margin-left: $margin_offset;
+    } @elseif $direction == right {
+      margin-right: $margin_offset;
+    }
+
+    float: $direction;
+    clear: $direction;
     text-indent: 0;
-    float: left;
-    clear: left;
-    margin-left: (-2 * $margin) + 5%;
-    width: (2 * $margin) - 10%;
+    width: $margin_width * (1 - (2 * $margin_padding));
     word-wrap: break-word;
   }
+  .class--place--left_margin {
+    @include margin_base(left);
+  }
   .class--place--right_margin {
-    text-indent: 0;
-    float: right;
-    clear: right;
-    margin-right: (-2 * $margin) + 5%;
-    width: (2 * $margin) - 10%;
-    word-wrap: break-word;
+    @include margin_base(right);
   }
 
   *:not(dt) > a.note.class--place--footnote {

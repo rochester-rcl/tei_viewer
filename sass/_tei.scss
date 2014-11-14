@@ -1,13 +1,32 @@
+/**
+ * @file
+ * Sass partial to handle TEI display.
+ */
+
+// Size of the text indent.
 $indent:  .5in;
+
+// Size of left and right margins content.
 $margin: 15%;
+
+// Grey used for deleted/damaged/unclear text.
 $grey: #7f7f7f;
+
+// Highlight colour.
 $highlight: yellow;
+
+// Characters used for quotes.
 $single_quote: "'";
 $double_quote: '"';
+
+// Line height.
+// XXX: Could get into trouble here, if the font size is ever changed.
 $line_height: 3em;
 
 .tei {
+  // Reset elements inside our TEI wrapper.
   @import "compass/reset";
+
   margin: $margin;
   margin-top: $indent;
   margin-bottom: $indent;

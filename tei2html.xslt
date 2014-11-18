@@ -52,9 +52,9 @@
   </xsl:template>
 
   <!-- Delete things which are not from TEI. -->
-  <xsl:template match="*[not(self::tei:*)]"/>
+  <xsl:template match="*[not(self::tei:*)]" mode="#all"/>
 
-  <xsl:template match="tei:lb">
+  <xsl:template match="tei:lb | tei:pb" mode="#all">
     <br/>
   </xsl:template>
 

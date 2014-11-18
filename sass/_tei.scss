@@ -45,6 +45,16 @@ $line_height: 3em;
       position: relative;
       z-index: 2;
       top: 0;
+      .mod, .seg {
+        // XXX: Normally, these elements will be moved to the end of
+        // block-level elements, to the different sub/super/intralinear
+        // overlays all line up... When things are contained in non-block
+        // element, we can't reliably move them around, so let's just make
+        // 'em completely invisible.
+        .class--place--superlinear, .class--place--sublinear {
+          display: none;
+        }
+      }
       .class--place--superlinear, .class--place--sublinear {
         visibility: hidden;
       }
@@ -158,22 +168,27 @@ $line_height: 3em;
     background-color: $highlight;
   }
 
+  @mixin indent($amount) {
+    display: inline-block;
+    text-indent: $indent * $amount;
+  }
+
   // Indentation.
   .class--rend--no-indent,
   .class--rend--no_indent {
-    text-indent: $indent * 0;
+    @include indent(0);
   }
   .class--rend--indent1 {
-    text-indent: $indent * 1;
+    @include indent(1);
   }
   .class--rend--indent2 {
-    text-indent: $indent * 2;
+    @include indent(2);
   }
   .class--rend--indent3 {
-    text-indent: $indent * 3;
+    @include indent(3);
   }
   .class--rend--indent4 {
-    text-indent: $indent * 4;
+    @include indent(4);
   }
   .listBibl {
     .bibl {

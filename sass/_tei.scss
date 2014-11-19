@@ -169,7 +169,7 @@ $line_height: 3em;
   }
 
   @mixin indent($amount) {
-    display: inline-block;
+    display: block;
     text-indent: $indent * $amount;
   }
 

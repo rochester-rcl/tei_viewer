@@ -211,27 +211,27 @@
 /* line 177, ../sass/_tei.scss */
 .tei .class--rend--no-indent,
 .tei .class--rend--no_indent {
-  display: inline-block;
+  display: block;
   text-indent: 0in;
 }
 /* line 181, ../sass/_tei.scss */
 .tei .class--rend--indent1 {
-  display: inline-block;
+  display: block;
   text-indent: 0.5in;
 }
 /* line 184, ../sass/_tei.scss */
 .tei .class--rend--indent2 {
-  display: inline-block;
+  display: block;
   text-indent: 1in;
 }
 /* line 187, ../sass/_tei.scss */
 .tei .class--rend--indent3 {
-  display: inline-block;
+  display: block;
   text-indent: 1.5in;
 }
 /* line 190, ../sass/_tei.scss */
 .tei .class--rend--indent4 {
-  display: inline-block;
+  display: block;
   text-indent: 2in;
 }
 /* line 194, ../sass/_tei.scss */

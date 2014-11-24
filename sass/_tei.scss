@@ -1,19 +1,95 @@
+/**
+ * @file
+ * Sass partial to handle TEI display.
+ */
+
+// Size of the text indent.
 $indent:  .5in;
-$margin: 25%;
+
+// Size of left and right margins content.
+$margin: 15%;
+
+// Grey used for deleted/damaged/unclear text.
 $grey: #7f7f7f;
+
+// Highlight colour.
 $highlight: yellow;
+
+// Characters used for quotes.
 $single_quote: "'";
 $double_quote: '"';
 
+// Line height.
+// XXX: Could get into trouble here, if the font size is ever changed.
+$line_height: 3em;
+
 .tei {
+  // Reset elements inside our TEI wrapper.
   @import "compass/reset";
 
   margin: $margin;
   margin-top: $indent;
   margin-bottom: $indent;
   color: black;
-  .p {
+  .p, p.epigraph {
     text-indent: $indent * 1;
+  }
+
+  & > div {
+    position: relative;
+    line-height: $line_height;
+    margin-right: auto;
+    margin-left: auto;
+
+    & > div.line-magic {
+      position: relative;
+      z-index: 2;
+      top: 0;
+      .mod, .seg {
+        // XXX: Normally, these elements will be moved to the end of
+        // block-level elements, to the different sub/super/intralinear
+        // overlays all line up... When things are contained in non-block
+        // element, we can't reliably move them around, so let's just make
+        // 'em completely invisible.
+        .class--place--superlinear, .class--place--sublinear {
+          display: none;
+        }
+      }
+      .class--place--superlinear, .class--place--sublinear {
+        visibility: hidden;
+      }
+    }
+    & > div.super-magic {
+      position: absolute;
+      top: -($line_height / 3);
+      left: 0;
+      z-index: 1;
+      * {
+        visibility: hidden;
+      }
+      .class--place--superlinear {
+        visibility: visible;
+      }
+    }
+    & > div.sub-magic {
+      top:  $line_height / 3;
+      left: 0;
+      position: absolute;
+      z-index: 1;
+      * {
+        visibility: hidden;
+      }
+      .class--place--sublinear {
+        visibility: visible;
+      }
+    }
+  }
+
+  .byline {
+    display: block;
+    text-indent: $indent;
+    font-style: italic;
+    margin-bottom: 0.5em;
   }
 
   // Text styles and alignment.
@@ -49,12 +125,6 @@ $double_quote: '"';
   .class--rend--subscript {
     vertical-align: sub;
     font-size: smaller;
-  }
-  .class--place--sublinear {
-    vertical-align: -100%;
-  }
-  .class--place--superlinear {
-    vertical-align: 100%;
   }
 
   // Quotations.
@@ -98,22 +168,27 @@ $double_quote: '"';
     background-color: $highlight;
   }
 
+  @mixin indent($amount) {
+    display: block;
+    text-indent: $indent * $amount;
+  }
+
   // Indentation.
   .class--rend--no-indent,
   .class--rend--no_indent {
-    text-indent: $indent * 0;
+    @include indent(0);
   }
   .class--rend--indent1 {
-    text-indent: $indent * 1;
+    @include indent(1);
   }
   .class--rend--indent2 {
-    text-indent: $indent * 2;
+    @include indent(2);
   }
   .class--rend--indent3 {
-    text-indent: $indent * 3;
+    @include indent(3);
   }
   .class--rend--indent4 {
-    text-indent: $indent * 4;
+    @include indent(4);
   }
   .listBibl {
     .bibl {
@@ -137,21 +212,28 @@ $double_quote: '"';
     text-indent: $indent;
   }
 
-  .class--place--left_margin {
+  @mixin margin_base($direction) {
+    $margin_padding: 0.1;
+    $margin_width: ($margin * 100%) / (100% - (2 * $margin));
+    $margin_offset: -$margin_width * (1 - (1 * $margin_padding));
+
+    @if $direction == left {
+      margin-left: $margin_offset;
+    } @elseif $direction == right {
+      margin-right: $margin_offset;
+    }
+
+    float: $direction;
+    clear: $direction;
     text-indent: 0;
-    float: left;
-    clear: left;
-    margin-left: (-2 * $margin) + 5%;
-    width: (2 * $margin) - 10%;
+    width: $margin_width * (1 - (2 * $margin_padding));
     word-wrap: break-word;
   }
+  .class--place--left_margin {
+    @include margin_base(left);
+  }
   .class--place--right_margin {
-    text-indent: 0;
-    float: right;
-    clear: right;
-    margin-right: (-2 * $margin) + 5%;
-    width: (2 * $margin) - 10%;
-    word-wrap: break-word;
+    @include margin_base(right);
   }
 
   *:not(dt) > a.note.class--place--footnote {

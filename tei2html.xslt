@@ -4,6 +4,7 @@
   xmlns:tei="http://www.tei-c.org/ns/1.0"
   xmlns="http://www.w3.org/1999/xhtml"
     exclude-result-prefixes="tei">
+  <xsl:import href="./reorder-line-content.xslt"/>
   <xsl:output method="xml" indent="yes" encoding="UTF-8"/>
 
   <xsl:param name="type">reading</xsl:param>
@@ -16,49 +17,68 @@
         <xsl:text> </xsl:text>
         <xsl:value-of select="$type"/>
       </xsl:attribute>
-      <xsl:apply-templates select="tei:TEI/tei:text"/>
 
-      <footer>
-        <dl>
-          <xsl:apply-templates select="$footnotes" mode="footnotes"/>
-        </dl>
-      </footer>
+      <div>
+        <div class="super-magic">
+          <xsl:apply-templates select="tei:TEI/tei:text" mode="superlinear"/>
+        </div>
+        <div class="sub-magic">
+          <xsl:apply-templates select="tei:TEI/tei:text" mode="sublinear"/>
+        </div>
+        <div class="line-magic">
+          <xsl:apply-templates select="tei:TEI/tei:text" mode="linear"/>
+        </div>
+      </div>
+
+      <xsl:variable name="footnote_items">
+        <xsl:apply-templates select="$footnotes" mode="footnotes"/>
+      </xsl:variable>
+      <xsl:if test="normalize-space($footnote_items)">
+        <footer>
+          <dl>
+            <xsl:copy-of select="$footnote_items"/>
+          </dl>
+        </footer>
+      </xsl:if>
     </div>
   </xsl:template>
 
-  <xsl:template match="*">
+  <xsl:template match="*" mode="#all">
     <span>
       <xsl:call-template name="element_attributes"/>
-      <xsl:apply-templates/>
+      <xsl:apply-templates mode="#current"/>
     </span>
   </xsl:template>
-  <xsl:template match="*[not(self::tei:*)]"/>
-  <xsl:template match="tei:lb">
+
+  <!-- Delete things which are not from TEI. -->
+  <xsl:template match="*[not(self::tei:*)]" mode="#all"/>
+
+  <xsl:template match="tei:lb | tei:pb" mode="#all">
     <br/>
   </xsl:template>
 
-  <xsl:template match="tei:list[@type='ordered']">
+  <xsl:template match="tei:list[@type='ordered']" mode="#all">
     <ol>
       <xsl:call-template name="element_attributes"/>
-      <xsl:apply-templates/>
+      <xsl:apply-templates mode="#current"/>
     </ol>
   </xsl:template>
 
-  <xsl:template match="tei:lg | tei:list | tei:listBibl">
+  <xsl:template match="tei:lg | tei:list | tei:listBibl" mode="#all">
     <ul>
       <xsl:call-template name="element_attributes"/>
-      <xsl:apply-templates/>
+      <xsl:apply-templates mode="#current"/>
     </ul>
   </xsl:template>
 
-  <xsl:template match="tei:*[parent::tei:lg | parent::tei:list | parent::tei:listBibl]">
+  <xsl:template match="tei:*[parent::tei:lg | parent::tei:list | parent::tei:listBibl]" mode="#all">
     <li>
       <xsl:call-template name="element_attributes"/>
-      <xsl:apply-templates/>
+      <xsl:apply-imports/>
     </li>
   </xsl:template>
 
-  <xsl:template match="tei:note[@place='footnote']">
+  <xsl:template match="tei:note[@place='footnote']" mode="linear">
     <a>
       <xsl:call-template name="element_attributes"/>
       <xsl:variable name="type">
@@ -145,47 +165,47 @@
       </a>
     </dt>
     <dd>
-      <xsl:apply-templates mode="#current"/>
+      <xsl:apply-imports/>
     </dd>
   </xsl:template>
 
-  <xsl:template match="tei:p | tei:note[not(@place='footnote')] | tei:epigraph | tei:label">
+  <xsl:template match="tei:p | tei:note[not(@place='footnote')] | tei:epigraph | tei:label" mode="#all">
     <p>
       <xsl:call-template name="element_attributes"/>
-      <xsl:apply-templates/>
+      <xsl:apply-imports/>
     </p>
   </xsl:template>
 
-  <xsl:template match="tei:zone">
+  <xsl:template match="tei:zone" mode="#all">
     <div>
       <xsl:call-template name="element_attributes"/>
-      <xsl:apply-templates/>
+      <xsl:apply-templates mode="#current"/>
     </div>
   </xsl:template>
 
-  <xsl:template match="tei:q">
+  <xsl:template match="tei:q" mode="#all">
     <q>
       <xsl:call-template name="element_attributes"/>
-      <xsl:apply-templates/>
+      <xsl:apply-templates mode="#current"/>
     </q>
   </xsl:template>
 
-  <xsl:template match="tei:choice">
+  <xsl:template match="tei:choice" mode="#all">
     <xsl:choose>
       <xsl:when test="$type = 'reading'">
         <xsl:choose>
           <xsl:when test="tei:reg | tei:expan | tei:corr">
-            <xsl:apply-templates select="(tei:reg | tei:expan | tei:corr)[1]"/>
+            <xsl:apply-templates select="(tei:reg | tei:expan | tei:corr)[1]" mode="#current"/>
           </xsl:when>
           <xsl:otherwise>
-            <xsl:apply-templates select="tei:*[1]"/>
+            <xsl:apply-templates select="tei:*[1]" mode="#current"/>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:when>
       <xsl:otherwise>
         <span>
           <xsl:call-template name="element_attributes"/>
-          <xsl:apply-templates/>
+          <xsl:apply-templates mode="#current"/>
         </span>
       </xsl:otherwise>
     </xsl:choose>

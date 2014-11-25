@@ -5,18 +5,38 @@
   xmlns="http://www.w3.org/1999/xhtml"
     exclude-result-prefixes="tei">
 
-  <xsl:template match="tei:*[tei:*[exists(index-of(('superlinear', 'sublinear', 'intralinear'), @place))]]" mode="superlinear" priority='-1'>
-    <xsl:apply-templates select="text() | tei:*[empty(index-of(('sublinear', 'intralinear'), @place))]" mode="#current"/>
-    <xsl:apply-templates select="tei:*[exists(index-of(('sublinear', 'intralinear'), @place))]" mode="#current"/>
+  <xsl:variable name="places" select="('superlinear', 'sublinear', 'intralinear')"/>
+
+  <xsl:template match="tei:*" mode="superlinear">
+    <xsl:call-template name="reorder">
+      <xsl:with-param name="mode">superlinear</xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+  <xsl:template match="tei:*" mode="sublinear">
+    <xsl:call-template name="reorder">
+      <xsl:with-param name="mode">sublinear</xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+  <xsl:template match="tei:*" mode="linear">
+    <xsl:call-template name="reorder">
+      <xsl:with-param name="mode">intralinear</xsl:with-param>
+    </xsl:call-template>
   </xsl:template>
 
-  <xsl:template match="tei:*[tei:*[exists(index-of(('sublinear', 'superlinear', 'intralinear'), @place))]]" mode="sublinear" priority='-1'>
-    <xsl:apply-templates select="text() | tei:*[empty(index-of(('superlinear', 'intralinear'), @place))]" mode="#current"/>
-    <xsl:apply-templates select="tei:*[exists(index-of(('superlinear', 'intralinear'), @place))]" mode="#current"/>
-  </xsl:template>
+  <xsl:template name="reorder">
+    <xsl:param name="mode"/>
 
-  <xsl:template match="tei:*[tei:*[exists(index-of(('sublinear', 'superlinear', 'intralinear'), @place))]]" mode="linear">
-    <xsl:apply-templates select="text() | tei:*[empty(index-of(('superlinear', 'sublinear'), @place))]" mode="#current"/>
-    <xsl:apply-templates select="tei:*[exists(index-of(('superlinear', 'sublinear'), @place))]" mode="#current"/>
+    <xsl:choose>
+      <xsl:when test="descendant::tei:*[@place and exists(index-of($places, @place))]">
+        <xsl:variable name="current" select="index-of($places, $mode)"/>
+        <xsl:variable name="these" select="remove($places, $current[1])"/>
+
+        <xsl:apply-templates select="text() | tei:*[not(@place) or empty(index-of($these, @place))]" mode="#current"/>
+        <xsl:apply-templates select="descendant::tei:*[@place and exists(index-of($these, @place))]" mode="#current"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates mode="#current"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 </xsl:stylesheet>

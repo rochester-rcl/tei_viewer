@@ -202,6 +202,16 @@
           </xsl:otherwise>
         </xsl:choose>
       </xsl:when>
+      <xsl:when test="$type = 'diplomatic'">
+        <xsl:choose>
+          <xsl:when test="tei:orig | tei:abbr | tei:sic">
+            <xsl:apply-templates select="(tei:orig | tei:abbr | tei:sic)[1]" mode="#current"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:apply-templates select="tei:*[1]" mode="#current"/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </xsl:when>
       <xsl:otherwise>
         <span>
           <xsl:call-template name="element_attributes"/>

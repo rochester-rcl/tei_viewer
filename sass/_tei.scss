@@ -46,11 +46,9 @@ $line_height: 3em;
       z-index: 2;
       top: 0;
       .mod, .seg {
-        // XXX: Normally, these elements will be moved to the end of
-        // block-level elements, to the different sub/super/intralinear
-        // overlays all line up... When things are contained in non-block
-        // element, we can't reliably move them around, so let's just make
-        // 'em completely invisible.
+        // XXX: These elements are copied to the end of to maintain the total
+        // "length" of the line... As such, the "in-line" copy here needs to go
+        // away.
         .class--place--superlinear, .class--place--sublinear {
           display: none;
         }
@@ -69,11 +67,9 @@ $line_height: 3em;
       }
       visibility: hidden;
       .mod, .seg {
-        // XXX: Normally, these elements will be moved to the end of
-        // block-level elements, to the different sub/super/intralinear
-        // overlays all line up... When things are contained in non-block
-        // element, we can't reliably move them around, so let's just make
-        // 'em completely invisible.
+        // XXX: These elements are copied to the end of to maintain the total
+        // "length" of the line... As such, the "in-line" copy here needs to go
+        // away.
         .class--place--intralinear, .class--place--sublinear {
           display: none;
         }
@@ -89,11 +85,9 @@ $line_height: 3em;
       }
       visibility: hidden;
       .mod, .seg {
-        // XXX: Normally, these elements will be moved to the end of
-        // block-level elements, to the different sub/super/intralinear
-        // overlays all line up... When things are contained in non-block
-        // element, we can't reliably move them around, so let's just make
-        // 'em completely invisible.
+        // XXX: These elements are copied to the end of to maintain the total
+        // "length" of the line... As such, the "in-line" copy here needs to go
+        // away.
         .class--place--intralinear, .class--place--superlinear {
           display: none;
         }

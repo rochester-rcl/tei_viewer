@@ -242,10 +242,26 @@
         </xsl:for-each>
       </xsl:if>
     </xsl:attribute>
+    <xsl:for-each select="$node/@*">
+      <xsl:variable name="attribute_name">
+        <xsl:variable name="prefix" select="substring-before(name(), ':')"/>
+        <xsl:if test="$prefix">
+          <xsl:text>-</xsl:text>
+          <xsl:value-of select="$prefix"/>
+        </xsl:if>
+        <xsl:text>-</xsl:text>
+        <xsl:value-of select="local-name()"/>
+      </xsl:variable>
+      <xsl:attribute name="data{$attribute_name}">
+        <xsl:value-of select="."/>
+      </xsl:attribute>
+    </xsl:for-each>
+    <!--
     <xsl:if test="$node/@xml:id">
       <xsl:attribute name="id">
         <xsl:value-of select="generate-id($node)"/>
       </xsl:attribute>
     </xsl:if>
+    -->
   </xsl:template>
 </xsl:stylesheet>

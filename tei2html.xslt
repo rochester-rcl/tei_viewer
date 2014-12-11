@@ -256,12 +256,5 @@
         <xsl:value-of select="."/>
       </xsl:attribute>
     </xsl:for-each>
-    <!--
-    <xsl:if test="$node/@xml:id">
-      <xsl:attribute name="id">
-        <xsl:value-of select="generate-id($node)"/>
-      </xsl:attribute>
-    </xsl:if>
-    -->
   </xsl:template>
 </xsl:stylesheet>

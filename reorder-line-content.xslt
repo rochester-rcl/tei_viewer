@@ -5,21 +5,21 @@
   xmlns="http://www.w3.org/1999/xhtml"
     exclude-result-prefixes="tei">
 
-  <xsl:variable name="places" select="('superlinear', 'sublinear', 'intralinear')"/>
+  <xsl:variable name="places" select="('above', 'below', 'inline')"/>
 
-  <xsl:template match="tei:*" mode="superlinear">
+  <xsl:template match="tei:*" mode="above">
     <xsl:call-template name="reorder">
-      <xsl:with-param name="mode">superlinear</xsl:with-param>
+      <xsl:with-param name="mode">above</xsl:with-param>
     </xsl:call-template>
   </xsl:template>
-  <xsl:template match="tei:*" mode="sublinear">
+  <xsl:template match="tei:*" mode="below">
     <xsl:call-template name="reorder">
-      <xsl:with-param name="mode">sublinear</xsl:with-param>
+      <xsl:with-param name="mode">below</xsl:with-param>
     </xsl:call-template>
   </xsl:template>
-  <xsl:template match="tei:*" mode="linear">
+  <xsl:template match="tei:*" mode="inline">
     <xsl:call-template name="reorder">
-      <xsl:with-param name="mode">intralinear</xsl:with-param>
+      <xsl:with-param name="mode">inline</xsl:with-param>
     </xsl:call-template>
   </xsl:template>
 

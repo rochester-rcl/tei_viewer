@@ -20,13 +20,13 @@
 
       <div>
         <div class="super-magic">
-          <xsl:apply-templates select="tei:TEI/tei:text" mode="superlinear"/>
+          <xsl:apply-templates select="tei:TEI/tei:text" mode="above"/>
         </div>
         <div class="sub-magic">
-          <xsl:apply-templates select="tei:TEI/tei:text" mode="sublinear"/>
+          <xsl:apply-templates select="tei:TEI/tei:text" mode="below"/>
         </div>
         <div class="line-magic">
-          <xsl:apply-templates select="tei:TEI/tei:text" mode="linear"/>
+          <xsl:apply-templates select="tei:TEI/tei:text" mode="inline"/>
         </div>
       </div>
 
@@ -78,7 +78,7 @@
     </li>
   </xsl:template>
 
-  <xsl:template match="tei:note[@place='footnote']" mode="linear">
+  <xsl:template match="tei:note[@place='footnote']" mode="inline">
     <a>
       <xsl:call-template name="element_attributes"/>
       <xsl:variable name="type">

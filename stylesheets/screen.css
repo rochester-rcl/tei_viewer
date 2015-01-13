@@ -13,7 +13,7 @@
   margin-bottom: 0.5in;
   color: black;
 }
-/* line 5, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 5, ../../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 .tei html, .tei body, .tei div, .tei span, .tei applet, .tei object, .tei iframe,
 .tei h1, .tei h2, .tei h3, .tei h4, .tei h5, .tei h6, .tei p, .tei blockquote, .tei pre,
 .tei a, .tei abbr, .tei acronym, .tei address, .tei big, .tei cite, .tei code,
@@ -34,39 +34,39 @@
   font-size: 100%;
   vertical-align: baseline;
 }
-/* line 22, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 .tei html {
   line-height: 1;
 }
-/* line 24, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 .tei ol, .tei ul {
   list-style: none;
 }
-/* line 26, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 .tei table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-/* line 28, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 .tei caption, .tei th, .tei td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
-/* line 30, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 .tei q, .tei blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 .tei q:before, .tei q:after, .tei blockquote:before, .tei blockquote:after {
   content: "";
   content: none;
 }
-/* line 32, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 .tei a img {
   border: none;
 }
-/* line 116, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 .tei article, .tei aside, .tei details, .tei figcaption, .tei figure, .tei footer, .tei header, .tei hgroup, .tei main, .tei menu, .tei nav, .tei section, .tei summary {
   display: block;
 }
@@ -88,11 +88,11 @@
   top: 0;
 }
 /* line 52, ../sass/_tei.scss */
-.tei > div > div.line-magic .mod .class--place--superlinear, .tei > div > div.line-magic .mod .class--place--sublinear, .tei > div > div.line-magic .seg .class--place--superlinear, .tei > div > div.line-magic .seg .class--place--sublinear {
+.tei > div > div.line-magic .mod .class--place--above, .tei > div > div.line-magic .mod .class--place--below, .tei > div > div.line-magic .seg .class--place--above, .tei > div > div.line-magic .seg .class--place--below {
   display: none;
 }
 /* line 56, ../sass/_tei.scss */
-.tei > div > div.line-magic .class--place--superlinear, .tei > div > div.line-magic .class--place--sublinear {
+.tei > div > div.line-magic .class--place--above, .tei > div > div.line-magic .class--place--below {
   visibility: hidden;
 }
 /* line 60, ../sass/_tei.scss */
@@ -104,11 +104,11 @@
   visibility: hidden;
 }
 /* line 65, ../sass/_tei.scss */
-.tei > div > div.super-magic .class--place--superlinear {
+.tei > div > div.super-magic .class--place--above {
   visibility: visible;
 }
 /* line 73, ../sass/_tei.scss */
-.tei > div > div.super-magic .mod .class--place--intralinear, .tei > div > div.super-magic .mod .class--place--sublinear, .tei > div > div.super-magic .seg .class--place--intralinear, .tei > div > div.super-magic .seg .class--place--sublinear {
+.tei > div > div.super-magic .mod .class--place--inline, .tei > div > div.super-magic .mod .class--place--below, .tei > div > div.super-magic .seg .class--place--inline, .tei > div > div.super-magic .seg .class--place--below {
   display: none;
 }
 /* line 78, ../sass/_tei.scss */
@@ -120,11 +120,11 @@
   visibility: hidden;
 }
 /* line 83, ../sass/_tei.scss */
-.tei > div > div.sub-magic .class--place--sublinear {
+.tei > div > div.sub-magic .class--place--below {
   visibility: visible;
 }
 /* line 91, ../sass/_tei.scss */
-.tei > div > div.sub-magic .mod .class--place--intralinear, .tei > div > div.sub-magic .mod .class--place--superlinear, .tei > div > div.sub-magic .seg .class--place--intralinear, .tei > div > div.sub-magic .seg .class--place--superlinear {
+.tei > div > div.sub-magic .mod .class--place--inline, .tei > div > div.sub-magic .mod .class--place--above, .tei > div > div.sub-magic .seg .class--place--inline, .tei > div > div.sub-magic .seg .class--place--above {
   display: none;
 }
 /* line 97, ../sass/_tei.scss */

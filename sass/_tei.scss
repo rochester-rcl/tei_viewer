@@ -49,11 +49,11 @@ $line_height: 3em;
         // XXX: These elements are copied to the end of to maintain the total
         // "length" of the line... As such, the "in-line" copy here needs to go
         // away.
-        .class--place--superlinear, .class--place--sublinear {
+        .class--place--above, .class--place--below {
           display: none;
         }
       }
-      .class--place--superlinear, .class--place--sublinear {
+      .class--place--above, .class--place--below {
         visibility: hidden;
       }
     }
@@ -62,7 +62,7 @@ $line_height: 3em;
       top: -($line_height / 3);
       left: 0;
       z-index: 1;
-      .class--place--superlinear {
+      .class--place--above {
         visibility: visible;
       }
       visibility: hidden;
@@ -70,7 +70,7 @@ $line_height: 3em;
         // XXX: These elements are copied to the end of to maintain the total
         // "length" of the line... As such, the "in-line" copy here needs to go
         // away.
-        .class--place--intralinear, .class--place--sublinear {
+        .class--place--inline, .class--place--below {
           display: none;
         }
       }
@@ -80,7 +80,7 @@ $line_height: 3em;
       left: 0;
       position: absolute;
       z-index: 1;
-      .class--place--sublinear {
+      .class--place--below {
         visibility: visible;
       }
       visibility: hidden;
@@ -88,7 +88,7 @@ $line_height: 3em;
         // XXX: These elements are copied to the end of to maintain the total
         // "length" of the line... As such, the "in-line" copy here needs to go
         // away.
-        .class--place--intralinear, .class--place--superlinear {
+        .class--place--inline, .class--place--above {
           display: none;
         }
       }

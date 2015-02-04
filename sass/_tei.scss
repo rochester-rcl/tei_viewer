@@ -21,7 +21,7 @@ $double_quote: '"';
 
 // Line height.
 // XXX: Could get into trouble here, if the font size is ever changed.
-$line_height: 3em;
+$line_height: 1.2em;
 
 .tei {
   // Reset elements inside our TEI wrapper.
@@ -40,60 +40,6 @@ $line_height: 3em;
     line-height: $line_height;
     margin-right: auto;
     margin-left: auto;
-
-    & > div.line-magic {
-      position: relative;
-      z-index: 2;
-      top: 0;
-      .mod, .seg {
-        // XXX: These elements are copied to the end of to maintain the total
-        // "length" of the line... As such, the "in-line" copy here needs to go
-        // away.
-        .class--place--above, .class--place--below {
-          display: none;
-        }
-      }
-      .class--place--above, .class--place--below {
-        visibility: hidden;
-      }
-    }
-    & > div.super-magic {
-      position: absolute;
-      top: -($line_height / 3);
-      left: 0;
-      z-index: 1;
-      .class--place--above {
-        visibility: visible;
-      }
-      visibility: hidden;
-      .mod, .seg {
-        // XXX: These elements are copied to the end of to maintain the total
-        // "length" of the line... As such, the "in-line" copy here needs to go
-        // away.
-        .class--place--inline, .class--place--below {
-          display: none;
-        }
-      }
-    }
-    & > div.sub-magic {
-      top:  $line_height / 3;
-      left: 0;
-      position: absolute;
-      z-index: 1;
-      .class--place--below {
-        visibility: visible;
-      }
-      visibility: hidden;
-      .mod, .seg {
-        // XXX: These elements are copied to the end of to maintain the total
-        // "length" of the line... As such, the "in-line" copy here needs to go
-        // away.
-        .class--place--inline, .class--place--above {
-          display: none;
-        }
-      }
-    }
-
     * {
       visibility: inherit;
     }

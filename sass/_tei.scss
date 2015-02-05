@@ -21,7 +21,9 @@ $double_quote: '"';
 
 // Line height.
 // XXX: Could get into trouble here, if the font size is ever changed.
-$line_height: 3em;
+$line_height_normal: 1.2em;
+// Double line height is needed if you want to render super/sublinear lines.
+$line_height_double: 3em;
 
 .tei {
   // Reset elements inside our TEI wrapper.
@@ -37,7 +39,7 @@ $line_height: 3em;
 
   & > div {
     position: relative;
-    line-height: $line_height;
+    line-height: $line_height_normal;
     margin-right: auto;
     margin-left: auto;
 
@@ -59,7 +61,7 @@ $line_height: 3em;
     }
     & > div.super-magic {
       position: absolute;
-      top: -($line_height / 3);
+      top: -($line_height_double / 3);
       left: 0;
       z-index: 1;
       .class--place--above {
@@ -76,7 +78,7 @@ $line_height: 3em;
       }
     }
     & > div.sub-magic {
-      top:  $line_height / 3;
+      top:  $line_height_double / 3;
       left: 0;
       position: absolute;
       z-index: 1;

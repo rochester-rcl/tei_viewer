@@ -20,13 +20,13 @@
 
       <div>
         <div class="super-magic">
-          <xsl:apply-templates select="tei:TEI/tei:text" mode="above"/>
+          <xsl:apply-templates select="tei:TEI/*[self::tei:text or self::tei:facsimile or self::tei:sourceDoc]" mode="above"/>
         </div>
         <div class="sub-magic">
-          <xsl:apply-templates select="tei:TEI/tei:text" mode="below"/>
+          <xsl:apply-templates select="tei:TEI/*[self::tei:text or self::tei:facsimile or self::tei:sourceDoc]" mode="below"/>
         </div>
         <div class="line-magic">
-          <xsl:apply-templates select="tei:TEI/tei:text" mode="inline"/>
+          <xsl:apply-templates select="tei:TEI/*[self::tei:text or self::tei:facsimile or self::tei:sourceDoc]" mode="inline"/>
         </div>
       </div>
 

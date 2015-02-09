@@ -13,7 +13,7 @@
   margin-bottom: 0.5in;
   color: black;
 }
-/* line 5, ../../../../../../../../../.rvm/gems/ruby-2.1.5@global/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 5, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 .tei html, .tei body, .tei div, .tei span, .tei applet, .tei object, .tei iframe,
 .tei h1, .tei h2, .tei h3, .tei h4, .tei h5, .tei h6, .tei p, .tei blockquote, .tei pre,
 .tei a, .tei abbr, .tei acronym, .tei address, .tei big, .tei cite, .tei code,
@@ -34,39 +34,39 @@
   font-size: 100%;
   vertical-align: baseline;
 }
-/* line 22, ../../../../../../../../../.rvm/gems/ruby-2.1.5@global/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 .tei html {
   line-height: 1;
 }
-/* line 24, ../../../../../../../../../.rvm/gems/ruby-2.1.5@global/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 .tei ol, .tei ul {
   list-style: none;
 }
-/* line 26, ../../../../../../../../../.rvm/gems/ruby-2.1.5@global/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 .tei table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-/* line 28, ../../../../../../../../../.rvm/gems/ruby-2.1.5@global/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 .tei caption, .tei th, .tei td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
-/* line 30, ../../../../../../../../../.rvm/gems/ruby-2.1.5@global/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 .tei q, .tei blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../../../../.rvm/gems/ruby-2.1.5@global/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 .tei q:before, .tei q:after, .tei blockquote:before, .tei blockquote:after {
   content: "";
   content: none;
 }
-/* line 32, ../../../../../../../../../.rvm/gems/ruby-2.1.5@global/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 .tei a img {
   border: none;
 }
-/* line 116, ../../../../../../../../../.rvm/gems/ruby-2.1.5@global/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 .tei article, .tei aside, .tei details, .tei figcaption, .tei figure, .tei footer, .tei header, .tei hgroup, .tei main, .tei menu, .tei nav, .tei section, .tei summary {
   display: block;
 }
@@ -167,7 +167,7 @@
   font-variant: small-caps;
 }
 /* line 133, ../sass/_tei.scss */
-.tei .class--rend--strikethrough, .tei:not(.reading) .del {
+.tei .class--rend--strikethrough {
   text-decoration: line-through;
   color: #7f7f7f;
 }
@@ -311,10 +311,1165 @@
   display: list-item;
 }
 /* line 286, ../sass/_tei.scss */
-.tei.reading .seg.class--rend--undone {
+.tei .transcription .seg.class--rend--undone, .tei .tei.reading .seg.class--rend--undone, .tei .tei:not(.reading) .seg.class--rend--undone {
   color: black;
 }
+/* line 287, ../sass/_tei.scss */
+.tei .transcription .abbr, .tei .tei.reading .abbr, .tei .tei:not(.reading) .abbr {
+  display: inline;
+}
+/* line 288, ../sass/_tei.scss */
+.tei .transcription .anchor, .tei .tei.reading .anchor, .tei .tei:not(.reading) .anchor {
+  display: none;
+}
+/* line 289, ../sass/_tei.scss */
+.tei .transcription .argument, .tei .tei.reading .argument, .tei .tei:not(.reading) .argument {
+  display: block;
+  margin-bottom: 0.5em;
+}
+/* line 290, ../sass/_tei.scss */
+.tei .transcription .att, .tei .tei.reading .att, .tei .tei:not(.reading) .att {
+  display: inline;
+  font-family: sans-serif;
+  color: blue;
+  background-color: inherit;
+}
+/* line 291, ../sass/_tei.scss */
+.tei .transcription .att:before, .tei .tei.reading .att:before, .tei .tei:not(.reading) .att:before {
+  content: "@";
+}
+/* line 292, ../sass/_tei.scss */
+.tei .transcription .author, .tei .tei.reading .author, .tei .tei:not(.reading) .author {
+  display: inline;
+}
+/* line 293, ../sass/_tei.scss */
+.tei .transcription .back, .tei .tei.reading .back, .tei .tei:not(.reading) .back {
+  display: block;
+  border: thin solid black;
+  margin-top: 1em;
+  padding: 0.5em;
+}
 /* line 294, ../sass/_tei.scss */
-.tei:not(.reading) .seg.class--rend--undone {
+.tei .transcription .bibl, .tei .tei.reading .bibl, .tei .tei:not(.reading) .bibl {
+  display: inline;
+}
+/* line 295, ../sass/_tei.scss */
+.tei .transcription .bibl > .note, .tei .tei.reading .bibl > .note, .tei .tei:not(.reading) .bibl > .note {
+  display: inline;
+}
+/* line 296, ../sass/_tei.scss */
+.tei .transcription .bibl > .title[type="subtitle"], .tei .tei.reading .bibl > .title[type="subtitle"], .tei .tei:not(.reading) .bibl > .title[type="subtitle"] {
+  content: "";
+}
+/* line 297, ../sass/_tei.scss */
+.tei .transcription .argument > .bibl, .tei .tei.reading .argument > .bibl, .tei .tei:not(.reading) .argument > .bibl, .tei .transcription .body > .bibl, .tei .tei.reading .body > .bibl, .tei .tei:not(.reading) .body > .bibl, .tei .transcription .cit > .bibl > .bibl, .tei .tei.reading .cit > .bibl > .bibl, .tei .tei:not(.reading) .cit > .bibl > .bibl, .tei .transcription .div0 > .bibl, .tei .tei.reading .div0 > .bibl, .tei .tei:not(.reading) .div0 > .bibl, .tei .transcription .div1 > .bibl, .tei .tei.reading .div1 > .bibl, .tei .tei:not(.reading) .div1 > .bibl, .tei .transcription .div2 > .bibl, .tei .tei.reading .div2 > .bibl, .tei .tei:not(.reading) .div2 > .bibl, .tei .transcription .div3 > .bibl, .tei .tei.reading .div3 > .bibl, .tei .tei:not(.reading) .div3 > .bibl, .tei .transcription .div4 > .bibl, .tei .tei.reading .div4 > .bibl, .tei .tei:not(.reading) .div4 > .bibl, .tei .transcription .div5 > .bibl, .tei .tei.reading .div5 > .bibl, .tei .tei:not(.reading) .div5 > .bibl, .tei .transcription .div6 > .bibl, .tei .tei.reading .div6 > .bibl, .tei .tei:not(.reading) .div6 > .bibl, .tei .transcription .div7 > .bibl, .tei .tei.reading .div7 > .bibl, .tei .tei:not(.reading) .div7 > .bibl, .tei .transcription > .bibl, .tei .tei.reading > .bibl, .tei .tei:not(.reading) > .bibl, .tei .transcription .listBibl > .bibl > .bibl, .tei .tei.reading .listBibl > .bibl > .bibl, .tei .tei:not(.reading) .listBibl > .bibl > .bibl, .tei .transcription .taxonomy > .bibl, .tei .tei.reading .taxonomy > .bibl, .tei .tei:not(.reading) .taxonomy > .bibl {
+  display: block;
+  margin-bottom: 0.5em;
+}
+/* line 298, ../sass/_tei.scss */
+.tei .transcription .biblFull, .tei .tei.reading .biblFull, .tei .tei:not(.reading) .biblFull {
+  display: inline;
+}
+/* line 299, ../sass/_tei.scss */
+.tei .transcription .argument > .biblFull, .tei .tei.reading .argument > .biblFull, .tei .tei:not(.reading) .argument > .biblFull, .tei .transcription .body > .biblFull, .tei .tei.reading .body > .biblFull, .tei .tei:not(.reading) .body > .biblFull, .tei .transcription .cit > .biblFull > .biblFull, .tei .tei.reading .cit > .biblFull > .biblFull, .tei .tei:not(.reading) .cit > .biblFull > .biblFull, .tei .transcription .div0 > .biblFull, .tei .tei.reading .div0 > .biblFull, .tei .tei:not(.reading) .div0 > .biblFull, .tei .transcription .div1 > .biblFull, .tei .tei.reading .div1 > .biblFull, .tei .tei:not(.reading) .div1 > .biblFull, .tei .transcription .div2 > .biblFull, .tei .tei.reading .div2 > .biblFull, .tei .tei:not(.reading) .div2 > .biblFull, .tei .transcription .div3 > .biblFull, .tei .tei.reading .div3 > .biblFull, .tei .tei:not(.reading) .div3 > .biblFull, .tei .transcription .div4 > .biblFull, .tei .tei.reading .div4 > .biblFull, .tei .tei:not(.reading) .div4 > .biblFull, .tei .transcription .div5 > .biblFull, .tei .tei.reading .div5 > .biblFull, .tei .tei:not(.reading) .div5 > .biblFull, .tei .transcription .div6 > .biblFull, .tei .tei.reading .div6 > .biblFull, .tei .tei:not(.reading) .div6 > .biblFull, .tei .transcription .div7 > .biblFull, .tei .tei.reading .div7 > .biblFull, .tei .tei:not(.reading) .div7 > .biblFull, .tei .transcription > .biblFull, .tei .tei.reading > .biblFull, .tei .tei:not(.reading) > .biblFull, .tei .transcription .listBibl > .biblFull > .biblFull, .tei .tei.reading .listBibl > .biblFull > .biblFull, .tei .tei:not(.reading) .listBibl > .biblFull > .biblFull, .tei .transcription .taxonomy > .biblFull, .tei .tei.reading .taxonomy > .biblFull, .tei .tei:not(.reading) .taxonomy > .biblFull {
+  display: block;
+  margin-bottom: 0.5em;
+}
+/* line 300, ../sass/_tei.scss */
+.tei .transcription .biblScope, .tei .tei.reading .biblScope, .tei .tei:not(.reading) .biblScope {
+  display: inline;
+}
+/* line 301, ../sass/_tei.scss */
+.tei .transcription .imprint > .biblScope, .tei .tei.reading .imprint > .biblScope, .tei .tei:not(.reading) .imprint > .biblScope {
+  display: block;
+}
+/* line 302, ../sass/_tei.scss */
+.tei .transcription .body, .tei .tei.reading .body, .tei .tei:not(.reading) .body {
+  margin-top: 5px;
+  padding: 0px 2em 0px 0px;
+  display: block;
+  counter-reset: div1;
+}
+/* line 303, ../sass/_tei.scss */
+.tei .transcription .category, .tei .tei.reading .category, .tei .tei:not(.reading) .category {
+  display: block;
+  margin-bottom: 1em;
+}
+/* line 304, ../sass/_tei.scss */
+.tei .transcription .catRef, .tei .tei.reading .catRef, .tei .tei:not(.reading) .catRef {
+  display: none;
+}
+/* line 305, ../sass/_tei.scss */
+.tei .transcription .cell, .tei .tei.reading .cell, .tei .tei:not(.reading) .cell {
+  display: table-cell;
+  border: 1px solid #eeefee;
+  padding: 3px;
+  color: inherit;
+  background-color: inherit;
+}
+/* line 306, ../sass/_tei.scss */
+.tei .transcription .cell[role="label"], .tei .tei.reading .cell[role="label"], .tei .tei:not(.reading) .cell[role="label"] {
+  color: inherit;
+  background-color: #bbbbbb;
+}
+/* line 307, ../sass/_tei.scss */
+.tei .transcription .change, .tei .tei.reading .change, .tei .tei:not(.reading) .change {
+  display: block;
+  margin-bottom: 1em;
+  margin-left: 2em;
+}
+/* line 308, ../sass/_tei.scss */
+.tei .transcription .cit, .tei .tei.reading .cit, .tei .tei:not(.reading) .cit {
+  display: inline;
+}
+/* line 309, ../sass/_tei.scss */
+.tei .transcription .argument > .cit, .tei .tei.reading .argument > .cit, .tei .tei:not(.reading) .argument > .cit, .tei .transcription .body > .cit > .cit, .tei .tei.reading .body > .cit > .cit, .tei .tei:not(.reading) .body > .cit > .cit, .tei .transcription .div0 > .cit, .tei .tei.reading .div0 > .cit, .tei .tei:not(.reading) .div0 > .cit, .tei .transcription .div1 > .cit, .tei .tei.reading .div1 > .cit, .tei .tei:not(.reading) .div1 > .cit, .tei .transcription .div2 > .cit, .tei .tei.reading .div2 > .cit, .tei .tei:not(.reading) .div2 > .cit, .tei .transcription .div3 > .cit, .tei .tei.reading .div3 > .cit, .tei .tei:not(.reading) .div3 > .cit, .tei .transcription .div4 > .cit, .tei .tei.reading .div4 > .cit, .tei .tei:not(.reading) .div4 > .cit, .tei .transcription .div5 > .cit, .tei .tei.reading .div5 > .cit, .tei .tei:not(.reading) .div5 > .cit, .tei .transcription .div6 > .cit, .tei .tei.reading .div6 > .cit, .tei .tei:not(.reading) .div6 > .cit, .tei .transcription .div7 > .cit, .tei .tei.reading .div7 > .cit, .tei .tei:not(.reading) .div7 > .cit, .tei .transcription > .cit, .tei .tei.reading > .cit, .tei .tei:not(.reading) > .cit {
+  display: block;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+/* line 310, ../sass/_tei.scss */
+.tei .transcription .classCode, .tei .tei.reading .classCode, .tei .tei:not(.reading) .classCode {
+  display: block;
+}
+/* line 311, ../sass/_tei.scss */
+.tei .transcription .elementSpec, .tei .tei.reading .elementSpec, .tei .tei:not(.reading) .elementSpec, .tei .transcription .macroSpec, .tei .tei.reading .macroSpec, .tei .tei:not(.reading) .macroSpec, .tei .transcription .classSpec, .tei .tei.reading .classSpec, .tei .tei:not(.reading) .classSpec {
+  display: block;
+  margin-bottom: 1em;
+}
+/* line 312, ../sass/_tei.scss */
+.tei .transcription .closer, .tei .tei.reading .closer, .tei .tei:not(.reading) .closer {
+  display: block;
+  margin-bottom: 1em;
+  width: 95%;
+}
+/* line 313, ../sass/_tei.scss */
+.tei .transcription .code, .tei .tei.reading .code, .tei .tei:not(.reading) .code {
+  display: inline;
+  font-family: monospace;
+}
+/* line 314, ../sass/_tei.scss */
+.tei .transcription .corr, .tei .tei.reading .corr, .tei .tei:not(.reading) .corr {
+  display: inline;
   color: green;
+  background-color: inherit;
+}
+/* line 315, ../sass/_tei.scss */
+.tei .transcription .creation, .tei .tei.reading .creation, .tei .tei:not(.reading) .creation {
+  display: block;
+}
+/* line 316, ../sass/_tei.scss */
+.tei .transcription .date, .tei .tei.reading .date, .tei .tei:not(.reading) .date {
+  display: inline;
+}
+/* line 317, ../sass/_tei.scss */
+.tei .transcription .change > .date, .tei .tei.reading .change > .date, .tei .tei:not(.reading) .change > .date, .tei .transcription .publicationStmt > .date, .tei .tei.reading .publicationStmt > .date, .tei .tei:not(.reading) .publicationStmt > .date {
+  display: block;
+  font-weight: bold;
+}
+/* line 318, ../sass/_tei.scss */
+.tei .transcription .dateline, .tei .tei.reading .dateline, .tei .tei:not(.reading) .dateline {
+  display: inline;
+}
+/* line 319, ../sass/_tei.scss */
+.tei .transcription .distributor, .tei .tei.reading .distributor, .tei .tei:not(.reading) .distributor {
+  display: block;
+  margin-bottom: 0.5em;
+}
+/* line 320, ../sass/_tei.scss */
+.tei .transcription .body > .div, .tei .tei.reading .body > .div, .tei .tei:not(.reading) .body > .div {
+  display: block;
+  counter-increment: div1;
+  counter-reset: div2;
+  margin: 0px 0px 1.5em;
+}
+/* line 321, ../sass/_tei.scss */
+.tei .transcription .body > .div > .div, .tei .tei.reading .body > .div > .div, .tei .tei:not(.reading) .body > .div > .div {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div2;
+  counter-reset: div3;
+}
+/* line 322, ../sass/_tei.scss */
+.tei .transcription .body > .div > .div > .div, .tei .tei.reading .body > .div > .div > .div, .tei .tei:not(.reading) .body > .div > .div > .div {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div3;
+}
+/* line 323, ../sass/_tei.scss */
+.tei .transcription .body > .div[type="letter"], .tei .tei.reading .body > .div[type="letter"], .tei .tei:not(.reading) .body > .div[type="letter"] {
+  margin-bottom: 2em !important;
+}
+/* line 324, ../sass/_tei.scss */
+.tei .transcription .div[type="poem"], .tei .tei.reading .div[type="poem"], .tei .tei:not(.reading) .div[type="poem"] {
+  counter-reset: line;
+}
+/* line 325, ../sass/_tei.scss */
+.tei .transcription .div1, .tei .tei.reading .div1, .tei .tei:not(.reading) .div1 {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div1;
+  counter-reset: div2;
+}
+/* line 326, ../sass/_tei.scss */
+.tei .transcription .div2, .tei .tei.reading .div2, .tei .tei:not(.reading) .div2 {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div2;
+  counter-reset: div3;
+}
+/* line 327, ../sass/_tei.scss */
+.tei .transcription .div3, .tei .tei.reading .div3, .tei .tei:not(.reading) .div3 {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div3;
+  counter-reset: div4;
+}
+/* line 328, ../sass/_tei.scss */
+.tei .transcription .div4, .tei .tei.reading .div4, .tei .tei:not(.reading) .div4 {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div4;
+  counter-reset: div5;
+}
+/* line 329, ../sass/_tei.scss */
+.tei .transcription .div5, .tei .tei.reading .div5, .tei .tei:not(.reading) .div5 {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div5;
+  counter-reset: div6;
+}
+/* line 330, ../sass/_tei.scss */
+.tei .transcription .div6, .tei .tei.reading .div6, .tei .tei:not(.reading) .div6 {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div6;
+  counter-reset: div7;
+}
+/* line 331, ../sass/_tei.scss */
+.tei .transcription .div7, .tei .tei.reading .div7, .tei .tei:not(.reading) .div7 {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div7;
+}
+/* line 332, ../sass/_tei.scss */
+.tei .transcription .divGen, .tei .tei.reading .divGen, .tei .tei:not(.reading) .divGen {
+  display: none;
+}
+/* line 333, ../sass/_tei.scss */
+.tei .transcription .docAuthor, .tei .tei.reading .docAuthor, .tei .tei:not(.reading) .docAuthor {
+  display: block;
+  margin-bottom: 0.5em;
+}
+/* line 336, ../sass/_tei.scss */
+.tei .transcription .edition, .tei .tei.reading .edition, .tei .tei:not(.reading) .edition {
+  display: block;
+  margin-bottom: 0.5em;
+}
+/* line 337, ../sass/_tei.scss */
+.tei .transcription .bibl .edition, .tei .tei.reading .bibl .edition, .tei .tei:not(.reading) .bibl .edition {
+  display: inline;
+}
+/* line 338, ../sass/_tei.scss */
+.tei .transcription .editionStmt, .tei .tei.reading .editionStmt, .tei .tei:not(.reading) .editionStmt {
+  display: block;
+  margin-bottom: 1em;
+}
+/* line 339, ../sass/_tei.scss */
+.tei .transcription .editor, .tei .tei.reading .editor, .tei .tei:not(.reading) .editor {
+  display: block;
+}
+/* line 340, ../sass/_tei.scss */
+.tei .transcription .bibl .editor, .tei .tei.reading .bibl .editor, .tei .tei:not(.reading) .bibl .editor {
+  display: inline;
+}
+/* line 341, ../sass/_tei.scss */
+.tei .transcription .eg, .tei .tei.reading .eg, .tei .tei:not(.reading) .eg {
+  font-family: monospace;
+  padding-top: 3mm;
+  padding-left: 4pt;
+  padding-bottom: 2pt;
+  display: block;
+  margin-top: 12pt;
+  margin-bottom: 12pt;
+  white-space: pre;
+  color: inherit;
+  background-color: #ffcc99;
+}
+/* line 342, ../sass/_tei.scss */
+.tei .transcription .argument > .eg, .tei .tei.reading .argument > .eg, .tei .tei:not(.reading) .argument > .eg, .tei .transcription .body > .eg, .tei .tei.reading .body > .eg, .tei .tei:not(.reading) .body > .eg, .tei .transcription .div > .eg, .tei .tei.reading .div > .eg, .tei .tei:not(.reading) .div > .eg, .tei .transcription .div0 > .eg, .tei .tei.reading .div0 > .eg, .tei .tei:not(.reading) .div0 > .eg, .tei .transcription .div1 > .eg, .tei .tei.reading .div1 > .eg, .tei .tei:not(.reading) .div1 > .eg, .tei .transcription .div2 > .eg, .tei .tei.reading .div2 > .eg, .tei .tei:not(.reading) .div2 > .eg, .tei .transcription .div3 > .eg, .tei .tei.reading .div3 > .eg, .tei .tei:not(.reading) .div3 > .eg, .tei .transcription .div4 > .eg, .tei .tei.reading .div4 > .eg, .tei .tei:not(.reading) .div4 > .eg, .tei .transcription .div5 > .eg, .tei .tei.reading .div5 > .eg, .tei .tei:not(.reading) .div5 > .eg, .tei .transcription .div6 > .eg, .tei .tei.reading .div6 > .eg, .tei .tei:not(.reading) .div6 > .eg, .tei .transcription .div7 > .eg, .tei .tei.reading .div7 > .eg, .tei .tei:not(.reading) .div7 > .eg, .tei .transcription > .eg, .tei .tei.reading > .eg, .tei .tei:not(.reading) > .eg {
+  display: block;
+  margin-bottom: 1em;
+}
+/* line 343, ../sass/_tei.scss */
+.tei .transcription .emph, .tei .tei.reading .emph, .tei .tei:not(.reading) .emph {
+  display: inline;
+  font-style: italic;
+}
+/* line 344, ../sass/_tei.scss */
+.tei .transcription .extent, .tei .tei.reading .extent, .tei .tei:not(.reading) .extent {
+  display: block;
+  margin-bottom: 1em;
+}
+/* line 345, ../sass/_tei.scss */
+.tei .transcription .bibl .extent, .tei .tei.reading .bibl .extent, .tei .tei:not(.reading) .bibl .extent {
+  display: inline;
+}
+/* line 346, ../sass/_tei.scss */
+.tei .transcription .graphic, .tei .tei.reading .graphic, .tei .tei:not(.reading) .graphic {
+  color: gray;
+  background-color: inherit;
+  content: "{" attr(url) "}";
+}
+/* line 347, ../sass/_tei.scss */
+.tei .transcription .figure, .tei .tei.reading .figure, .tei .tei:not(.reading) .figure {
+  display: block;
+  margin-bottom: 1em;
+}
+/* line 348, ../sass/_tei.scss */
+.tei .transcription .foreign, .tei .tei.reading .foreign, .tei .tei:not(.reading) .foreign {
+  display: inline;
+  font-style: italic;
+}
+/* line 349, ../sass/_tei.scss */
+.tei .transcription .formula, .tei .tei.reading .formula, .tei .tei:not(.reading) .formula {
+  display: inline;
+  font-style: italic;
+}
+/* line 350, ../sass/_tei.scss */
+.tei .transcription .front, .tei .tei.reading .front, .tei .tei:not(.reading) .front {
+  display: block;
+  margin-bottom: 1em;
+  padding: 0.5em;
+}
+/* line 351, ../sass/_tei.scss */
+.tei .transcription .funder, .tei .tei.reading .funder, .tei .tei:not(.reading) .funder {
+  display: block;
+  margin-bottom: 0.5em;
+}
+/* line 352, ../sass/_tei.scss */
+.tei .transcription .gap, .tei .tei.reading .gap, .tei .tei:not(.reading) .gap {
+  display: none;
+}
+/* line 353, ../sass/_tei.scss */
+.tei .transcription .gap:after, .tei .tei.reading .gap:after, .tei .tei:not(.reading) .gap:after {
+  content: "[...]";
+  font-style: italic;
+}
+/* line 354, ../sass/_tei.scss */
+.tei .transcription .gi, .tei .tei.reading .gi, .tei .tei:not(.reading) .gi, .tei .transcription .tag, .tei .tei.reading .tag, .tei .tei:not(.reading) .tag {
+  display: inline;
+  font-family: sans-serif;
+  color: blue;
+  background-color: inherit;
+}
+/* line 355, ../sass/_tei.scss */
+.tei .transcription .tag:before, .tei .tei.reading .tag:before, .tei .tei:not(.reading) .tag:before, .tei .transcription .gi:before, .tei .tei.reading .gi:before, .tei .tei:not(.reading) .gi:before {
+  content: "<";
+}
+/* line 356, ../sass/_tei.scss */
+.tei .transcription .tag:after, .tei .tei.reading .tag:after, .tei .tei:not(.reading) .tag:after, .tei .transcription .gi:after, .tei .tei.reading .gi:after, .tei .tei:not(.reading) .gi:after {
+  content: ">";
+}
+/* line 357, ../sass/_tei.scss */
+.tei .transcription .gloss, .tei .tei.reading .gloss, .tei .tei:not(.reading) .gloss {
+  display: inline;
+}
+/* line 358, ../sass/_tei.scss */
+.tei .transcription .group, .tei .tei.reading .group, .tei .tei:not(.reading) .group {
+  display: block;
+  margin-bottom: 1em;
+}
+/* line 359, ../sass/_tei.scss */
+.tei .transcription .body > .div > .head, .tei .tei.reading .body > .div > .head, .tei .tei:not(.reading) .body > .div > .head, .tei .transcription .body > .div > .label, .tei.reading .tei.reading .body > .div > .label, .tei:not(.reading) .tei:not(.reading) .body > .div > .label {
+  display: block;
+  padding-top: 7px;
+  padding-bottom: 10px;
+  color: inherit;
+  font-weight: bold;
+  margin-top: 1em;
+}
+/* line 360, ../sass/_tei.scss */
+.tei .transcription .body > .div[type="poem"] > .head .author, .tei .tei.reading .body > .div[type="poem"] > .head .author, .tei .tei:not(.reading) .body > .div[type="poem"] > .head .author, .tei .transcription .body > .div[type="poem"] > .label .author, .tei.reading .tei.reading .body > .div[type="poem"] > .label .author, .tei:not(.reading) .tei:not(.reading) .body > .div[type="poem"] > .label .author {
+  font-weight: normal;
+}
+/* line 361, ../sass/_tei.scss */
+.tei .transcription .body > .div > .div > .head, .tei .tei.reading .body > .div > .div > .head, .tei .tei:not(.reading) .body > .div > .div > .head, .tei .transcription .body > .div > .div > .label, .tei.reading .tei.reading .body > .div > .div > .label, .tei:not(.reading) .tei:not(.reading) .body > .div > .div > .label {
+  display: block;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  color: inherit;
+  background-color: #bbbbbb;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  margin-top: 11px;
+}
+/* line 362, ../sass/_tei.scss */
+.tei .transcription .body > .div > .div > .div > .head, .tei .tei.reading .body > .div > .div > .div > .head, .tei .tei:not(.reading) .body > .div > .div > .div > .head, .tei .transcription .body > .div > .div > .div > .label, .tei.reading .tei.reading .body > .div > .div > .div > .label, .tei:not(.reading) .tei:not(.reading) .body > .div > .div > .div > .label {
+  display: block;
+  padding-top: 14px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  color: inherit;
+  background-color: #bbbbbb;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+/* line 363, ../sass/_tei.scss */
+.tei .transcription .div .opener .dateline, .tei .tei.reading .div .opener .dateline, .tei .tei:not(.reading) .div .opener .dateline {
+  display: block;
+  text-align: right;
+  width: 95%;
+}
+/* line 364, ../sass/_tei.scss */
+.tei .transcription .div1 > .head:before, .tei .tei.reading .div1 > .head:before, .tei .tei:not(.reading) .div1 > .head:before, .tei .transcription .div1 > .label:before, .tei.reading .tei.reading .div1 > .label:before, .tei:not(.reading) .tei:not(.reading) .div1 > .label:before {
+  color: black;
+  background-color: inherit;
+}
+/* line 365, ../sass/_tei.scss */
+.tei .transcription .div2 > .head:before, .tei .tei.reading .div2 > .head:before, .tei .tei:not(.reading) .div2 > .head:before, .tei .transcription .div2 > .label:before, .tei.reading .tei.reading .div2 > .label:before, .tei:not(.reading) .tei:not(.reading) .div2 > .label:before {
+  color: black;
+  background-color: inherit;
+}
+/* line 366, ../sass/_tei.scss */
+.tei .transcription .div3 > .head:before, .tei .tei.reading .div3 > .head:before, .tei .tei:not(.reading) .div3 > .head:before, .tei .transcription .div3 > .label:before, .tei.reading .tei.reading .div3 > .label:before, .tei:not(.reading) .tei:not(.reading) .div3 > .label:before {
+  color: black;
+  background-color: inherit;
+}
+/* line 367, ../sass/_tei.scss */
+.tei .transcription .body > .div > .head:before, .tei .tei.reading .body > .div > .head:before, .tei .tei:not(.reading) .body > .div > .head:before, .tei .transcription .body > .div > .label:before, .tei.reading .tei.reading .body > .div > .label:before, .tei:not(.reading) .tei:not(.reading) .body > .div > .label:before {
+  color: black;
+  background-color: inherit;
+}
+/* line 368, ../sass/_tei.scss */
+.tei .transcription .body > .div > .div > .head:before, .tei .tei.reading .body > .div > .div > .head:before, .tei .tei:not(.reading) .body > .div > .div > .head:before, .tei .transcription .body > .div > .div > .label:before, .tei.reading .tei.reading .body > .div > .div > .label:before, .tei:not(.reading) .tei:not(.reading) .body > .div > .div > .label:before {
+  color: black;
+  background-color: inherit;
+}
+/* line 369, ../sass/_tei.scss */
+.tei .transcription .body > .div > .div > .div > .head:before, .tei .tei.reading .body > .div > .div > .div > .head:before, .tei .tei:not(.reading) .body > .div > .div > .div > .head:before, .tei .transcription .body > .div > .div > .div > .label:before, .tei.reading .tei.reading .body > .div > .div > .div > .label:before, .tei:not(.reading) .tei:not(.reading) .body > .div > .div > .div > .label:before {
+  color: black;
+  background-color: inherit;
+}
+/* line 370, ../sass/_tei.scss */
+.tei .transcription .hi, .tei .tei.reading .hi, .tei .tei:not(.reading) .hi {
+  display: inline;
+}
+/* line 371, ../sass/_tei.scss */
+.tei .transcription .hi[rend], .tei .tei.reading .hi[rend], .tei .tei:not(.reading) .hi[rend] {
+  background-color: inherit;
+  color: inherit;
+}
+/* line 372, ../sass/_tei.scss */
+.tei .transcription .hi[rend="bold"], .tei .tei.reading .hi[rend="bold"], .tei .tei:not(.reading) .hi[rend="bold"] {
+  display: inline;
+  font-weight: bold;
+}
+/* line 373, ../sass/_tei.scss */
+.tei .transcription .hi[rend="italic"], .tei .tei.reading .hi[rend="italic"], .tei .tei:not(.reading) .hi[rend="italic"] {
+  display: inline;
+  font-style: italic;
+}
+/* line 374, ../sass/_tei.scss */
+.tei .transcription .hi[rend="underline"], .tei .tei.reading .hi[rend="underline"], .tei .tei:not(.reading) .hi[rend="underline"] {
+  display: inline;
+  text-decoration: underline;
+}
+/* line 375, ../sass/_tei.scss */
+.tei .transcription .hi[rend="it"], .tei .tei.reading .hi[rend="it"], .tei .tei:not(.reading) .hi[rend="it"] {
+  display: inline;
+  font-style: italic;
+}
+/* line 376, ../sass/_tei.scss */
+.tei .transcription .hi[rend="sc"], .tei .tei.reading .hi[rend="sc"], .tei .tei:not(.reading) .hi[rend="sc"] {
+  display: inline;
+  font-variant: small-caps;
+}
+/* line 377, ../sass/_tei.scss */
+.tei .transcription .hi[rend="sup"], .tei .tei.reading .hi[rend="sup"], .tei .tei:not(.reading) .hi[rend="sup"] {
+  display: inline;
+  vertical-align: super;
+  font-size: smaller;
+}
+/* line 378, ../sass/_tei.scss */
+.tei .transcription .hi[rend="sub"], .tei .tei.reading .hi[rend="sub"], .tei .tei:not(.reading) .hi[rend="sub"] {
+  display: inline;
+  vertical-align: sub;
+  font-size: smaller;
+}
+/* line 379, ../sass/_tei.scss */
+.tei .transcription .hi[rend="ul"], .tei .tei.reading .hi[rend="ul"], .tei .tei:not(.reading) .hi[rend="ul"] {
+  display: inline;
+  text-decoration: underline;
+}
+/* line 380, ../sass/_tei.scss */
+.tei .transcription .ident, .tei .tei.reading .ident, .tei .tei:not(.reading) .ident {
+  display: inline;
+  font-family: monospace;
+}
+/* line 381, ../sass/_tei.scss */
+.tei .transcription .idno, .tei .tei.reading .idno, .tei .tei:not(.reading) .idno {
+  display: block;
+  margin-bottom: 1em;
+}
+/* line 382, ../sass/_tei.scss */
+.tei .transcription .bibl .idno, .tei .tei.reading .bibl .idno, .tei .tei:not(.reading) .bibl .idno {
+  display: inline;
+}
+/* line 383, ../sass/_tei.scss */
+.tei .transcription .imprint, .tei .tei.reading .imprint, .tei .tei:not(.reading) .imprint {
+  display: inline;
+}
+/* line 384, ../sass/_tei.scss */
+.tei .transcription .index, .tei .tei.reading .index, .tei .tei:not(.reading) .index {
+  display: none;
+}
+/* line 385, ../sass/_tei.scss */
+.tei .transcription .interp, .tei .tei.reading .interp, .tei .tei:not(.reading) .interp {
+  display: none;
+}
+/* line 386, ../sass/_tei.scss */
+.tei .transcription .interpGrp, .tei .tei.reading .interpGrp, .tei .tei:not(.reading) .interpGrp {
+  display: none;
+}
+/* line 387, ../sass/_tei.scss */
+.tei .transcription .list[type="gloss"] .item, .tei .tei.reading .list[type="gloss"] .item, .tei .tei:not(.reading) .list[type="gloss"] .item {
+  display: block;
+  margin-left: 1em;
+}
+/* line 388, ../sass/_tei.scss */
+.tei .transcription .list .item, .tei .tei.reading .list .item, .tei .tei:not(.reading) .list .item {
+  display: list-item;
+  margin-left: 12pt;
+}
+/* line 389, ../sass/_tei.scss */
+.tei .transcription .item, .tei .tei.reading .item, .tei .tei:not(.reading) .item {
+  display: list-item;
+  margin-left: 12pt;
+}
+/* line 390, ../sass/_tei.scss */
+.tei .transcription .item[n]:before, .tei .tei.reading .item[n]:before, .tei .tei:not(.reading) .item[n]:before {
+  content: attr(n) ". ";
+  list-style: none outside none;
+}
+/* line 391, ../sass/_tei.scss */
+.tei .transcription .change .item, .tei .tei.reading .change .item, .tei .tei:not(.reading) .change .item {
+  display: block;
+  margin-bottom: 0.5em;
+  margin-left: 1em;
+  margin-top: 0.5em;
+}
+/* line 392, ../sass/_tei.scss */
+.tei .transcription .keywords, .tei .tei.reading .keywords, .tei .tei:not(.reading) .keywords {
+  display: block;
+  margin-bottom: 0.5em;
+}
+/* line 393, ../sass/_tei.scss */
+.tei .transcription .kw, .tei .tei.reading .kw, .tei .tei:not(.reading) .kw {
+  display: inline;
+  font-style: italic;
+}
+/* line 394, ../sass/_tei.scss */
+.tei .transcription .Label, .tei .tei.reading .Label, .tei .tei:not(.reading) .Label {
+  display: inline;
+  font-weight: bold;
+  color: darkslategray;
+  background-color: inherit;
+}
+/* line 395, ../sass/_tei.scss */
+.tei .transcription .argument > .body > .div > .div0 > .div1 > .div2 > .div3 > .div4 > .div5 > .div6 > .div7 >, .tei .tei.reading .argument > .body > .div > .div0 > .div1 > .div2 > .div3 > .div4 > .div5 > .div6 > .div7 >, .tei .tei:not(.reading) .argument > .body > .div > .div0 > .div1 > .div2 > .div3 > .div4 > .div5 > .div6 > .div7 > {
+  display: block;
+  font-weight: bold;
+}
+/* line 396, ../sass/_tei.scss */
+.tei .transcription .langUsage, .tei .tei.reading .langUsage, .tei .tei:not(.reading) .langUsage {
+  display: block;
+  margin-bottom: 1em;
+}
+/* line 397, ../sass/_tei.scss */
+.tei .transcription .lb, .tei .tei.reading .lb, .tei .tei:not(.reading) .lb {
+  display: block;
+}
+/* line 398, ../sass/_tei.scss */
+.tei .transcription .lg, .tei .tei.reading .lg, .tei .tei:not(.reading) .lg {
+  display: block;
+  margin-bottom: 0.5em;
+}
+/* line 399, ../sass/_tei.scss */
+.tei .transcription .list, .tei .tei.reading .list, .tei .tei:not(.reading) .list {
+  display: block;
+  list-style-type: disc;
+  margin-bottom: 1em;
+  margin-left: 2em;
+  margin-top: 1em;
+}
+/* line 400, ../sass/_tei.scss */
+.tei .transcription .list[rend="runon"], .tei .tei.reading .list[rend="runon"], .tei .tei:not(.reading) .list[rend="runon"] {
+  display: inline;
+}
+/* line 401, ../sass/_tei.scss */
+.tei .transcription .list[type="bulleted"], .tei .tei.reading .list[type="bulleted"], .tei .tei:not(.reading) .list[type="bulleted"] {
+  list-style-type: disc;
+  list-style-position: outside;
+}
+/* line 402, ../sass/_tei.scss */
+.tei .transcription .list[type="unordered"], .tei .tei.reading .list[type="unordered"], .tei .tei:not(.reading) .list[type="unordered"] {
+  list-style-type: disc;
+  list-style-position: outside;
+}
+/* line 403, ../sass/_tei.scss */
+.tei .transcription .list[type="ordered"], .tei .tei.reading .list[type="ordered"], .tei .tei:not(.reading) .list[type="ordered"] {
+  list-style-type: decimal;
+  list-style-position: outside;
+}
+/* line 404, ../sass/_tei.scss */
+.tei .transcription .list[type="numbered"], .tei .tei.reading .list[type="numbered"], .tei .tei:not(.reading) .list[type="numbered"] {
+  list-style-type: decimal;
+  list-style-position: outside;
+}
+/* line 405, ../sass/_tei.scss */
+.tei .transcription .list[type="none"], .tei .tei.reading .list[type="none"], .tei .tei:not(.reading) .list[type="none"] {
+  list-style-type: none;
+}
+/* line 406, ../sass/_tei.scss */
+.tei .transcription .listBibl, .tei .tei.reading .listBibl, .tei .tei:not(.reading) .listBibl {
+  display: block;
+  margin-bottom: 0.5em;
+}
+/* line 407, ../sass/_tei.scss */
+.tei .transcription .mentioned, .tei .tei.reading .mentioned, .tei .tei:not(.reading) .mentioned {
+  display: inline;
+  font-style: italic;
+}
+/* line 408, ../sass/_tei.scss */
+.tei .transcription .milestone, .tei .tei.reading .milestone, .tei .tei:not(.reading) .milestone {
+  display: none;
+}
+/* line 409, ../sass/_tei.scss */
+.tei .transcription .name, .tei .tei.reading .name, .tei .tei:not(.reading) .name {
+  display: inline;
+}
+/* line 410, ../sass/_tei.scss */
+.tei .transcription .note, .tei .tei.reading .note, .tei .tei:not(.reading) .note {
+  display: block;
+  color: #999999;
+}
+/* line 411, ../sass/_tei.scss */
+.tei .transcription .note:before, .tei .tei.reading .note:before, .tei .tei:not(.reading) .note:before {
+  content: "note: ";
+  font-variant: small-caps;
+}
+/* line 412, ../sass/_tei.scss */
+.tei .transcription .note[type]:before, .tei .tei.reading .note[type]:before, .tei .tei:not(.reading) .note[type]:before {
+  content: attr(type) ": ";
+}
+/* line 413, ../sass/_tei.scss */
+.tei .transcription .opener .note, .tei .tei.reading .opener .note, .tei .tei:not(.reading) .opener .note {
+  display: block;
+  color: #999999;
+}
+/* line 414, ../sass/_tei.scss */
+.tei .transcription .opener .note:before, .tei .tei.reading .opener .note:before, .tei .tei:not(.reading) .opener .note:before {
+  content: "";
+  font-variant: normal;
+}
+/* line 415, ../sass/_tei.scss */
+.tei .transcription .opener .note[type]:before, .tei .tei.reading .opener .note[type]:before, .tei .tei:not(.reading) .opener .note[type]:before {
+  content: "";
+}
+/* line 416, ../sass/_tei.scss */
+.tei .transcription .note[n]:before, .tei .tei.reading .note[n]:before, .tei .tei:not(.reading) .note[n]:before {
+  content: attr(n) " ";
+  vertical-align: super;
+}
+/* line 417, ../sass/_tei.scss */
+.tei .transcription .div .note .persName, .tei .tei.reading .div .note .persName, .tei .tei:not(.reading) .div .note .persName, .tei .transcription .div .note .orgName, .tei .tei.reading .div .note .orgName, .tei .tei:not(.reading) .div .note .orgName, .tei .transcription .div .note .title, .tei .tei.reading .div .note .title, .tei .tei:not(.reading) .div .note .title, .tei .transcription .div .note .placeName, .tei .tei.reading .div .note .placeName, .tei .tei:not(.reading) .div .note .placeName {
+  color: #6db0cc !important;
+}
+/* line 418, ../sass/_tei.scss */
+.tei .transcription .note[place="left"], .tei .tei.reading .note[place="left"], .tei .tei:not(.reading) .note[place="left"] {
+  float: left;
+}
+/* line 419, ../sass/_tei.scss */
+.tei .transcription .note[place="right"], .tei .tei.reading .note[place="right"], .tei .tei:not(.reading) .note[place="right"] {
+  float: right;
+}
+/* line 420, ../sass/_tei.scss */
+.tei .transcription .note[place="inline"], .tei .tei.reading .note[place="inline"], .tei .tei:not(.reading) .note[place="inline"], .tei .transcription .note[place="unspecified"], .tei .tei.reading .note[place="unspecified"], .tei .tei:not(.reading) .note[place="unspecified"] {
+  display: inline;
+}
+/* line 421, ../sass/_tei.scss */
+.tei .transcription .notesStmt, .tei .tei.reading .notesStmt, .tei .tei:not(.reading) .notesStmt {
+  display: block;
+}
+/* line 422, ../sass/_tei.scss */
+.tei .transcription .num, .tei .tei.reading .num, .tei .tei:not(.reading) .num {
+  display: inline;
+}
+/* line 423, ../sass/_tei.scss */
+.tei .transcription .opener, .tei .tei.reading .opener, .tei .tei:not(.reading) .opener {
+  display: block;
+  margin-bottom: 0.5em;
+}
+/* line 424, ../sass/_tei.scss */
+.tei .transcription .opener .p, .tei .tei.reading .opener .p, .tei .tei:not(.reading) .opener .p {
+  text-align: justify !important;
+  text-indent: 0px !important;
+}
+/* line 425, ../sass/_tei.scss */
+.tei .transcription .orig, .tei .tei.reading .orig, .tei .tei:not(.reading) .orig {
+  display: inline;
+}
+/* line 426, ../sass/_tei.scss */
+.tei .transcription .p, .tei .tei.reading .p, .tei .tei:not(.reading) .p {
+  display: block;
+  margin-bottom: 0.5em;
+}
+/* line 427, ../sass/_tei.scss */
+.tei .transcription .pb, .tei .tei.reading .pb, .tei .tei:not(.reading) .pb {
+  display: none;
+}
+/* line 428, ../sass/_tei.scss */
+.tei .transcription .pb:after, .tei .tei.reading .pb:after, .tei .tei:not(.reading) .pb:after {
+  content: attr(n);
+  font-weight: bold;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  text-align: center;
+}
+/* line 429, ../sass/_tei.scss */
+.tei .transcription .div .persName, .tei .tei.reading .div .persName, .tei .tei:not(.reading) .div .persName, .tei .transcription .div .placeName, .tei .tei.reading .div .placeName, .tei .tei:not(.reading) .div .placeName, .tei .transcription .div .orgName, .tei .tei.reading .div .orgName, .tei .tei:not(.reading) .div .orgName, .tei .transcription .div .title, .tei .tei.reading .div .title, .tei .tei:not(.reading) .div .title {
+  color: #336699;
+}
+/* line 430, ../sass/_tei.scss */
+.tei .transcription .principal, .tei .tei.reading .principal, .tei .tei:not(.reading) .principal {
+  display: block;
+  margin-bottom: 0.5em;
+}
+/* line 431, ../sass/_tei.scss */
+.tei .transcription .ptr, .tei .tei.reading .ptr, .tei .tei:not(.reading) .ptr {
+  color: navy;
+  text-decoration: underline;
+  background-color: inherit;
+}
+/* line 432, ../sass/_tei.scss */
+.tei .transcription .ptr:before, .tei .tei.reading .ptr:before, .tei .tei:not(.reading) .ptr:before {
+  background-color: inherit;
+  color: red;
+  content: "[" attr(target) "]";
+}
+/* line 434, ../sass/_tei.scss */
+.tei .transcription .publicationStmt .p, .tei .tei.reading .publicationStmt .p, .tei .tei:not(.reading) .publicationStmt .p {
+  display: block;
+  margin-bottom: 0px;
+}
+/* line 435, ../sass/_tei.scss */
+.tei .transcription .publisher, .tei .tei.reading .publisher, .tei .tei:not(.reading) .publisher {
+  display: inline;
+}
+/* line 436, ../sass/_tei.scss */
+.tei .transcription .imprint > .publisher, .tei .tei.reading .imprint > .publisher, .tei .tei:not(.reading) .imprint > .publisher, .tei .transcription .publicationStmt > .publisher, .tei .tei.reading .publicationStmt > .publisher, .tei .tei:not(.reading) .publicationStmt > .publisher {
+  display: block;
+  margin-bottom: 0.5em;
+}
+/* line 437, ../sass/_tei.scss */
+.tei .transcription .pubPlace, .tei .tei.reading .pubPlace, .tei .tei:not(.reading) .pubPlace {
+  display: inline;
+}
+/* line 438, ../sass/_tei.scss */
+.tei .transcription .imprint > .pubPlace, .tei .tei.reading .imprint > .pubPlace, .tei .tei:not(.reading) .imprint > .pubPlace, .tei .transcription .publicationStmt > .pubPlace, .tei .tei.reading .publicationStmt > .pubPlace, .tei .tei:not(.reading) .publicationStmt > .pubPlace {
+  display: block;
+  margin-bottom: 0.5em;
+}
+/* line 439, ../sass/_tei.scss */
+.tei .transcription .q, .tei .tei.reading .q, .tei .tei:not(.reading) .q {
+  display: inline;
+  quotes: "\"" "\"" "\'" "\'";
+  margin: 0em;
+}
+/* line 440, ../sass/_tei.scss */
+.tei .transcription .q[rend="display"], .tei .tei.reading .q[rend="display"], .tei .tei:not(.reading) .q[rend="display"], .tei .transcription .argument > .q, .tei .tei.reading .argument > .q, .tei .tei:not(.reading) .argument > .q, .tei .transcription .body > .q, .tei .tei.reading .body > .q, .tei .tei:not(.reading) .body > .q, .tei .transcription .cit > .q, .tei .tei.reading .cit > .q, .tei .tei:not(.reading) .cit > .q, .tei .transcription .div > .q, .tei .tei.reading .div > .q, .tei .tei:not(.reading) .div > .q, .tei .transcription .div0 > .q, .tei .tei.reading .div0 > .q, .tei .tei:not(.reading) .div0 > .q, .tei .transcription .div1 > .q, .tei .tei.reading .div1 > .q, .tei .tei:not(.reading) .div1 > .q, .tei .transcription .div2 > .q, .tei .tei.reading .div2 > .q, .tei .tei:not(.reading) .div2 > .q, .tei .transcription .div3 > .q, .tei .tei.reading .div3 > .q, .tei .tei:not(.reading) .div3 > .q, .tei .transcription .div4 > .q, .tei .tei.reading .div4 > .q, .tei .tei:not(.reading) .div4 > .q, .tei .transcription .div5 > .q, .tei .tei.reading .div5 > .q, .tei .tei:not(.reading) .div5 > .q, .tei .transcription .div6 > .q, .tei .tei.reading .div6 > .q, .tei .tei:not(.reading) .div6 > .q, .tei .transcription .div7 > .q > .q, .tei .tei.reading .div7 > .q > .q, .tei .tei:not(.reading) .div7 > .q > .q {
+  display: block;
+  margin-bottom: 0.5em;
+  margin-left: 3em;
+  margin-right: 3em;
+  quotes: none;
+}
+/* line 441, ../sass/_tei.scss */
+.tei .transcription .q:before, .tei .tei.reading .q:before, .tei .tei:not(.reading) .q:before {
+  content: open-quote;
+}
+/* line 442, ../sass/_tei.scss */
+.tei .transcription .q:after, .tei .tei.reading .q:after, .tei .tei:not(.reading) .q:after {
+  content: close-quote;
+}
+/* line 443, ../sass/_tei.scss */
+.tei .transcription .quote, .tei .tei.reading .quote, .tei .tei:not(.reading) .quote {
+  display: inline;
+  quotes: "\"" "\"" "\'" "\'";
+  margin: 0em;
+}
+/* line 444, ../sass/_tei.scss */
+.tei .transcription .quote[rend="display"], .tei .tei.reading .quote[rend="display"], .tei .tei:not(.reading) .quote[rend="display"], .tei .transcription .argument > .quote, .tei .tei.reading .argument > .quote, .tei .tei:not(.reading) .argument > .quote, .tei .transcription .body > .quote, .tei .tei.reading .body > .quote, .tei .tei:not(.reading) .body > .quote, .tei .transcription .cit > .quote, .tei .tei.reading .cit > .quote, .tei .tei:not(.reading) .cit > .quote, .tei .transcription .div > .quote, .tei .tei.reading .div > .quote, .tei .tei:not(.reading) .div > .quote, .tei .transcription .div0 > .quote, .tei .tei.reading .div0 > .quote, .tei .tei:not(.reading) .div0 > .quote, .tei .transcription .div1 > .quote, .tei .tei.reading .div1 > .quote, .tei .tei:not(.reading) .div1 > .quote, .tei .transcription .div2 > .quote, .tei .tei.reading .div2 > .quote, .tei .tei:not(.reading) .div2 > .quote, .tei .transcription .div3 > .quote, .tei .tei.reading .div3 > .quote, .tei .tei:not(.reading) .div3 > .quote, .tei .transcription .div4 > .quote, .tei .tei.reading .div4 > .quote, .tei .tei:not(.reading) .div4 > .quote, .tei .transcription .div5 > .quote, .tei .tei.reading .div5 > .quote, .tei .tei:not(.reading) .div5 > .quote, .tei .transcription .div6 > .quote, .tei .tei.reading .div6 > .quote, .tei .tei:not(.reading) .div6 > .quote, .tei .transcription .div7 > .quote > .quote, .tei .tei.reading .div7 > .quote > .quote, .tei .tei:not(.reading) .div7 > .quote > .quote {
+  display: block;
+  margin-bottom: 0.5em;
+  margin-left: 3em;
+  margin-right: 3em;
+  quotes: none;
+}
+/* line 445, ../sass/_tei.scss */
+.tei .transcription .quote:before, .tei .tei.reading .quote:before, .tei .tei:not(.reading) .quote:before {
+  content: open-quote;
+}
+/* line 446, ../sass/_tei.scss */
+.tei .transcription .quote:after, .tei .tei.reading .quote:after, .tei .tei:not(.reading) .quote:after {
+  content: close-quote;
+}
+/* line 447, ../sass/_tei.scss */
+.tei .transcription .ref, .tei .tei.reading .ref, .tei .tei:not(.reading) .ref {
+  display: inline;
+  color: blue;
+  background-color: inherit;
+}
+/* line 448, ../sass/_tei.scss */
+.tei .transcription .ref:before, .tei .tei.reading .ref:before, .tei .tei:not(.reading) .ref:before {
+  color: gray;
+  background-color: inherit;
+  text-decoration: underline;
+}
+/* line 449, ../sass/_tei.scss */
+.tei .transcription .reg, .tei .tei.reading .reg, .tei .tei:not(.reading) .reg {
+  display: inline;
+  font-style: italic;
+}
+/* line 450, ../sass/_tei.scss */
+.tei .transcription .rendition, .tei .tei.reading .rendition, .tei .tei:not(.reading) .rendition {
+  display: block;
+  margin-bottom: 0.5em;
+}
+/* line 451, ../sass/_tei.scss */
+.tei .transcription .resp, .tei .tei.reading .resp, .tei .tei:not(.reading) .resp {
+  display: block;
+}
+/* line 452, ../sass/_tei.scss */
+.tei .transcription .respStmt, .tei .tei.reading .respStmt, .tei .tei:not(.reading) .respStmt {
+  display: block;
+  margin-left: 1em;
+}
+/* line 453, ../sass/_tei.scss */
+.tei .transcription .respStmt > .name:before, .tei .tei.reading .respStmt > .name:before, .tei .tei:not(.reading) .respStmt > .name:before {
+  content: attr(role) ": ";
+  display: block !important;
+  font-variant: small-caps;
+}
+/* line 454, ../sass/_tei.scss */
+.tei .transcription .bibl .respStmt, .tei .tei.reading .bibl .respStmt, .tei .tei:not(.reading) .bibl .respStmt {
+  display: inline;
+}
+/* line 455, ../sass/_tei.scss */
+.tei .transcription .rdg:before, .tei .tei.reading .rdg:before, .tei .tei:not(.reading) .rdg:before {
+  background-color: inherit;
+  content: "[" attr(wit) "]";
+  color: red;
+}
+/* line 456, ../sass/_tei.scss */
+.tei .transcription .row, .tei .tei.reading .row, .tei .tei:not(.reading) .row {
+  display: table-row;
+}
+/* line 457, ../sass/_tei.scss */
+.tei .transcription .row[role="label"], .tei .tei.reading .row[role="label"], .tei .tei:not(.reading) .row[role="label"] {
+  color: inherit;
+  background-color: #bbbbbb;
+}
+/* line 458, ../sass/_tei.scss */
+.tei .transcription .rs, .tei .tei.reading .rs, .tei .tei:not(.reading) .rs {
+  display: inline;
+}
+/* line 459, ../sass/_tei.scss */
+.tei .transcription .s, .tei .tei.reading .s, .tei .tei:not(.reading) .s {
+  display: inline;
+}
+/* line 460, ../sass/_tei.scss */
+.tei .transcription .salute, .tei .tei.reading .salute, .tei .tei:not(.reading) .salute {
+  display: block;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+/* line 461, ../sass/_tei.scss */
+.tei .transcription .samplingDecl, .tei .tei.reading .samplingDecl, .tei .tei:not(.reading) .samplingDecl {
+  display: block;
+  margin-bottom: 1em;
+}
+/* line 462, ../sass/_tei.scss */
+.tei .transcription .seriesStmt, .tei .tei.reading .seriesStmt, .tei .tei:not(.reading) .seriesStmt {
+  display: block;
+  margin-bottom: 1em;
+}
+/* line 463, ../sass/_tei.scss */
+.tei .transcription .sic, .tei .tei.reading .sic, .tei .tei:not(.reading) .sic {
+  display: inline;
+  color: red;
+  background-color: inherit;
+}
+/* line 464, ../sass/_tei.scss */
+.tei .transcription .sic:after, .tei .tei.reading .sic:after, .tei .tei:not(.reading) .sic:after {
+  content: " [sic]";
+}
+/* line 465, ../sass/_tei.scss */
+.tei .transcription .signed, .tei .tei.reading .signed, .tei .tei:not(.reading) .signed {
+  display: block;
+  text-align: right;
+}
+/* line 466, ../sass/_tei.scss */
+.tei .transcription .soCalled, .tei .tei.reading .soCalled, .tei .tei:not(.reading) .soCalled {
+  display: inline;
+  font-style: italic;
+  quotes: "\'" "\'";
+}
+/* line 467, ../sass/_tei.scss */
+.tei .transcription .soCalled:before, .tei .tei.reading .soCalled:before, .tei .tei:not(.reading) .soCalled:before {
+  content: open-quote;
+}
+/* line 468, ../sass/_tei.scss */
+.tei .transcription .soCalled:after, .tei .tei.reading .soCalled:after, .tei .tei:not(.reading) .soCalled:after {
+  content: close-quote;
+}
+/* line 469, ../sass/_tei.scss */
+.tei .transcription .sp, .tei .tei.reading .sp, .tei .tei:not(.reading) .sp {
+  display: block;
+  margin-bottom: 0.5em;
+  margin-left: 2em;
+}
+/* line 470, ../sass/_tei.scss */
+.tei .transcription .div .p, .tei .tei.reading .div .p, .tei .tei:not(.reading) .div .p {
+  text-align: justify;
+  text-indent: 30px;
+}
+/* line 471, ../sass/_tei.scss */
+.tei .transcription .speaker, .tei .tei.reading .speaker, .tei .tei:not(.reading) .speaker {
+  display: inline;
+  font-weight: bold;
+}
+/* line 472, ../sass/_tei.scss */
+.tei .transcription .sponsor, .tei .tei.reading .sponsor, .tei .tei:not(.reading) .sponsor {
+  display: block;
+  margin-bottom: 0.5em;
+}
+/* line 473, ../sass/_tei.scss */
+.tei .transcription .stage, .tei .tei.reading .stage, .tei .tei:not(.reading) .stage {
+  display: inline;
+  font-style: italic;
+}
+/* line 474, ../sass/_tei.scss */
+.tei .transcription .table, .tei .tei.reading .table, .tei .tei:not(.reading) .table {
+  text-align: center;
+  display: table;
+  margin: 1em;
+}
+/* line 475, ../sass/_tei.scss */
+.tei .transcription .table > .head, .tei .tei.reading .table > .head, .tei .tei:not(.reading) .table > .head, .tei .transcription .table > .label, .tei.reading .tei.reading .table > .label, .tei:not(.reading) .tei:not(.reading) .table > .label {
+  display: table-caption;
+  font-style: italic;
+  margin-bottom: 6pt;
+}
+/* line 476, ../sass/_tei.scss */
+.tei .transcription .tagUsage, .tei .tei.reading .tagUsage, .tei .tei:not(.reading) .tagUsage {
+  display: block;
+  margin-bottom: 0.5em;
+}
+/* line 477, ../sass/_tei.scss */
+.tei .transcription .taxonomy, .tei .tei.reading .taxonomy, .tei .tei:not(.reading) .taxonomy {
+  display: block;
+  margin-bottom: 0.5em;
+}
+/* line 478, ../sass/_tei.scss */
+.tei .transcription .term, .tei .tei.reading .term, .tei .tei:not(.reading) .term {
+  font-family: sans-serif;
+  color: blue;
+  background-color: inherit;
+  display: inline;
+}
+/* line 479, ../sass/_tei.scss */
+.tei .transcription .textClass, .tei .tei.reading .textClass, .tei .tei:not(.reading) .textClass {
+  display: block;
+  margin-bottom: 0.5em;
+}
+/* line 480, ../sass/_tei.scss */
+.tei .transcription .time, .tei .tei.reading .time, .tei .tei:not(.reading) .time {
+  display: inline;
+}
+/* line 481, ../sass/_tei.scss */
+.tei .transcription .title, .tei .tei.reading .title, .tei .tei:not(.reading) .title {
+  display: inline;
+}
+/* line 482, ../sass/_tei.scss */
+.tei .transcription .title[type="subtitle"], .tei .tei.reading .title[type="subtitle"], .tei .tei:not(.reading) .title[type="subtitle"] {
+  display: block;
+  font-weight: normal;
+}
+/* line 483, ../sass/_tei.scss */
+.tei .transcription .title[level="m"], .tei .tei.reading .title[level="m"], .tei .tei:not(.reading) .title[level="m"], .tei .transcription .title[level="j"], .tei .tei.reading .title[level="j"], .tei .tei:not(.reading) .title[level="j"] {
+  font-style: italic;
+}
+/* line 484, ../sass/_tei.scss */
+.tei .transcription .title[level="s"], .tei .tei.reading .title[level="s"], .tei .tei:not(.reading) .title[level="s"] {
+  font-style: normal;
+}
+/* line 485, ../sass/_tei.scss */
+.tei .transcription .title[level="a"], .tei .tei.reading .title[level="a"], .tei .tei:not(.reading) .title[level="a"], .tei .transcription .title[level="u"], .tei .tei.reading .title[level="u"], .tei .tei:not(.reading) .title[level="u"] {
+  font-style: normal;
+}
+/* line 486, ../sass/_tei.scss */
+.tei .transcription .title[level="a:before"], .tei .tei.reading .title[level="a:before"], .tei .tei:not(.reading) .title[level="a:before"], .tei .transcription .title[level="u:before"], .tei .tei.reading .title[level="u:before"], .tei .tei:not(.reading) .title[level="u:before"] {
+  content: open-quote;
+}
+/* line 487, ../sass/_tei.scss */
+.tei .transcription .title[level="a:after"], .tei .tei.reading .title[level="a:after"], .tei .tei:not(.reading) .title[level="a:after"], .tei .transcription .title[level="u:after"], .tei .tei.reading .title[level="u:after"], .tei .tei:not(.reading) .title[level="u:after"] {
+  content: close-quote;
+}
+/* line 488, ../sass/_tei.scss */
+.tei .transcription .seriesStmt > .title, .tei .tei.reading .seriesStmt > .title, .tei .tei:not(.reading) .seriesStmt > .title, .tei .transcription .titleStmt > .title, .tei .tei.reading .titleStmt > .title, .tei .tei:not(.reading) .titleStmt > .title {
+  color: green;
+  font-weight: bold;
+}
+/* line 489, ../sass/_tei.scss */
+.tei .transcription .titlePage, .tei .tei.reading .titlePage, .tei .tei:not(.reading) .titlePage {
+  display: block;
+  border: thin solid black;
+  margin-bottom: 2em;
+  text-align: center;
+  padding: 1em;
+}
+/* line 490, ../sass/_tei.scss */
+.tei .transcription .titlePart, .tei .tei.reading .titlePart, .tei .tei:not(.reading) .titlePart {
+  display: block;
+}
+/* line 491, ../sass/_tei.scss */
+.tei .transcription .titleStmt, .tei .tei.reading .titleStmt, .tei .tei:not(.reading) .titleStmt {
+  margin-bottom: 1em;
+  color: #333333;
+}
+/* line 492, ../sass/_tei.scss */
+.tei .transcription .trailer, .tei .tei.reading .trailer, .tei .tei:not(.reading) .trailer {
+  display: block;
+  margin-bottom: 1em;
+}
+/* line 493, ../sass/_tei.scss */
+.tei .transcription .teiHeader, .tei .tei.reading .teiHeader, .tei .tei:not(.reading) .teiHeader {
+  display: block;
+  color: gray;
+  background-color: #fbf2ea;
+  padding: 0.5em;
+}
+/* line 494, ../sass/_tei.scss */
+.tei .transcription .teiHeader .author:before, .tei .tei.reading .teiHeader .author:before, .tei .tei:not(.reading) .teiHeader .author:before {
+  font-variant: small-caps;
+  content: "author: ";
+}
+/* line 495, ../sass/_tei.scss */
+.tei .transcription .teiHeader .editor:before, .tei .tei.reading .teiHeader .editor:before, .tei .tei:not(.reading) .teiHeader .editor:before {
+  font-variant: small-caps;
+  content: "editor: ";
+}
+/* line 496, ../sass/_tei.scss */
+.tei .transcription .teiHeader .title, .tei .tei.reading .teiHeader .title, .tei .tei:not(.reading) .teiHeader .title {
+  color: gray;
+}
+/* line 497, ../sass/_tei.scss */
+.tei .transcription .titleStmt > .author, .tei .tei.reading .titleStmt > .author, .tei .tei:not(.reading) .titleStmt > .author {
+  display: block;
+  margin-left: 1em;
+}
+/* line 498, ../sass/_tei.scss */
+.tei .transcription .authority, .tei .tei.reading .authority, .tei .tei:not(.reading) .authority {
+  display: block;
+  margin-bottom: 0.5em;
+}
+/* line 499, ../sass/_tei.scss */
+.tei .transcription .availability, .tei .tei.reading .availability, .tei .tei:not(.reading) .availability {
+  display: block;
+  margin-bottom: 0.5em;
+}
+/* line 502, ../sass/_tei.scss */
+.tei .transcription .sourceDesc .p, .tei .tei.reading .sourceDesc .p, .tei .tei:not(.reading) .sourceDesc .p {
+  margin: 0px;
+}
+/* line 503, ../sass/_tei.scss */
+.tei .transcription .revisionDesc, .tei .tei.reading .revisionDesc, .tei .tei:not(.reading) .revisionDesc {
+  display: block;
+  margin-bottom: 1em;
+}
+/* line 504, ../sass/_tei.scss */
+.tei .transcription .catDesc, .tei .tei.reading .catDesc, .tei .tei:not(.reading) .catDesc {
+  display: block;
+  margin-bottom: 0.5em;
+}
+/* line 505, ../sass/_tei.scss */
+.tei .transcription .encodingDesc, .tei .tei.reading .encodingDesc, .tei .tei:not(.reading) .encodingDesc {
+  display: block;
+  margin-bottom: 1em;
+}
+/* line 506, ../sass/_tei.scss */
+.tei .transcription .profileDesc, .tei .tei.reading .profileDesc, .tei .tei:not(.reading) .profileDesc {
+  display: block;
+  margin-bottom: 1em;
+}
+/* line 507, ../sass/_tei.scss */
+.tei .transcription .projectDesc, .tei .tei.reading .projectDesc, .tei .tei:not(.reading) .projectDesc {
+  display: block;
+  margin-bottom: 1em;
+}
+/* line 508, ../sass/_tei.scss */
+.tei .transcription .docDate, .tei .tei.reading .docDate, .tei .tei:not(.reading) .docDate {
+  display: block;
+  margin-bottom: 0.5em;
+}
+/* line 509, ../sass/_tei.scss */
+.tei .transcription .docImprint .docDate, .tei .tei.reading .docImprint .docDate, .tei .tei:not(.reading) .docImprint .docDate {
+  display: inline;
+}
+/* line 510, ../sass/_tei.scss */
+.tei .transcription .docEdition, .tei .tei.reading .docEdition, .tei .tei:not(.reading) .docEdition {
+  display: block;
+  margin-bottom: 0.5em;
+}
+/* line 511, ../sass/_tei.scss */
+.tei .transcription .docImprint, .tei .tei.reading .docImprint, .tei .tei:not(.reading) .docImprint {
+  display: block;
+  margin-bottom: 0.5em;
+}
+/* line 512, ../sass/_tei.scss */
+.tei .transcription .docTitle, .tei .tei.reading .docTitle, .tei .tei:not(.reading) .docTitle {
+  display: block;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}
+/* line 519, ../sass/_tei.scss */
+.tei:not(.reading) .add {
+  display: inline;
+  color: green;
+  background-color: inherit;
+  text-decoration: underline;
+}
+/* line 520, ../sass/_tei.scss */
+.tei:not(.reading) .del {
+  display: inline;
+  color: red;
+  background-color: inherit;
+  text-decoration: line-through;
+}
+/* line 521, ../sass/_tei.scss */
+.tei:not(.reading) .l {
+  display: block;
+  white-space: nowrap;
+}
+/* line 522, ../sass/_tei.scss */
+.tei:not(.reading) .l:after {
+  content: counter(line,decimal);
+  counter-increment: line;
+  text-align: right;
+  float: right;
+  color: silver;
+  margin-right: 50px;
 }

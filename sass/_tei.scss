@@ -43,7 +43,7 @@ $line_height_double: 3em;
     margin-right: auto;
     margin-left: auto;
 
-    & > div.line-magic { 
+    & > div.line-magic {
       position: relative;
       z-index: 2;
       top: 0;
@@ -251,6 +251,12 @@ $line_height_double: 3em;
   .class--place--right_margin {
     @include margin_base(right);
   }
+  .zone.class--type--left_margin {
+    @include margin_base(left);
+  }
+  .zone.class--type--right_margin {
+    @include margin_base(right);
+  }
 
   *:not(dt) > a.note.class--place--footnote {
     vertical-align: super;
@@ -281,7 +287,7 @@ $line_height_double: 3em;
   ul .item {
     display: list-item;
   }
-  
+
   .transcription{
     .seg.class--rend--undone {color: black;}
     .abbr { display: inline; }

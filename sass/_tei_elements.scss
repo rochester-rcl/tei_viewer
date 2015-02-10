@@ -47,7 +47,7 @@
   display: inline;
 }
 
-.bibl > .title[type="subtitle"] {
+.bibl > .title.class--type--subtitle {
   content: "";
 }
 
@@ -97,7 +97,7 @@
   background-color: inherit;
 }
 
-.cell[role="label"] {
+.cell.class--role--label {
   color: inherit;
   background-color: rgb(187, 187, 187);
 }
@@ -186,11 +186,11 @@
   counter-increment: div3;
 }
 
-.body > .div[type="letter"] {
+.body > .div.class--type--letter {
   margin-bottom: 2em ! important;
 }
 
-.div[type="poem"] {
+.div.class--type--poem {
   counter-reset: line;
 }
 
@@ -385,7 +385,7 @@
   margin-top: 1em;
 }
 
-.body > .div[type="poem"] > .head .author {
+.body > .div.class--type--poem > .head .author {
   font-weight: normal;
 }
 
@@ -452,49 +452,49 @@
   display: inline;
 }
 
-.hi[rend] {
+.hi.class--rend {
   background-color: inherit;
   color: inherit;
 }
 
-.hi[rend="bold"] {
+.hi.class--rend--bold {
   display: inline;
   font-weight: bold;
 }
 
-.hi[rend="italic"] {
+.hi.class--rend--italic {
   display: inline;
   font-style: italic;
 }
 
-.hi[rend="underline"] {
+.hi.class--rend--underline {
   display: inline;
   text-decoration: underline;
 }
 
-.hi[rend="it"] {
+.hi.class--rend--it {
   display: inline;
   font-style: italic;
 }
 
-.hi[rend="sc"] {
+.hi.class--rend--sc {
   display: inline;
   font-variant: small-caps;
 }
 
-.hi[rend="sup"] {
+.hi.class--rend--sup {
   display: inline;
   vertical-align: super;
   font-size: smaller;
 }
 
-.hi[rend="sub"] {
+.hi.class--rend--sub {
   display: inline;
   vertical-align: sub;
   font-size: smaller;
 }
 
-.hi[rend="ul"] {
+.hi.class--rend--ul {
   display: inline;
   text-decoration: underline;
 }
@@ -529,7 +529,7 @@
   display: none;
 }
 
-.list[type="gloss"] .item {
+.list.class--type--gloss .item {
   display: block;
   margin-left: 1em;
 }
@@ -544,7 +544,7 @@
   margin-left: 12pt;
 }
 
-.item[n]:before {
+.item.class--n:before {
   content: attr(n) ". ";
   list-style: none outside none;
 }
@@ -600,31 +600,31 @@
   margin-top: 1em;
 }
 
-.list[rend="runon"] {
+.list.class--rend--runon {
   display: inline;
 }
 
-.list[type="bulleted"] {
+.list.class--type--bulleted {
   list-style-type: disc;
   list-style-position: outside;
 }
 
-.list[type="unordered"] {
+.list.class--type--unordered {
   list-style-type: disc;
   list-style-position: outside;
 }
 
-.list[type="ordered"] {
+.list.class--type--ordered {
   list-style-type: decimal;
   list-style-position: outside;
 }
 
-.list[type="numbered"] {
+.list.class--type--numbered {
   list-style-type: decimal;
   list-style-position: outside;
 }
 
-.list[type="none"] {
+.list.class--type--none {
   list-style-type: none;
 }
 
@@ -656,7 +656,7 @@
   font-variant: small-caps;
 }
 
-.note[type]:before {
+.note.class--type:before {
   content: attr(type) ": ";
 }
 
@@ -670,11 +670,11 @@
   font-variant: normal;
 }
 
-.opener .note[type]:before {
+.opener .note.class--type:before {
   content: "";
 }
 
-.note[n]:before {
+.note.class--n:before {
   content: attr(n) " ";
   vertical-align: super;
 }
@@ -683,15 +683,15 @@
   color: rgb(109, 176, 204) ! important;
 }
 
-.note[place="left"] {
+.note.class--place--left {
   float: left;
 }
 
-.note[place="right"] {
+.note.class--place--right {
   float: right;
 }
 
-.note[place="inline"], .note[place="unspecified"] {
+.note.class--place--inline, .note.class--place--unspecified {
   display: inline;
 }
 
@@ -787,7 +787,7 @@
   margin: 0em;
 }
 
-.q[rend="display"], .argument > .q, .body > .q, .cit > .q, .div > .q, .div0 > .q, .div1 > .q, .div2 > .q, .div3 > .q, .div4 > .q, .div5 > .q, .div6 > .q, .div7 > .q > .q {
+.q.class--rend--display, .argument > .q, .body > .q, .cit > .q, .div > .q, .div0 > .q, .div1 > .q, .div2 > .q, .div3 > .q, .div4 > .q, .div5 > .q, .div6 > .q, .div7 > .q > .q {
   display: block;
   margin-bottom: 0.5em;
   margin-left: 3em;
@@ -809,7 +809,7 @@
   margin: 0em;
 }
 
-.quote[rend="display"], .argument > .quote, .body > .quote, .cit > .quote, .div > .quote, .div0 > .quote, .div1 > .quote, .div2 > .quote, .div3 > .quote, .div4 > .quote, .div5 > .quote, .div6 > .quote, .div7 > .quote > .quote {
+.quote.class--rend--display, .argument > .quote, .body > .quote, .cit > .quote, .div > .quote, .div0 > .quote, .div1 > .quote, .div2 > .quote, .div3 > .quote, .div4 > .quote, .div5 > .quote, .div6 > .quote, .div7 > .quote > .quote {
   display: block;
   margin-bottom: 0.5em;
   margin-left: 3em;
@@ -876,7 +876,7 @@
   display: table-row;
 }
 
-.row[role="label"] {
+.row.class--role--label {
   color: inherit;
   background-color: rgb(187, 187, 187);
 }
@@ -1002,28 +1002,28 @@
   display: inline;
 }
 
-.title[type="subtitle"] {
+.title.class--type--subtitle {
   display: block;
   font-weight: normal;
 }
 
-.title[level="m"], .title[level="j"] {
+.title.class--level--m, .title.class--level--j {
   font-style: italic;
 }
 
-.title[level="s"] {
+.title.class--level--s {
   font-style: normal;
 }
 
-.title[level="a"], .title[level="u"] {
+.title.class--level--a, .title.class--level--u {
   font-style: normal;
 }
 
-.title[level="a:before"], .title[level="u:before"] {
+.title.class--level--a:before, .title.class--level--u:before {
   content: open-quote;
 }
 
-.title[level="a:after"], .title[level="u:after"] {
+.title.class--level--a:after, .title.class--level--u:after {
   content: close-quote;
 }
 

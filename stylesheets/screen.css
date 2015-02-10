@@ -119,7 +119,7 @@
   display: inline;
 }
 /* line 50, ../sass/_tei_elements.scss */
-.tei .bibl > .title[type="subtitle"] {
+.tei .bibl > .title.class--type--subtitle {
   content: "";
 }
 /* line 54, ../sass/_tei_elements.scss */
@@ -169,7 +169,7 @@
   background-color: inherit;
 }
 /* line 100, ../sass/_tei_elements.scss */
-.tei .cell[role="label"] {
+.tei .cell.class--role--label {
   color: inherit;
   background-color: #bbbbbb;
 }
@@ -258,11 +258,11 @@
   counter-increment: div3;
 }
 /* line 189, ../sass/_tei_elements.scss */
-.tei .body > .div[type="letter"] {
+.tei .body > .div.class--type--letter {
   margin-bottom: 2em !important;
 }
 /* line 193, ../sass/_tei_elements.scss */
-.tei .div[type="poem"] {
+.tei .div.class--type--poem {
   counter-reset: line;
 }
 /* line 197, ../sass/_tei_elements.scss */
@@ -451,7 +451,7 @@
   margin-top: 1em;
 }
 /* line 388, ../sass/_tei_elements.scss */
-.tei .body > .div[type="poem"] > .head .author, .tei .body > .div[type="poem"] > .label .author {
+.tei .body > .div.class--type--poem > .head .author, .tei .body > .div.class--type--poem > .label .author {
   font-weight: normal;
 }
 /* line 392, ../sass/_tei_elements.scss */
@@ -518,49 +518,49 @@
   display: inline;
 }
 /* line 455, ../sass/_tei_elements.scss */
-.tei .hi[rend] {
+.tei .hi.class--rend {
   background-color: inherit;
   color: inherit;
 }
 /* line 460, ../sass/_tei_elements.scss */
-.tei .hi[rend="bold"] {
+.tei .hi.class--rend--bold {
   display: inline;
   font-weight: bold;
 }
 /* line 465, ../sass/_tei_elements.scss */
-.tei .hi[rend="italic"] {
+.tei .hi.class--rend--italic {
   display: inline;
   font-style: italic;
 }
 /* line 470, ../sass/_tei_elements.scss */
-.tei .hi[rend="underline"] {
+.tei .hi.class--rend--underline {
   display: inline;
   text-decoration: underline;
 }
 /* line 475, ../sass/_tei_elements.scss */
-.tei .hi[rend="it"] {
+.tei .hi.class--rend--it {
   display: inline;
   font-style: italic;
 }
 /* line 480, ../sass/_tei_elements.scss */
-.tei .hi[rend="sc"] {
+.tei .hi.class--rend--sc {
   display: inline;
   font-variant: small-caps;
 }
 /* line 485, ../sass/_tei_elements.scss */
-.tei .hi[rend="sup"] {
+.tei .hi.class--rend--sup {
   display: inline;
   vertical-align: super;
   font-size: smaller;
 }
 /* line 491, ../sass/_tei_elements.scss */
-.tei .hi[rend="sub"] {
+.tei .hi.class--rend--sub {
   display: inline;
   vertical-align: sub;
   font-size: smaller;
 }
 /* line 497, ../sass/_tei_elements.scss */
-.tei .hi[rend="ul"] {
+.tei .hi.class--rend--ul {
   display: inline;
   text-decoration: underline;
 }
@@ -595,7 +595,7 @@
   display: none;
 }
 /* line 532, ../sass/_tei_elements.scss */
-.tei .list[type="gloss"] .item {
+.tei .list.class--type--gloss .item {
   display: block;
   margin-left: 1em;
 }
@@ -610,7 +610,7 @@
   margin-left: 12pt;
 }
 /* line 547, ../sass/_tei_elements.scss */
-.tei .item[n]:before {
+.tei .item.class--n:before {
   content: attr(n) ". ";
   list-style: none outside none;
 }
@@ -666,31 +666,31 @@
   margin-top: 1em;
 }
 /* line 603, ../sass/_tei_elements.scss */
-.tei .list[rend="runon"] {
+.tei .list.class--rend--runon {
   display: inline;
 }
 /* line 607, ../sass/_tei_elements.scss */
-.tei .list[type="bulleted"] {
+.tei .list.class--type--bulleted {
   list-style-type: disc;
   list-style-position: outside;
 }
 /* line 612, ../sass/_tei_elements.scss */
-.tei .list[type="unordered"] {
+.tei .list.class--type--unordered {
   list-style-type: disc;
   list-style-position: outside;
 }
 /* line 617, ../sass/_tei_elements.scss */
-.tei .list[type="ordered"] {
+.tei .list.class--type--ordered {
   list-style-type: decimal;
   list-style-position: outside;
 }
 /* line 622, ../sass/_tei_elements.scss */
-.tei .list[type="numbered"] {
+.tei .list.class--type--numbered {
   list-style-type: decimal;
   list-style-position: outside;
 }
 /* line 627, ../sass/_tei_elements.scss */
-.tei .list[type="none"] {
+.tei .list.class--type--none {
   list-style-type: none;
 }
 /* line 631, ../sass/_tei_elements.scss */
@@ -722,7 +722,7 @@
   font-variant: small-caps;
 }
 /* line 659, ../sass/_tei_elements.scss */
-.tei .note[type]:before {
+.tei .note.class--type:before {
   content: attr(type) ": ";
 }
 /* line 663, ../sass/_tei_elements.scss */
@@ -736,11 +736,11 @@
   font-variant: normal;
 }
 /* line 673, ../sass/_tei_elements.scss */
-.tei .opener .note[type]:before {
+.tei .opener .note.class--type:before {
   content: "";
 }
 /* line 677, ../sass/_tei_elements.scss */
-.tei .note[n]:before {
+.tei .note.class--n:before {
   content: attr(n) " ";
   vertical-align: super;
 }
@@ -749,15 +749,15 @@
   color: #6db0cc !important;
 }
 /* line 686, ../sass/_tei_elements.scss */
-.tei .note[place="left"] {
+.tei .note.class--place--left {
   float: left;
 }
 /* line 690, ../sass/_tei_elements.scss */
-.tei .note[place="right"] {
+.tei .note.class--place--right {
   float: right;
 }
 /* line 694, ../sass/_tei_elements.scss */
-.tei .note[place="inline"], .tei .note[place="unspecified"] {
+.tei .note.class--place--inline, .tei .note.class--place--unspecified {
   display: inline;
 }
 /* line 698, ../sass/_tei_elements.scss */
@@ -850,7 +850,7 @@
   margin: 0em;
 }
 /* line 790, ../sass/_tei_elements.scss */
-.tei .q[rend="display"], .tei .argument > .q, .tei .body > .q, .tei .cit > .q, .tei .div > .q, .tei .div0 > .q, .tei .div1 > .q, .tei .div2 > .q, .tei .div3 > .q, .tei .div4 > .q, .tei .div5 > .q, .tei .div6 > .q, .tei .div7 > .q > .q {
+.tei .q.class--rend--display, .tei .argument > .q, .tei .body > .q, .tei .cit > .q, .tei .div > .q, .tei .div0 > .q, .tei .div1 > .q, .tei .div2 > .q, .tei .div3 > .q, .tei .div4 > .q, .tei .div5 > .q, .tei .div6 > .q, .tei .div7 > .q > .q {
   display: block;
   margin-bottom: 0.5em;
   margin-left: 3em;
@@ -872,7 +872,7 @@
   margin: 0em;
 }
 /* line 812, ../sass/_tei_elements.scss */
-.tei .quote[rend="display"], .tei .argument > .quote, .tei .body > .quote, .tei .cit > .quote, .tei .div > .quote, .tei .div0 > .quote, .tei .div1 > .quote, .tei .div2 > .quote, .tei .div3 > .quote, .tei .div4 > .quote, .tei .div5 > .quote, .tei .div6 > .quote, .tei .div7 > .quote > .quote {
+.tei .quote.class--rend--display, .tei .argument > .quote, .tei .body > .quote, .tei .cit > .quote, .tei .div > .quote, .tei .div0 > .quote, .tei .div1 > .quote, .tei .div2 > .quote, .tei .div3 > .quote, .tei .div4 > .quote, .tei .div5 > .quote, .tei .div6 > .quote, .tei .div7 > .quote > .quote {
   display: block;
   margin-bottom: 0.5em;
   margin-left: 3em;
@@ -939,7 +939,7 @@
   display: table-row;
 }
 /* line 879, ../sass/_tei_elements.scss */
-.tei .row[role="label"] {
+.tei .row.class--role--label {
   color: inherit;
   background-color: #bbbbbb;
 }
@@ -1065,28 +1065,28 @@
   display: inline;
 }
 /* line 1005, ../sass/_tei_elements.scss */
-.tei .title[type="subtitle"] {
+.tei .title.class--type--subtitle {
   display: block;
   font-weight: normal;
 }
 /* line 1010, ../sass/_tei_elements.scss */
-.tei .title[level="m"], .tei .title[level="j"] {
+.tei .title.class--level--m, .tei .title.class--level--j {
   font-style: italic;
 }
 /* line 1014, ../sass/_tei_elements.scss */
-.tei .title[level="s"] {
+.tei .title.class--level--s {
   font-style: normal;
 }
 /* line 1018, ../sass/_tei_elements.scss */
-.tei .title[level="a"], .tei .title[level="u"] {
+.tei .title.class--level--a, .tei .title.class--level--u {
   font-style: normal;
 }
 /* line 1022, ../sass/_tei_elements.scss */
-.tei .title[level="a:before"], .tei .title[level="u:before"] {
+.tei .title.class--level--a:before, .tei .title.class--level--u:before {
   content: open-quote;
 }
 /* line 1026, ../sass/_tei_elements.scss */
-.tei .title[level="a:after"], .tei .title[level="u:after"] {
+.tei .title.class--level--a:after, .tei .title.class--level--u:after {
   content: close-quote;
 }
 /* line 1030, ../sass/_tei_elements.scss */

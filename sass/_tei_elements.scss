@@ -588,8 +588,24 @@
 }
 
 .lg {
+  counter-reset: line;
   display: block;
   margin-bottom: 0.5em;
+}
+
+.l {
+  display: block;
+  white-space: nowrap;
+}
+
+.l:after {
+  content: counter(line, decimal);
+  counter-increment: line;
+  text-align: right;
+  font-style: normal;
+  float: right;
+  color: silver;
+  margin-right: 50px;
 }
 
 .list {

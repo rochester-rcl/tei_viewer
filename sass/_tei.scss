@@ -309,18 +309,6 @@ $line_height_double: 3em;
       background-color: inherit;
       text-decoration: line-through;
     }
-    .l {
-      display: block;
-      white-space: nowrap;
-    }
-    .l:after {
-      content: counter(line, decimal);
-      counter-increment: line;
-      text-align: right;
-      float: right;
-      color: silver;
-      margin-right: 50px;
-    }
 
   }
 }

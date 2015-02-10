@@ -79,10 +79,6 @@
 .tei .abbr {
   display: inline;
 }
-/* line 11, ../sass/_tei_elements.scss */
-.tei .anchor {
-  display: none;
-}
 /* line 15, ../sass/_tei_elements.scss */
 .tei .argument {
   display: block;
@@ -654,10 +650,26 @@
 }
 /* line 590, ../sass/_tei_elements.scss */
 .tei .lg {
+  counter-reset: line;
   display: block;
   margin-bottom: 0.5em;
 }
-/* line 595, ../sass/_tei_elements.scss */
+/* line 596, ../sass/_tei_elements.scss */
+.tei .l {
+  display: block;
+  white-space: nowrap;
+}
+/* line 601, ../sass/_tei_elements.scss */
+.tei .l:after {
+  content: counter(line,decimal);
+  counter-increment: line;
+  text-align: right;
+  font-style: normal;
+  float: right;
+  color: silver;
+  margin-right: 50px;
+}
+/* line 611, ../sass/_tei_elements.scss */
 .tei .list {
   display: block;
   list-style-type: disc;
@@ -665,133 +677,132 @@
   margin-left: 2em;
   margin-top: 1em;
 }
-/* line 603, ../sass/_tei_elements.scss */
+/* line 619, ../sass/_tei_elements.scss */
 .tei .list.class--rend--runon {
   display: inline;
 }
-/* line 607, ../sass/_tei_elements.scss */
+/* line 623, ../sass/_tei_elements.scss */
 .tei .list.class--type--bulleted {
   list-style-type: disc;
   list-style-position: outside;
 }
-/* line 612, ../sass/_tei_elements.scss */
+/* line 628, ../sass/_tei_elements.scss */
 .tei .list.class--type--unordered {
   list-style-type: disc;
   list-style-position: outside;
 }
-/* line 617, ../sass/_tei_elements.scss */
+/* line 633, ../sass/_tei_elements.scss */
 .tei .list.class--type--ordered {
   list-style-type: decimal;
   list-style-position: outside;
 }
-/* line 622, ../sass/_tei_elements.scss */
+/* line 638, ../sass/_tei_elements.scss */
 .tei .list.class--type--numbered {
   list-style-type: decimal;
   list-style-position: outside;
 }
-/* line 627, ../sass/_tei_elements.scss */
+/* line 643, ../sass/_tei_elements.scss */
 .tei .list.class--type--none {
   list-style-type: none;
 }
-/* line 631, ../sass/_tei_elements.scss */
+/* line 647, ../sass/_tei_elements.scss */
 .tei .listBibl {
   display: block;
   margin-bottom: 0.5em;
 }
-/* line 636, ../sass/_tei_elements.scss */
+/* line 652, ../sass/_tei_elements.scss */
 .tei .mentioned {
   display: inline;
   font-style: italic;
 }
-/* line 641, ../sass/_tei_elements.scss */
+/* line 657, ../sass/_tei_elements.scss */
 .tei .milestone {
   display: none;
 }
-/* line 645, ../sass/_tei_elements.scss */
+/* line 661, ../sass/_tei_elements.scss */
 .tei .name {
   display: inline;
 }
-/* line 649, ../sass/_tei_elements.scss */
+/* line 665, ../sass/_tei_elements.scss */
 .tei .note {
   display: block;
   color: #999999;
 }
-/* line 654, ../sass/_tei_elements.scss */
+/* line 670, ../sass/_tei_elements.scss */
 .tei .note:before {
   content: "note: ";
   font-variant: small-caps;
 }
-/* line 659, ../sass/_tei_elements.scss */
+/* line 675, ../sass/_tei_elements.scss */
 .tei .note.class--type:before {
   content: attr(type) ": ";
 }
-/* line 663, ../sass/_tei_elements.scss */
+/* line 679, ../sass/_tei_elements.scss */
 .tei .opener .note {
   display: block;
   color: #999999;
 }
-/* line 668, ../sass/_tei_elements.scss */
+/* line 684, ../sass/_tei_elements.scss */
 .tei .opener .note:before {
   content: "";
   font-variant: normal;
 }
-/* line 673, ../sass/_tei_elements.scss */
+/* line 689, ../sass/_tei_elements.scss */
 .tei .opener .note.class--type:before {
   content: "";
 }
-/* line 677, ../sass/_tei_elements.scss */
+/* line 693, ../sass/_tei_elements.scss */
 .tei .note.class--n:before {
   content: attr(n) " ";
   vertical-align: super;
 }
-/* line 682, ../sass/_tei_elements.scss */
+/* line 698, ../sass/_tei_elements.scss */
 .tei .div .note .persName, .tei .div .note .orgName, .tei .div .note .title, .tei .div .note .placeName {
   color: #6db0cc !important;
 }
-/* line 686, ../sass/_tei_elements.scss */
+/* line 702, ../sass/_tei_elements.scss */
 .tei .note.class--place--left {
   float: left;
 }
-/* line 690, ../sass/_tei_elements.scss */
+/* line 706, ../sass/_tei_elements.scss */
 .tei .note.class--place--right {
   float: right;
 }
-/* line 694, ../sass/_tei_elements.scss */
+/* line 710, ../sass/_tei_elements.scss */
 .tei .note.class--place--inline, .tei .note.class--place--unspecified {
   display: inline;
 }
-/* line 698, ../sass/_tei_elements.scss */
+/* line 714, ../sass/_tei_elements.scss */
 .tei .notesStmt {
   display: block;
 }
-/* line 702, ../sass/_tei_elements.scss */
+/* line 718, ../sass/_tei_elements.scss */
 .tei .num {
   display: inline;
 }
-/* line 706, ../sass/_tei_elements.scss */
+/* line 722, ../sass/_tei_elements.scss */
 .tei .opener {
   display: block;
   margin-bottom: 0.5em;
 }
-/* line 711, ../sass/_tei_elements.scss */
+/* line 727, ../sass/_tei_elements.scss */
 .tei .opener .p {
   text-align: justify !important;
-  text-indent: 0px !important;
 }
-/* line 716, ../sass/_tei_elements.scss */
+/* line 731, ../sass/_tei_elements.scss */
 .tei .orig {
   display: inline;
 }
-/* line 720, ../sass/_tei_elements.scss */
+/* line 735, ../sass/_tei_elements.scss */
 .tei .p {
   display: block;
   margin-bottom: 0.5em;
 }
-/* line 725, ../sass/_tei_elements.scss */
+/* line 740, ../sass/_tei_elements.scss */
 .tei .pb {
   display: none;
 }
-/* line 729, ../sass/_tei_elements.scss */
+/* line 744, ../sass/_tei_elements.scss */
 .tei .pb:after {
   content: attr(n);
   font-weight: bold;
@@ -799,57 +810,57 @@
   margin-top: 1em;
   text-align: center;
 }
-/* line 737, ../sass/_tei_elements.scss */
+/* line 752, ../sass/_tei_elements.scss */
 .tei .div .persName, .tei .div .placeName, .tei .div .orgName, .tei .div .title {
   color: #336699;
 }
-/* line 741, ../sass/_tei_elements.scss */
+/* line 756, ../sass/_tei_elements.scss */
 .tei .principal {
   display: block;
   margin-bottom: 0.5em;
 }
-/* line 746, ../sass/_tei_elements.scss */
+/* line 761, ../sass/_tei_elements.scss */
 .tei .ptr {
   color: navy;
   text-decoration: underline;
   background-color: inherit;
 }
-/* line 752, ../sass/_tei_elements.scss */
+/* line 767, ../sass/_tei_elements.scss */
 .tei .ptr:before {
   background-color: inherit;
   color: red;
   content: "[" attr(target) "]";
 }
-/* line 761, ../sass/_tei_elements.scss */
+/* line 776, ../sass/_tei_elements.scss */
 .tei .publicationStmt .p {
   display: block;
   margin-bottom: 0px;
 }
-/* line 766, ../sass/_tei_elements.scss */
+/* line 781, ../sass/_tei_elements.scss */
 .tei .publisher {
   display: inline;
 }
-/* line 770, ../sass/_tei_elements.scss */
+/* line 785, ../sass/_tei_elements.scss */
 .tei .imprint > .publisher, .tei .publicationStmt > .publisher {
   display: block;
   margin-bottom: 0.5em;
 }
-/* line 775, ../sass/_tei_elements.scss */
+/* line 790, ../sass/_tei_elements.scss */
 .tei .pubPlace {
   display: inline;
 }
-/* line 779, ../sass/_tei_elements.scss */
+/* line 794, ../sass/_tei_elements.scss */
 .tei .imprint > .pubPlace, .tei .publicationStmt > .pubPlace {
   display: block;
   margin-bottom: 0.5em;
 }
-/* line 784, ../sass/_tei_elements.scss */
+/* line 799, ../sass/_tei_elements.scss */
 .tei .q {
   display: inline;
   quotes: "\"" "\"" "\'" "\'";
   margin: 0em;
 }
-/* line 790, ../sass/_tei_elements.scss */
+/* line 805, ../sass/_tei_elements.scss */
 .tei .q.class--rend--display, .tei .argument > .q, .tei .body > .q, .tei .cit > .q, .tei .div > .q, .tei .div0 > .q, .tei .div1 > .q, .tei .div2 > .q, .tei .div3 > .q, .tei .div4 > .q, .tei .div5 > .q, .tei .div6 > .q, .tei .div7 > .q > .q {
   display: block;
   margin-bottom: 0.5em;
@@ -857,21 +868,21 @@
   margin-right: 3em;
   quotes: none;
 }
-/* line 798, ../sass/_tei_elements.scss */
+/* line 813, ../sass/_tei_elements.scss */
 .tei .q:before {
   content: open-quote;
 }
-/* line 802, ../sass/_tei_elements.scss */
+/* line 817, ../sass/_tei_elements.scss */
 .tei .q:after {
   content: close-quote;
 }
-/* line 806, ../sass/_tei_elements.scss */
+/* line 821, ../sass/_tei_elements.scss */
 .tei .quote {
   display: inline;
   quotes: "\"" "\"" "\'" "\'";
   margin: 0em;
 }
-/* line 812, ../sass/_tei_elements.scss */
+/* line 827, ../sass/_tei_elements.scss */
 .tei .quote.class--rend--display, .tei .argument > .quote, .tei .body > .quote, .tei .cit > .quote, .tei .div > .quote, .tei .div0 > .quote, .tei .div1 > .quote, .tei .div2 > .quote, .tei .div3 > .quote, .tei .div4 > .quote, .tei .div5 > .quote, .tei .div6 > .quote, .tei .div7 > .quote > .quote {
   display: block;
   margin-bottom: 0.5em;
@@ -879,222 +890,221 @@
   margin-right: 3em;
   quotes: none;
 }
-/* line 820, ../sass/_tei_elements.scss */
+/* line 835, ../sass/_tei_elements.scss */
 .tei .quote:before {
   content: open-quote;
 }
-/* line 824, ../sass/_tei_elements.scss */
+/* line 839, ../sass/_tei_elements.scss */
 .tei .quote:after {
   content: close-quote;
 }
-/* line 828, ../sass/_tei_elements.scss */
+/* line 843, ../sass/_tei_elements.scss */
 .tei .ref {
   display: inline;
   color: blue;
   background-color: inherit;
 }
-/* line 834, ../sass/_tei_elements.scss */
+/* line 849, ../sass/_tei_elements.scss */
 .tei .ref:before {
   color: gray;
   background-color: inherit;
   text-decoration: underline;
 }
-/* line 840, ../sass/_tei_elements.scss */
+/* line 855, ../sass/_tei_elements.scss */
 .tei .reg {
   display: inline;
   font-style: italic;
 }
-/* line 845, ../sass/_tei_elements.scss */
+/* line 860, ../sass/_tei_elements.scss */
 .tei .rendition {
   display: block;
   margin-bottom: 0.5em;
 }
-/* line 850, ../sass/_tei_elements.scss */
+/* line 865, ../sass/_tei_elements.scss */
 .tei .resp {
   display: block;
 }
-/* line 854, ../sass/_tei_elements.scss */
+/* line 869, ../sass/_tei_elements.scss */
 .tei .respStmt {
   display: block;
   margin-left: 1em;
 }
-/* line 859, ../sass/_tei_elements.scss */
+/* line 874, ../sass/_tei_elements.scss */
 .tei .respStmt > .name:before {
   content: attr(role) ": ";
   display: block !important;
   font-variant: small-caps;
 }
-/* line 865, ../sass/_tei_elements.scss */
+/* line 880, ../sass/_tei_elements.scss */
 .tei .bibl .respStmt {
   display: inline;
 }
-/* line 869, ../sass/_tei_elements.scss */
+/* line 884, ../sass/_tei_elements.scss */
 .tei .rdg:before {
   background-color: inherit;
   content: "[" attr(wit) "]";
   color: red;
 }
-/* line 875, ../sass/_tei_elements.scss */
+/* line 890, ../sass/_tei_elements.scss */
 .tei .row {
   display: table-row;
 }
-/* line 879, ../sass/_tei_elements.scss */
+/* line 894, ../sass/_tei_elements.scss */
 .tei .row.class--role--label {
   color: inherit;
   background-color: #bbbbbb;
 }
-/* line 884, ../sass/_tei_elements.scss */
+/* line 899, ../sass/_tei_elements.scss */
 .tei .rs {
   display: inline;
 }
-/* line 888, ../sass/_tei_elements.scss */
+/* line 903, ../sass/_tei_elements.scss */
 .tei .s {
   display: inline;
 }
-/* line 892, ../sass/_tei_elements.scss */
+/* line 907, ../sass/_tei_elements.scss */
 .tei .salute {
   display: block;
   margin-bottom: 0.5em;
   margin-top: 1em;
 }
-/* line 898, ../sass/_tei_elements.scss */
+/* line 913, ../sass/_tei_elements.scss */
 .tei .samplingDecl {
   display: block;
   margin-bottom: 1em;
 }
-/* line 903, ../sass/_tei_elements.scss */
+/* line 918, ../sass/_tei_elements.scss */
 .tei .seriesStmt {
   display: block;
   margin-bottom: 1em;
 }
-/* line 908, ../sass/_tei_elements.scss */
+/* line 923, ../sass/_tei_elements.scss */
 .tei .sic {
   display: inline;
   color: red;
   background-color: inherit;
 }
-/* line 914, ../sass/_tei_elements.scss */
+/* line 929, ../sass/_tei_elements.scss */
 .tei .sic:after {
   content: " [sic]";
 }
-/* line 918, ../sass/_tei_elements.scss */
+/* line 933, ../sass/_tei_elements.scss */
 .tei .signed {
   display: block;
   text-align: right;
 }
-/* line 923, ../sass/_tei_elements.scss */
+/* line 938, ../sass/_tei_elements.scss */
 .tei .soCalled {
   display: inline;
   font-style: italic;
   quotes: "\'" "\'";
 }
-/* line 929, ../sass/_tei_elements.scss */
+/* line 944, ../sass/_tei_elements.scss */
 .tei .soCalled:before {
   content: open-quote;
 }
-/* line 933, ../sass/_tei_elements.scss */
+/* line 948, ../sass/_tei_elements.scss */
 .tei .soCalled:after {
   content: close-quote;
 }
-/* line 937, ../sass/_tei_elements.scss */
+/* line 952, ../sass/_tei_elements.scss */
 .tei .sp {
   display: block;
   margin-bottom: 0.5em;
   margin-left: 2em;
 }
-/* line 943, ../sass/_tei_elements.scss */
+/* line 958, ../sass/_tei_elements.scss */
 .tei .div .p {
   text-align: justify;
-  text-indent: 30px;
 }
-/* line 948, ../sass/_tei_elements.scss */
+/* line 962, ../sass/_tei_elements.scss */
 .tei .speaker {
   display: inline;
   font-weight: bold;
 }
-/* line 953, ../sass/_tei_elements.scss */
+/* line 967, ../sass/_tei_elements.scss */
 .tei .sponsor {
   display: block;
   margin-bottom: 0.5em;
 }
-/* line 958, ../sass/_tei_elements.scss */
+/* line 972, ../sass/_tei_elements.scss */
 .tei .stage {
   display: inline;
   font-style: italic;
 }
-/* line 963, ../sass/_tei_elements.scss */
+/* line 977, ../sass/_tei_elements.scss */
 .tei .table {
   text-align: center;
   display: table;
   margin: 1em;
 }
-/* line 969, ../sass/_tei_elements.scss */
+/* line 983, ../sass/_tei_elements.scss */
 .tei .table > .head, .tei .table > .label {
   display: table-caption;
   font-style: italic;
   margin-bottom: 6pt;
 }
-/* line 975, ../sass/_tei_elements.scss */
+/* line 989, ../sass/_tei_elements.scss */
 .tei .tagUsage {
   display: block;
   margin-bottom: 0.5em;
 }
-/* line 980, ../sass/_tei_elements.scss */
+/* line 994, ../sass/_tei_elements.scss */
 .tei .taxonomy {
   display: block;
   margin-bottom: 0.5em;
 }
-/* line 985, ../sass/_tei_elements.scss */
+/* line 999, ../sass/_tei_elements.scss */
 .tei .term {
   font-family: sans-serif;
   color: blue;
   background-color: inherit;
   display: inline;
 }
-/* line 992, ../sass/_tei_elements.scss */
+/* line 1006, ../sass/_tei_elements.scss */
 .tei .textClass {
   display: block;
   margin-bottom: 0.5em;
 }
-/* line 997, ../sass/_tei_elements.scss */
+/* line 1011, ../sass/_tei_elements.scss */
 .tei .time {
   display: inline;
 }
-/* line 1001, ../sass/_tei_elements.scss */
+/* line 1015, ../sass/_tei_elements.scss */
 .tei .title {
   display: inline;
 }
-/* line 1005, ../sass/_tei_elements.scss */
+/* line 1019, ../sass/_tei_elements.scss */
 .tei .title.class--type--subtitle {
   display: block;
   font-weight: normal;
 }
-/* line 1010, ../sass/_tei_elements.scss */
+/* line 1024, ../sass/_tei_elements.scss */
 .tei .title.class--level--m, .tei .title.class--level--j {
   font-style: italic;
 }
-/* line 1014, ../sass/_tei_elements.scss */
+/* line 1028, ../sass/_tei_elements.scss */
 .tei .title.class--level--s {
   font-style: normal;
 }
-/* line 1018, ../sass/_tei_elements.scss */
+/* line 1032, ../sass/_tei_elements.scss */
 .tei .title.class--level--a, .tei .title.class--level--u {
   font-style: normal;
 }
-/* line 1022, ../sass/_tei_elements.scss */
+/* line 1036, ../sass/_tei_elements.scss */
 .tei .title.class--level--a:before, .tei .title.class--level--u:before {
   content: open-quote;
 }
-/* line 1026, ../sass/_tei_elements.scss */
+/* line 1040, ../sass/_tei_elements.scss */
 .tei .title.class--level--a:after, .tei .title.class--level--u:after {
   content: close-quote;
 }
-/* line 1030, ../sass/_tei_elements.scss */
+/* line 1044, ../sass/_tei_elements.scss */
 .tei .seriesStmt > .title, .tei .titleStmt > .title {
   color: green;
   font-weight: bold;
 }
-/* line 1035, ../sass/_tei_elements.scss */
+/* line 1049, ../sass/_tei_elements.scss */
 .tei .titlePage {
   display: block;
   border: thin solid black;
@@ -1102,105 +1112,105 @@
   text-align: center;
   padding: 1em;
 }
-/* line 1043, ../sass/_tei_elements.scss */
+/* line 1057, ../sass/_tei_elements.scss */
 .tei .titlePart {
   display: block;
 }
-/* line 1047, ../sass/_tei_elements.scss */
+/* line 1061, ../sass/_tei_elements.scss */
 .tei .titleStmt {
   margin-bottom: 1em;
   color: #333333;
 }
-/* line 1052, ../sass/_tei_elements.scss */
+/* line 1066, ../sass/_tei_elements.scss */
 .tei .trailer {
   display: block;
   margin-bottom: 1em;
 }
-/* line 1057, ../sass/_tei_elements.scss */
+/* line 1071, ../sass/_tei_elements.scss */
 .tei .teiHeader {
   display: block;
   color: gray;
   background-color: #fbf2ea;
   padding: 0.5em;
 }
-/* line 1064, ../sass/_tei_elements.scss */
+/* line 1078, ../sass/_tei_elements.scss */
 .tei .teiHeader .author:before {
   font-variant: small-caps;
   content: "author: ";
 }
-/* line 1069, ../sass/_tei_elements.scss */
+/* line 1083, ../sass/_tei_elements.scss */
 .tei .teiHeader .editor:before {
   font-variant: small-caps;
   content: "editor: ";
 }
-/* line 1074, ../sass/_tei_elements.scss */
+/* line 1088, ../sass/_tei_elements.scss */
 .tei .teiHeader .title {
   color: gray;
 }
-/* line 1078, ../sass/_tei_elements.scss */
+/* line 1092, ../sass/_tei_elements.scss */
 .tei .titleStmt > .author {
   display: block;
   margin-left: 1em;
 }
-/* line 1083, ../sass/_tei_elements.scss */
+/* line 1097, ../sass/_tei_elements.scss */
 .tei .authority {
   display: block;
   margin-bottom: 0.5em;
 }
-/* line 1088, ../sass/_tei_elements.scss */
+/* line 1102, ../sass/_tei_elements.scss */
 .tei .availability {
   display: block;
   margin-bottom: 0.5em;
 }
-/* line 1099, ../sass/_tei_elements.scss */
+/* line 1113, ../sass/_tei_elements.scss */
 .tei .sourceDesc .p {
   margin: 0px;
 }
-/* line 1103, ../sass/_tei_elements.scss */
+/* line 1117, ../sass/_tei_elements.scss */
 .tei .revisionDesc {
   display: block;
   margin-bottom: 1em;
 }
-/* line 1108, ../sass/_tei_elements.scss */
+/* line 1122, ../sass/_tei_elements.scss */
 .tei .catDesc {
   display: block;
   margin-bottom: 0.5em;
 }
-/* line 1113, ../sass/_tei_elements.scss */
+/* line 1127, ../sass/_tei_elements.scss */
 .tei .encodingDesc {
   display: block;
   margin-bottom: 1em;
 }
-/* line 1118, ../sass/_tei_elements.scss */
+/* line 1132, ../sass/_tei_elements.scss */
 .tei .profileDesc {
   display: block;
   margin-bottom: 1em;
 }
-/* line 1123, ../sass/_tei_elements.scss */
+/* line 1137, ../sass/_tei_elements.scss */
 .tei .projectDesc {
   display: block;
   margin-bottom: 1em;
 }
-/* line 1128, ../sass/_tei_elements.scss */
+/* line 1142, ../sass/_tei_elements.scss */
 .tei .docDate {
   display: block;
   margin-bottom: 0.5em;
 }
-/* line 1133, ../sass/_tei_elements.scss */
+/* line 1147, ../sass/_tei_elements.scss */
 .tei .docImprint .docDate {
   display: inline;
 }
-/* line 1137, ../sass/_tei_elements.scss */
+/* line 1151, ../sass/_tei_elements.scss */
 .tei .docEdition {
   display: block;
   margin-bottom: 0.5em;
 }
-/* line 1142, ../sass/_tei_elements.scss */
+/* line 1156, ../sass/_tei_elements.scss */
 .tei .docImprint {
   display: block;
   margin-bottom: 0.5em;
 }
-/* line 1147, ../sass/_tei_elements.scss */
+/* line 1161, ../sass/_tei_elements.scss */
 .tei .docTitle {
   display: block;
   margin-bottom: 0.5em;
@@ -1485,18 +1495,4 @@
   color: red;
   background-color: inherit;
   text-decoration: line-through;
-}
-/* line 312, ../sass/_tei.scss */
-.tei:not(.reading) .l {
-  display: block;
-  white-space: nowrap;
-}
-/* line 316, ../sass/_tei.scss */
-.tei:not(.reading) .l:after {
-  content: counter(line,decimal);
-  counter-increment: line;
-  text-align: right;
-  float: right;
-  color: silver;
-  margin-right: 50px;
 }

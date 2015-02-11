@@ -192,7 +192,7 @@
     </div>
   </xsl:template>
 
-  <xsl:template match="tei:q" mode="#all">
+  <xsl:template match="tei:q | tei:quote" mode="#all">
     <q>
       <xsl:call-template name="element_attributes"/>
       <xsl:apply-templates mode="#current"/>

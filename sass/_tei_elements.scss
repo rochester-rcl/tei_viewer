@@ -672,8 +672,8 @@
   font-variant: small-caps;
 }
 
-.note.class--type:before {
-  content: attr(type) ": ";
+.note[data-type]:before {
+  content: attr(data-type) ": ";
 }
 
 .opener .note {

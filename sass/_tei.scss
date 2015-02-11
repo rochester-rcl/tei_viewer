@@ -224,6 +224,9 @@ $line_height_double: 3em;
     &.class--type--bulleted {
       list-style-type: disc;
     }
+    &.class--type--simple {
+      list-style-type: none;
+    }
   }
 
   ul.lg.class--type--stanza > li {

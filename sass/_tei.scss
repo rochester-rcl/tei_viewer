@@ -291,8 +291,13 @@ $line_height_double: 3em;
   }
 
   &.reading {
-    .seg.class--rend--undone {
+    .seg.class--rend--undone, .corr, .reg {
       color: black;
+      font-style: normal;
+    }
+    /* Only hide inline notes, footnotes are still displayed */
+    div.note {
+      display: none;
     }
   }
 
@@ -300,13 +305,24 @@ $line_height_double: 3em;
     .seg.class--rend--undone {
       color: green;
     }
+    .subst {
+      &:before {
+        content: "(";
+        color: slategrey;
+      }
+      &:after {
+        content: ")";
+        color: slategrey;
+      }
+    }
     .add {
-      display: inline; color: green; background-color: inherit; text-decoration: underline;
+      display: inline;
+      color: green;
+      text-decoration: underline;
     }
     .del {
       display: inline;
       color: red;
-      background-color: inherit;
       text-decoration: line-through;
     }
 

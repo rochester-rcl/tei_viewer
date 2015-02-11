@@ -299,7 +299,6 @@
 
 .emph {
   display: inline;
-  font-style: italic;
 }
 
 .extent {
@@ -452,26 +451,6 @@
   display: inline;
 }
 
-.hi.class--rend {
-  background-color: inherit;
-  color: inherit;
-}
-
-.hi.class--rend--bold {
-  display: inline;
-  font-weight: bold;
-}
-
-.hi.class--rend--italic {
-  display: inline;
-  font-style: italic;
-}
-
-.hi.class--rend--underline {
-  display: inline;
-  text-decoration: underline;
-}
-
 .hi.class--rend--it {
   display: inline;
   font-style: italic;
@@ -620,30 +599,6 @@
   display: inline;
 }
 
-.list.class--type--bulleted {
-  list-style-type: disc;
-  list-style-position: outside;
-}
-
-.list.class--type--unordered {
-  list-style-type: disc;
-  list-style-position: outside;
-}
-
-.list.class--type--ordered {
-  list-style-type: decimal;
-  list-style-position: outside;
-}
-
-.list.class--type--numbered {
-  list-style-type: decimal;
-  list-style-position: outside;
-}
-
-.list.class--type--none {
-  list-style-type: none;
-}
-
 .listBibl {
   display: block;
   margin-bottom: 0.5em;
@@ -697,18 +652,6 @@
 
 .div .note .persName, .div .note .orgName, .div .note .title, .div .note .placeName {
   color: rgb(109, 176, 204) ! important;
-}
-
-.note.class--place--left {
-  float: left;
-}
-
-.note.class--place--right {
-  float: right;
-}
-
-.note.class--place--inline, .note.class--place--unspecified {
-  display: inline;
 }
 
 .notesStmt {
@@ -810,14 +753,6 @@
   quotes: none;
 }
 
-.q:before {
-  content: open-quote;
-}
-
-.q:after {
-  content: close-quote;
-}
-
 .quote {
   display: inline;
   quotes: "\"" "\"" "\'" "\'";
@@ -830,14 +765,6 @@
   margin-left: 3em;
   margin-right: 3em;
   quotes: none;
-}
-
-.quote:before {
-  content: open-quote;
-}
-
-.quote:after {
-  content: close-quote;
 }
 
 .ref {
@@ -961,7 +888,6 @@
 
 .speaker {
   display: inline;
-  font-weight: bold;
 }
 
 .sponsor {
@@ -971,7 +897,6 @@
 
 .stage {
   display: inline;
-  font-style: italic;
 }
 
 .table {

@@ -577,16 +577,6 @@
   white-space: nowrap;
 }
 
-.l:after {
-  content: counter(line, decimal);
-  counter-increment: line;
-  text-align: right;
-  font-style: normal;
-  float: right;
-  color: silver;
-  margin-right: 50px;
-}
-
 .list {
   display: block;
   list-style-type: disc;

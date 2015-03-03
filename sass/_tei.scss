@@ -103,13 +103,6 @@ $line_height_double: 3em;
     }
   }
 
-  .byline {
-    display: block;
-    text-indent: $indent;
-    font-style: italic;
-    margin-bottom: 0.5em;
-  }
-
   // Text styles and alignment.
   .class--rend--bold {
     font-weight: bold;
@@ -173,11 +166,8 @@ $line_height_double: 3em;
     }
   }
 
-  .head {
-    font-size: larger;
-  }
   .label {
-    @extend .head;
+    font-size: larger;
     margin-top: .5em;
     text-indent: 0;
   }
@@ -292,7 +282,7 @@ $line_height_double: 3em;
   ul .item {
     display: list-item;
   }
-
+ 
   &.reading {
     .seg.class--rend--undone, .corr, .reg {
       color: black;
@@ -328,6 +318,5 @@ $line_height_double: 3em;
       color: red;
       text-decoration: line-through;
     }
-
   }
 }

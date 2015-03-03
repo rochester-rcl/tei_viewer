@@ -375,15 +375,6 @@
   margin-bottom: 1em;
 }
 
-.body > .div > .head {
-  display: block;
-  padding-top: 7px;
-  padding-bottom: 10px;
-  color: inherit;
-  font-weight: bold;
-  margin-top: 1em;
-}
-
 .body > .div.class--type--poem > .head .author {
   font-weight: normal;
 }
@@ -415,36 +406,6 @@
   display: block;
   text-align: right;
   width: 95%;
-}
-
-.div1 > .head:before {
-  color: black;
-  background-color: inherit;
-}
-
-.div2 > .head:before {
-  color: black;
-  background-color: inherit;
-}
-
-.div3 > .head:before {
-  color: black;
-  background-color: inherit;
-}
-
-.body > .div > .head:before {
-  color: black;
-  background-color: inherit;
-}
-
-.body > .div > .div > .head:before {
-  color: black;
-  background-color: inherit;
-}
-
-.body > .div > .div > .div > .head:before {
-  color: black;
-  background-color: inherit;
 }
 
 .hi {

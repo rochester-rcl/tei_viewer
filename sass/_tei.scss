@@ -166,11 +166,8 @@ $line_height_double: 3em;
     }
   }
 
-  .head {
-    font-size: larger;
-  }
   .label {
-    @extend .head;
+    font-size: larger;
     margin-top: .5em;
     text-indent: 0;
   }

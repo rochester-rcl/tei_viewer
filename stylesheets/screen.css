@@ -1361,35 +1361,27 @@
 .tei.reading div.note {
   display: none;
 }
-/* line 295, ../sass/_tei.scss */
-.tei.reading .line {
-  display: block;
-}
-/* line 301, ../sass/_tei.scss */
+/* line 298, ../sass/_tei.scss */
 .tei:not(.reading) .seg.class--rend--undone {
   color: green;
 }
-/* line 305, ../sass/_tei.scss */
+/* line 302, ../sass/_tei.scss */
 .tei:not(.reading) .subst:before {
   content: "(";
   color: slategrey;
 }
-/* line 309, ../sass/_tei.scss */
+/* line 306, ../sass/_tei.scss */
 .tei:not(.reading) .subst:after {
   content: ")";
   color: slategrey;
 }
-/* line 314, ../sass/_tei.scss */
-.tei:not(.reading) .line {
-  display: block;
-}
-/* line 317, ../sass/_tei.scss */
+/* line 311, ../sass/_tei.scss */
 .tei:not(.reading) .add {
   display: inline;
   color: green;
   text-decoration: underline;
 }
-/* line 322, ../sass/_tei.scss */
+/* line 316, ../sass/_tei.scss */
 .tei:not(.reading) .del {
   display: inline;
   color: red;

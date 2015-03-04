@@ -292,9 +292,6 @@ $line_height_double: 3em;
     div.note {
       display: none;
     }
-    .line {
-      display: block;
-    }
   }
 
   &:not(.reading) {
@@ -310,9 +307,6 @@ $line_height_double: 3em;
         content: ")";
         color: slategrey;
       }
-    }
-    .line {
-      display: block;
     }
     .add {
       display: inline;

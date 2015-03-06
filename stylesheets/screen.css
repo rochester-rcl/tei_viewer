@@ -1368,52 +1368,52 @@
 /* line 298, ../sass/_tei.scss */
 .tei.reading .textimagelink {
   border-color: #7F00FF;
-  border-width: 2px;
+  border-width: 1px;
   border-bottom-style: dotted;
 }
 /* line 303, ../sass/_tei.scss */
 .tei.reading .persName {
   border-color: #FF0000;
-  border-width: 2px;
+  border-width: 1px;
   border-bottom-style: dotted;
 }
 /* line 308, ../sass/_tei.scss */
 .tei.reading .placeName {
   border-color: #009999;
-  border-width: 2px;
+  border-width: 1px;
   border-bottom-style: dotted;
 }
 /* line 313, ../sass/_tei.scss */
 .tei.reading .title {
   border-color: #debb00;
-  border-width: 2px;
+  border-width: 1px;
   border-bottom-style: dotted;
 }
 /* line 318, ../sass/_tei.scss */
 .tei.reading .orgName {
   border-color: #3914AF;
-  border-width: 2px;
+  border-width: 1px;
   border-bottom-style: dotted;
 }
 /* line 323, ../sass/_tei.scss */
 .tei.reading .v-viewer-textimagelink {
-  background-color: #7F00FF;
+  border-width: 2px;
 }
 /* line 326, ../sass/_tei.scss */
 .tei.reading .v-viewer-person {
-  background-color: #FF0000;
+  border-width: 2px;
 }
 /* line 329, ../sass/_tei.scss */
 .tei.reading .v-viewer-place {
-  background-color: #009999;
+  border-width: 2px;
 }
 /* line 332, ../sass/_tei.scss */
 .tei.reading .v-viewer-organization {
-  background-color: #3914AF;
+  border-width: 2px;
 }
 /* line 335, ../sass/_tei.scss */
 .tei.reading .v-viewer-title {
-  background-color: #debb00;
+  border-width: 2px;
 }
 /* line 341, ../sass/_tei.scss */
 .tei:not(.reading) .seg.class--rend--undone {
@@ -1448,50 +1448,50 @@
 /* line 367, ../sass/_tei.scss */
 .tei:not(.reading) .textimagelink {
   border-color: #7F00FF;
-  border-width: 2px;
+  border-width: 1px;
   border-bottom-style: dotted;
 }
 /* line 372, ../sass/_tei.scss */
 .tei:not(.reading) .persName {
   border-color: #FF0000;
-  border-width: 2px;
+  border-width: 1px;
   border-bottom-style: dotted;
 }
 /* line 377, ../sass/_tei.scss */
 .tei:not(.reading) .placeName {
   border-color: #009999;
-  border-width: 2px;
+  border-width: 1px;
   border-bottom-style: dotted;
 }
 /* line 382, ../sass/_tei.scss */
 .tei:not(.reading) .title {
   border-color: #debb00;
-  border-width: 2px;
+  border-width: 1px;
   border-bottom-style: dotted;
 }
 /* line 387, ../sass/_tei.scss */
 .tei:not(.reading) .orgName {
   border-color: #3914AF;
-  border-width: 2px;
+  border-width: 1px;
   border-bottom-style: dotted;
 }
 /* line 392, ../sass/_tei.scss */
 .tei:not(.reading) .v-viewer-textimagelink {
-  background-color: #7F00FF;
+  border-width: 2px;
 }
 /* line 395, ../sass/_tei.scss */
 .tei:not(.reading) .v-viewer-person {
-  background-color: #FF0000;
+  border-width: 2px;
 }
 /* line 398, ../sass/_tei.scss */
 .tei:not(.reading) .v-viewer-place {
-  background-color: #009999;
+  border-width: 2px;
 }
 /* line 401, ../sass/_tei.scss */
 .tei:not(.reading) .v-viewer-organization {
-  background-color: #3914AF;
+  border-width: 2px;
 }
 /* line 404, ../sass/_tei.scss */
 .tei:not(.reading) .v-viewer-title {
-  background-color: #debb00;
+  border-width: 2px;
 }

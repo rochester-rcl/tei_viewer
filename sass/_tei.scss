@@ -282,6 +282,37 @@ $line_height_double: 3em;
   ul .item {
     display: list-item;
   }
+
+  .textimagelink {
+    border-color: #7F00FF;
+  }
+  .persName {
+    border-color: #FF0000;
+  }
+  .placeName {
+    border-color: #009999;
+  }
+  .title {
+    border-color: #debb00;
+  }
+  .orgName {
+    border-color: #3914AF;
+  }
+  .v-viewer-textimagelink, 
+  .v-viewer-person, 
+  .v-viewer-place, 
+  .v-viewer-organization,
+  .v-viewer-title {
+    border-width: 2px;
+    border-bottom-style: dotted;
+  }
+  .v-viewer-textimagelink:not(.overlap-spanning-annotation),
+  .v-viewer-person:not(.overlap-spanning-annotation), 
+  .v-viewer-place:not(.overlap-spanning-annotation), 
+  .v-viewer-organization:not(.overlap-spanning-annotation),
+  .v-viewer-title:not(.overlap-spanning-annotation) {
+    border-bottom-style: solid;
+  }
  
   &.reading {
     .seg.class--rend--undone, .corr, .reg {
@@ -294,46 +325,6 @@ $line_height_double: 3em;
     }
     .line {
       display: block;
-    }
-    .textimagelink {
-      border-color: #7F00FF;
-      border-width: 1px;
-      border-bottom-style: dotted;
-    }
-    .persName {
-      border-color: #FF0000;
-      border-width: 1px;
-      border-bottom-style: dotted;
-    }
-    .placeName {
-      border-color: #009999;
-      border-width: 1px;
-      border-bottom-style: dotted;
-    }
-    .title {
-      border-color: #debb00;
-      border-width: 1px;
-      border-bottom-style: dotted;
-    }
-    .orgName {
-      border-color: #3914AF;
-      border-width: 1px;
-      border-bottom-style: dotted;
-    }
-    .v-viewer-textimagelink {
-      border-width: 2px;
-    }
-    .v-viewer-person {
-      border-width: 2px;
-    }
-    .v-viewer-place {
-      border-width: 2px;
-    }
-    .v-viewer-organization {
-      border-width: 2px;
-    }
-    .v-viewer-title {
-      border-width: 2px;
     }
   }
 
@@ -363,46 +354,6 @@ $line_height_double: 3em;
       display: inline;
       color: red;
       text-decoration: line-through;
-    }
-    .textimagelink {
-      border-color: #7F00FF;
-      border-width: 1px;
-      border-bottom-style: dotted;
-    }
-    .persName {
-      border-color: #FF0000;
-      border-width: 1px;
-      border-bottom-style: dotted;
-    }
-    .placeName {
-      border-color: #009999;
-      border-width: 1px;
-      border-bottom-style: dotted;
-    }
-    .title {
-      border-color: #debb00;
-      border-width: 1px;
-      border-bottom-style: dotted;
-    }
-    .orgName {
-      border-color: #3914AF;
-      border-width: 1px;
-      border-bottom-style: dotted;
-    }
-    .v-viewer-textimagelink {
-      border-width: 2px;
-    }
-    .v-viewer-person {
-      border-width: 2px;
-    }
-    .v-viewer-place {
-      border-width: 2px;
-    }
-    .v-viewer-organization {
-      border-width: 2px;
-    }
-    .v-viewer-title {
-      border-width: 2px;
     }
   }
 }

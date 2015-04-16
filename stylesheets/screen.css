@@ -18,7 +18,7 @@
   margin-bottom: 0.5in;
   color: black;
 }
-/* line 17, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 5, ../../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 .tei html, .tei body, .tei div, .tei span, .tei applet, .tei object, .tei iframe,
 .tei h1, .tei h2, .tei h3, .tei h4, .tei h5, .tei h6, .tei p, .tei blockquote, .tei pre,
 .tei a, .tei abbr, .tei acronym, .tei address, .tei big, .tei cite, .tei code,
@@ -39,40 +39,40 @@
   font-size: 100%;
   vertical-align: baseline;
 }
-/* line 22, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 .tei html {
   line-height: 1;
 }
-/* line 24, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 .tei ol, .tei ul {
   list-style: none;
 }
-/* line 26, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 .tei table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-/* line 28, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 .tei caption, .tei th, .tei td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
-/* line 30, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 .tei q, .tei blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 .tei q:before, .tei q:after, .tei blockquote:before, .tei blockquote:after {
   content: "";
   content: none;
 }
-/* line 32, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 .tei a img {
   border: none;
 }
-/* line 116, ../../../../../../../../../../../opt/ruby/lib/ruby/gems/1.9.1/gems/compass-0.12.3/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-.tei article, .tei aside, .tei details, .tei figcaption, .tei figure, .tei footer, .tei header, .tei hgroup, .tei menu, .tei nav, .tei section, .tei summary {
+/* line 116, ../../../../../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+.tei article, .tei aside, .tei details, .tei figcaption, .tei figure, .tei footer, .tei header, .tei hgroup, .tei main, .tei menu, .tei nav, .tei section, .tei summary {
   display: block;
 }
 /* line 7, ../sass/_tei_elements.scss */
@@ -575,7 +575,7 @@
 .tei .Label {
   display: inline;
   font-weight: bold;
-  color: darkslategrey;
+  color: darkslategray;
   background-color: inherit;
 }
 /* line 516, ../sass/_tei_elements.scss */
@@ -1230,7 +1230,7 @@
 .tei .hi {
   background-color: yellow;
 }
-/* line 186, ../sass/_tei.scss */
+/* line 185, ../sass/_tei.scss */
 .tei .class--rend--no-indent,
 .tei .class--rend--no_indent {
   display: block;
@@ -1349,149 +1349,86 @@
   display: list-item;
 }
 /* line 286, ../sass/_tei.scss */
+.tei .textimagelink {
+  border-color: #7F00FF;
+}
+/* line 289, ../sass/_tei.scss */
+.tei .persName {
+  border-color: #FF0000;
+}
+/* line 292, ../sass/_tei.scss */
+.tei .placeName {
+  border-color: #009999;
+}
+/* line 295, ../sass/_tei.scss */
+.tei .title {
+  border-color: #debb00;
+}
+/* line 298, ../sass/_tei.scss */
+.tei .orgName {
+  border-color: #3914AF;
+}
+/* line 301, ../sass/_tei.scss */
+.tei .v-viewer-textimagelink,
+.tei .v-viewer-person,
+.tei .v-viewer-place,
+.tei .v-viewer-organization,
+.tei .v-viewer-title {
+  border-width: 2px;
+  border-bottom-style: dotted;
+}
+/* line 309, ../sass/_tei.scss */
+.tei .v-viewer-textimagelink:not(.overlap-spanning-annotation),
+.tei .v-viewer-person:not(.overlap-spanning-annotation),
+.tei .v-viewer-place:not(.overlap-spanning-annotation),
+.tei .v-viewer-organization:not(.overlap-spanning-annotation),
+.tei .v-viewer-title:not(.overlap-spanning-annotation) {
+  border-bottom-style: solid;
+}
+/* line 317, ../sass/_tei.scss */
 .tei.reading {
   /* Only hide inline notes, footnotes are still displayed */
 }
-/* line 287, ../sass/_tei.scss */
+/* line 318, ../sass/_tei.scss */
 .tei.reading .seg.class--rend--undone, .tei.reading .corr, .tei.reading .reg {
   color: black;
   font-style: normal;
 }
-/* line 292, ../sass/_tei.scss */
+/* line 323, ../sass/_tei.scss */
 .tei.reading div.note {
   display: none;
 }
-/* line 295, ../sass/_tei.scss */
+/* line 326, ../sass/_tei.scss */
 .tei.reading .line {
   display: block;
 }
-/* line 298, ../sass/_tei.scss */
-.tei.reading .textimagelink {
-  border-color: #7F00FF;
-  border-width: 1px;
-  border-bottom-style: dotted;
-}
-/* line 303, ../sass/_tei.scss */
-.tei.reading .persName {
-  border-color: #FF0000;
-  border-width: 1px;
-  border-bottom-style: dotted;
-}
-/* line 308, ../sass/_tei.scss */
-.tei.reading .placeName {
-  border-color: #009999;
-  border-width: 1px;
-  border-bottom-style: dotted;
-}
-/* line 313, ../sass/_tei.scss */
-.tei.reading .title {
-  border-color: #debb00;
-  border-width: 1px;
-  border-bottom-style: dotted;
-}
-/* line 318, ../sass/_tei.scss */
-.tei.reading .orgName {
-  border-color: #3914AF;
-  border-width: 1px;
-  border-bottom-style: dotted;
-}
-/* line 323, ../sass/_tei.scss */
-.tei.reading .v-viewer-textimagelink {
-  border-width: 2px;
-}
-/* line 326, ../sass/_tei.scss */
-.tei.reading .v-viewer-person {
-  border-width: 2px;
-}
-/* line 329, ../sass/_tei.scss */
-.tei.reading .v-viewer-place {
-  border-width: 2px;
-}
 /* line 332, ../sass/_tei.scss */
-.tei.reading .v-viewer-organization {
-  border-width: 2px;
-}
-/* line 335, ../sass/_tei.scss */
-.tei.reading .v-viewer-title {
-  border-width: 2px;
-}
-/* line 341, ../sass/_tei.scss */
 .tei:not(.reading) .seg.class--rend--undone {
   color: green;
 }
-/* line 345, ../sass/_tei.scss */
+/* line 336, ../sass/_tei.scss */
 .tei:not(.reading) .subst:before {
   content: "(";
   color: slategrey;
 }
-/* line 349, ../sass/_tei.scss */
+/* line 340, ../sass/_tei.scss */
 .tei:not(.reading) .subst:after {
   content: ")";
   color: slategrey;
 }
-/* line 354, ../sass/_tei.scss */
+/* line 345, ../sass/_tei.scss */
 .tei:not(.reading) .line {
   display: block;
 }
-/* line 357, ../sass/_tei.scss */
+/* line 348, ../sass/_tei.scss */
 .tei:not(.reading) .add {
   display: inline;
   color: green;
   text-decoration: underline;
 }
-/* line 362, ../sass/_tei.scss */
+/* line 353, ../sass/_tei.scss */
 .tei:not(.reading) .del {
   display: inline;
   color: red;
   text-decoration: line-through;
-}
-/* line 367, ../sass/_tei.scss */
-.tei:not(.reading) .textimagelink {
-  border-color: #7F00FF;
-  border-width: 1px;
-  border-bottom-style: dotted;
-}
-/* line 372, ../sass/_tei.scss */
-.tei:not(.reading) .persName {
-  border-color: #FF0000;
-  border-width: 1px;
-  border-bottom-style: dotted;
-}
-/* line 377, ../sass/_tei.scss */
-.tei:not(.reading) .placeName {
-  border-color: #009999;
-  border-width: 1px;
-  border-bottom-style: dotted;
-}
-/* line 382, ../sass/_tei.scss */
-.tei:not(.reading) .title {
-  border-color: #debb00;
-  border-width: 1px;
-  border-bottom-style: dotted;
-}
-/* line 387, ../sass/_tei.scss */
-.tei:not(.reading) .orgName {
-  border-color: #3914AF;
-  border-width: 1px;
-  border-bottom-style: dotted;
-}
-/* line 392, ../sass/_tei.scss */
-.tei:not(.reading) .v-viewer-textimagelink {
-  border-width: 2px;
-}
-/* line 395, ../sass/_tei.scss */
-.tei:not(.reading) .v-viewer-person {
-  border-width: 2px;
-}
-/* line 398, ../sass/_tei.scss */
-.tei:not(.reading) .v-viewer-place {
-  border-width: 2px;
-}
-/* line 401, ../sass/_tei.scss */
-.tei:not(.reading) .v-viewer-organization {
-  border-width: 2px;
-}
-/* line 404, ../sass/_tei.scss */
-.tei:not(.reading) .v-viewer-title {
-  border-width: 2px;
 }

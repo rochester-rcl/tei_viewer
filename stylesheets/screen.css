@@ -1162,7 +1162,7 @@
   font-weight: bold;
 }
 /* line 110, ../sass/_tei.scss */
-.tei .class--rend--italic, .tei .class--rend--italics {
+.tei .class--rend--italic {
   font-style: italic;
 }
 /* line 113, ../sass/_tei.scss */

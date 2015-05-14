@@ -1,0 +1,5 @@
+name = TEI Viewer
+description = 'View TEI'
+package = Islandora
+version = 7.x-dev
+core = 7.x

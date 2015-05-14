@@ -1,0 +1,230 @@
+<?php
+
+/**
+ * @file
+ * General hook implementations.
+ */
+
+function tei_viewer_render_and_print($results) {
+  print (is_string($results) || is_int($results)) ? $results : drupal_render($results);
+}
+
+function tei_viewer_menu() {
+  $item = array();
+
+  $item['islandora/object/%islandora_object/tei_viewer/markup'] = array(
+    'title' => 'TEI Viewer Markup Callback',
+    'page callback' => 'tei_viewer_get_markup',
+    'page arguments' => array(2),
+    'delivery callback' => 'tei_viewer_render_and_print',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+
+  $item['islandora/object/%islandora_object/tei_viewer/find_occluded'] = array(
+    'title' => 'Get the URI of the occluded page version',
+    'page callback' => 'tei_viewer_find_occluded',
+    'page arguments' => array(2),
+    'access callback' => TRUE,
+  );
+
+  return $item;
+}
+
+function tei_viewer_get_markup(AbstractObject $object) {
+  return array(
+    '#type' => 'item',
+    '#title' => $object->label,
+    '#markup' => t('Here be some "markup" for @id.', array(
+      '@id' => $object->id,
+    )),
+  );
+}
+
+function tei_viewer_find_occluded(AbstractObject $object) {
+  $occluded = tei_viewer_lookup_occluded($object);
+
+  if ($occluded === FALSE) {
+    return MENU_NOT_FOUND;
+  }
+  else {
+    drupal_json_output(array(
+      'url' => url("islandora/object/$occluded"),
+      'pid' => $occluded,
+    ));
+    drupal_exit();
+  }
+}
+
+function tei_viewer_lookup_occluded(AbstractObject $object) {
+  $qp = new IslandoraSolrQueryProcessor();
+  $qp->buildQuery(format_string('!field:"!value"', array(
+    '!field' => 'RELS_EXT_isPartOf_uri_ms',
+    '!value' => "info:fedora/{$object->id}",
+  )));
+  $qp->solrParams['fq'][] = format_string('!field:"!value"', array(
+    '!field' => 'RELS_EXT_hasModel_uri_ms',
+    '!value' => 'info:fedora/islandora:sp_large_image_cmodel',
+  ));
+  $qp->solrParams['fl'] = 'PID';
+  $qp->solrLimit = 1;
+  $qp->executeQuery();
+
+  $results = $qp->islandoraSolrResult['response']['objects'];
+  if (empty($results)) {
+    return FALSE;
+  }
+  else {
+    $result = reset($results);
+    return $result['PID'];
+  }
+}
+
+function tei_viewer_preprocess_islandora_paged_tei_seadragon_viewer(&$variables) {
+  drupal_add_js(
+    array(
+      'islandora_paged_tei_tei' => array(
+        'populated_tei' => TRUE,
+      ),
+    ),
+    'setting'
+  );
+  drupal_add_js(
+    '(function ($) {
+Drupal.behaviors.teiViewerTEIUpdate = {
+  attach: function (context, settings) {
+    var element = $("#paged-tei-seadragon-viewer-tei");
+    var pager = $("#islandora_paged_tei_seadragon_pager");
+    var get_page = function() {
+      return pager.children("option:selected");
+    };
+    element.data("object", get_page().val());
+    pager.change(function () {
+      var pid = this.value;
+      $.ajax(settings.basePath + "islandora/object/" + pid + "/tei_viewer/markup", {
+        beforeSend: function (jqXHR, settings) {
+          element.data("object", pid);
+        },
+        success: function (data, status, jqXHR) {
+          if (element.data("object") == pid) {
+            element.html(data);
+          }
+        }
+      });
+    });
+    $("#tei-viewer-annotate").click(function() {
+      window.location = Drupal.settings.basePath + "islandora/object/" + settings.islandoraOpenSeadragon.pid + "/annotation";
+    });
+    $("#tei-viewer-occluded").click(function() {
+      var link = $(this);
+      var page = get_page().text();
+      var params = {
+        "islandora_paged_content_page": page,
+      };
+      if (element.data("object") == settings.islandoraOpenSeadragon.pid) {
+        console.log("Switching to occluded.");
+        $.ajax(settings.basePath + "islandora/object/" + element.data("object") + "/tei_viewer/find_occluded", {
+          statusCode: {
+            404: function () {
+              alert(Drupal.t("An occluded version could not be found for @pid.", {
+                "@pid": element.data("object")
+              }));
+            }
+          },
+          success: function (data, status, jqXHR) {
+            link.addClass("active");
+            Drupal.settings.islandora_paged_tei_seadragon_update_page(
+              data.pid,
+              page
+            );
+            params.occluded = true;
+            history.pushState({}, "", location.pathname + "?" + $.param(params));
+          }
+        });
+      }
+      else {
+        console.log("Switching to unoccluded.");
+        link.removeClass("active");
+        Drupal.settings.islandora_paged_tei_seadragon_update_page(
+          element.data("object"),
+          get_page().text()
+        );
+        history.pushState({}, "", location.pathname + "?" + $.param(params));
+      }
+    });
+  }
+};
+})(jQuery);',
+    'inline'
+  );
+
+  $variables['markup'] = tei_viewer_get_markup(islandora_object_load($variables['page_pid']));
+  $variables['tei_viewer_links'] = array(
+    '#type' => 'markup',
+    array(
+      '#theme' => 'html_tag',
+      '#tag' => 'a',
+      '#value' => t('Annotate'),
+      '#attributes' => array(
+        'id' => 'tei-viewer-annotate',
+        'href' => '#',
+      ),
+    ),
+    array(
+      '#theme' => 'html_tag',
+      '#tag' => 'a',
+      '#value' => t('Occluded Version'),
+      '#attributes' => array(
+        'id' => 'tei-viewer-occluded',
+        'href' => '#',
+      ),
+    ),
+  );
+}
+
+function tei_viewer_process_islandora_paged_tei_seadragon_viewer(&$variables) {
+  $variables['tei'] = $variables['left_pane'] = drupal_render($variables['markup']);
+  $variables['pages_populated'] = TRUE;
+  $variables['clipper'] .= drupal_render($variables['tei_viewer_links']);
+
+  $params = drupal_get_query_parameters();
+
+  if (isset($params['occluded']) && $params['occluded'] == 'true') {
+    $occluded = tei_viewer_lookup_occluded(islandora_object_load($variables['page_pid']));
+    $token = islandora_get_object_token($occluded, 'JP2', 2);
+    $page = islandora_object_load($occluded);
+    $variables['seadragon'] = theme(
+      'islandora_openseadragon_viewer',
+      array(
+        'uri' => url("islandora/object/$occluded/datastream/JP2/view", array(
+          'absolute' => TRUE,
+          'query' => array(
+            'token' => $token,
+          ),
+        )),
+        'fedora_object' => $page,
+      )
+    );
+
+
+    $dsids_to_render = array('PDF', 'JP2', 'TIFF');
+    $download_prefix = t('<strong>Download: </strong>');
+    $datastreams = array();
+    foreach ($dsids_to_render as $key => $dsid) {
+      if (isset($page[$dsid]) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $page[$dsid])) {
+        $size = islandora_datastream_get_human_readable_size($page[$dsid]);
+        $link = l(t("@dsid (@size)", array('@dsid' => $dsid, '@size' => $size)), islandora_datastream_get_url($page[$dsid], 'download'));
+        $datastreams[$dsid] = array(
+          '#markup' => "$download_prefix$link",
+          '#prefix' => '<div id="paged-tei-seadragon-viewer-download-datastream-' . $dsid . '">',
+          '#suffix' => '</div>',
+        );
+      }
+      else {
+        // Prevents some extra calls from JS, this is a heuristic choice.
+        unset($dsids_to_render[$key]);
+      }
+    }
+    $variables['datastreams'] = drupal_render($datastreams);
+  }
+}

@@ -5,7 +5,7 @@
  * Examine XML with wrapped text nodes for inclusion/exclusion.
  */
 
-namespace VersionableObjectViewer;
+namespace TEIViewer;
 use \DOMXPath, \DOMElement;
 
 /**

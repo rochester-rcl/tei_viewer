@@ -1,0 +1,359 @@
+/**
+ * @file
+ * Sass partial to handle TEI display.
+ */
+
+// Size of the text indent.
+$indent:  .5in;
+
+// Size of left and right margins content.
+$margin: 15%;
+
+// Grey used for deleted/damaged/unclear text.
+$grey: #7f7f7f;
+
+// Highlight colour.
+$highlight: yellow;
+
+// Characters used for quotes.
+$single_quote: "'";
+$double_quote: '"';
+
+// Line height.
+// XXX: Could get into trouble here, if the font size is ever changed.
+$line_height_normal: 1.2em;
+// Double line height is needed if you want to render super/sublinear lines.
+$line_height_double: 3em;
+
+.tei {
+  // Reset elements inside our TEI wrapper.
+  @import "compass/reset";
+  // Import the defaults provided from the CWRC-Writer.
+  @import "_tei_elements";
+
+  margin: $margin;
+  margin-top: $indent;
+  margin-bottom: $indent;
+  color: black;
+  .p, p.epigraph {
+    text-indent: $indent * 1;
+  }
+
+  & > div {
+    position: relative;
+    line-height: $line_height_normal;
+    margin-right: auto;
+    margin-left: auto;
+
+    & > div.line-magic {
+      position: relative;
+      z-index: 2;
+      top: 0;
+      .mod, .seg {
+        // XXX: These elements are copied to the end of to maintain the total
+        // "length" of the line... As such, the "in-line" copy here needs to go
+        // away.
+        .class--place--above, .class--place--below {
+          display: none;
+        }
+      }
+      .class--place--above, .class--place--below {
+        visibility: hidden;
+      }
+    }
+    & > div.super-magic {
+      position: absolute;
+      top: -($line_height_double / 3);
+      left: 0;
+      z-index: 1;
+      .class--place--above {
+        visibility: visible;
+      }
+      visibility: hidden;
+      .mod, .seg {
+        // XXX: These elements are copied to the end of to maintain the total
+        // "length" of the line... As such, the "in-line" copy here needs to go
+        // away.
+        .class--place--inline, .class--place--below {
+          display: none;
+        }
+      }
+    }
+    & > div.sub-magic {
+      top:  $line_height_double / 3;
+      left: 0;
+      position: absolute;
+      z-index: 1;
+      .class--place--below {
+        visibility: visible;
+      }
+      visibility: hidden;
+      .mod, .seg {
+        // XXX: These elements are copied to the end of to maintain the total
+        // "length" of the line... As such, the "in-line" copy here needs to go
+        // away.
+        .class--place--inline, .class--place--above {
+          display: none;
+        }
+      }
+    }
+
+    * {
+      visibility: inherit;
+    }
+  }
+
+  // Text styles and alignment.
+  .class--rend--bold {
+    font-weight: bold;
+  }
+  .class--rend--italic {
+    font-style: italic;
+  }
+  .class--rend--underline {
+    text-decoration: underline;
+  }
+  .class--rend--center {
+    text-align: center;
+  }
+  .class--rend--right {
+    text-align: right;
+  }
+  .class--rend--left {
+    text-align: left;
+  }
+  .class--rend--small-caps {
+    font-variant: small-caps;
+  }
+  .class--rend--strikethrough {
+    text-decoration: line-through;
+    color: $grey;
+  }
+  .class--rend--superscript {
+    vertical-align: super;
+    font-size: smaller;
+  }
+  .class--rend--subscript {
+    vertical-align: sub;
+    font-size: smaller;
+  }
+
+  // Quotations.
+  q.class--style--single {
+    &:before, &:after {
+      content: $single_quote;
+    }
+  }
+  q:not(.class--style--single) {
+    &:before, &:after {
+      content: $double_quote;
+    }
+  }
+
+  .unclear, .damage {
+    color: $grey;
+
+    &.class--rend--illegible,
+    &.class--rend--inaudible,
+    &.class--reason--illegible,
+    &.class--reason--inaudible {
+      &:before {
+        content: "<";
+      }
+      &:after {
+        content: ">";
+      }
+    }
+  }
+
+  .label {
+    font-size: larger;
+    margin-top: .5em;
+    text-indent: 0;
+  }
+
+  .hi {
+    background-color: $highlight;
+  }
+
+  @mixin indent($amount) {
+    display: block;
+    text-indent: $indent * $amount;
+  }
+
+  // Indentation.
+  .class--rend--no-indent,
+  .class--rend--no_indent {
+    @include indent(0);
+  }
+  .class--rend--indent1 {
+    @include indent(1);
+  }
+  .class--rend--indent2 {
+    @include indent(2);
+  }
+  .class--rend--indent3 {
+    @include indent(3);
+  }
+  .class--rend--indent4 {
+    @include indent(4);
+  }
+  .listBibl {
+    .bibl {
+      padding-left: $indent;
+      text-indent: -$indent;
+    }
+  }
+
+  .list {
+    list-style-position: inside;
+
+    &.class--type--ordered {
+      list-style-type: decimal;
+    }
+    &.class--type--bulleted {
+      list-style-type: disc;
+    }
+    &.class--type--simple {
+      list-style-type: none;
+    }
+  }
+
+  ul.lg.class--type--stanza > li {
+    text-indent: $indent;
+  }
+
+  @mixin margin_base($direction) {
+    $margin_padding: 0.1;
+    $margin_width: ($margin * 100%) / (100% - (2 * $margin));
+    $margin_offset: -$margin_width * (1 - (1 * $margin_padding));
+
+    @if $direction == left {
+      margin-left: $margin_offset;
+    } @elseif $direction == right {
+      margin-right: $margin_offset;
+    }
+
+    float: $direction;
+    clear: $direction;
+    text-indent: 0;
+    width: $margin_width * (1 - (2 * $margin_padding));
+    word-wrap: break-word;
+  }
+  .class--place--left_margin {
+    @include margin_base(left);
+  }
+  .class--place--right_margin {
+    @include margin_base(right);
+  }
+  .zone.class--type--left_margin {
+    @include margin_base(left);
+  }
+  .zone.class--type--right_margin {
+    @include margin_base(right);
+  }
+
+  *:not(dt) > a.note.class--place--footnote {
+    vertical-align: super;
+    font-size: smaller;
+  }
+
+  footer {
+    border-top: thin solid black;
+    margin-top: 1em;
+    padding-top: 1em;
+    dl {
+      dt {
+        float: left;
+        clear: left;
+      }
+      dd {
+        margin-left: $indent;
+        text-indent: -$indent;
+        float: left;
+        &:before {
+          content: ":";
+          padding-right: .5 * $indent;
+        }
+      }
+    }
+  }
+
+  ul .item {
+    display: list-item;
+  }
+
+  .textimagelink {
+    border-color: #7F00FF;
+  }
+  .persName {
+    border-color: #FF0000;
+  }
+  .placeName {
+    border-color: #009999;
+  }
+  .title {
+    border-color: #debb00;
+  }
+  .orgName {
+    border-color: #3914AF;
+  }
+  .v-viewer-textimagelink, 
+  .v-viewer-person, 
+  .v-viewer-place, 
+  .v-viewer-organization,
+  .v-viewer-title {
+    border-width: 2px;
+    border-bottom-style: dotted;
+  }
+  .v-viewer-textimagelink:not(.overlap-spanning-annotation),
+  .v-viewer-person:not(.overlap-spanning-annotation), 
+  .v-viewer-place:not(.overlap-spanning-annotation), 
+  .v-viewer-organization:not(.overlap-spanning-annotation),
+  .v-viewer-title:not(.overlap-spanning-annotation) {
+    border-bottom-style: solid;
+  }
+ 
+  &.reading {
+    .seg.class--rend--undone, .corr, .reg {
+      color: black;
+      font-style: normal;
+    }
+    /* Only hide inline notes, footnotes are still displayed */
+    div.note {
+      display: none;
+    }
+    .line {
+      display: block;
+    }
+  }
+
+  &:not(.reading) {
+    .seg.class--rend--undone {
+      color: green;
+    }
+    .subst {
+      &:before {
+        content: "(";
+        color: slategrey;
+      }
+      &:after {
+        content: ")";
+        color: slategrey;
+      }
+    }
+    .line {
+      display: block;
+    }
+    .add {
+      display: inline;
+      color: green;
+      text-decoration: underline;
+    }
+    .del {
+      display: inline;
+      color: red;
+      text-decoration: line-through;
+    }
+  }
+}

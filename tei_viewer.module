@@ -38,6 +38,16 @@ function tei_viewer_menu() {
     'access callback' => TRUE,
   );
 
+  $item['islandora/object/%islandora_object/tei_viewer/annotation/add'] = array(
+    'title' => 'Add annotation callback',
+    'page callback' => 'tei_viewer_add_annotation',
+    'page arguments' => array(2),
+    'access callback' => 'islandora_image_annotation_access',
+    'access arguments' => array(ISLANDORA_IMAGE_ANNOTATION_CREATE, 2),
+    'type' => MENU_CALLBACK,
+    'file' => 'includes/annotation.inc',
+  );
+
   return $item;
 }
 
@@ -153,4 +163,36 @@ function tei_viewer_process_islandora_paged_tei_seadragon_viewer(&$variables) {
     }
     $variables['datastreams'] = drupal_render($datastreams);
   }
+}
+
+function tei_viewer_preprocess_islandora_image_annotation(&$variables) {
+  module_load_include('inc', 'tei_viewer', 'includes/utilities');
+  $variables['dialog_box']['#theme'] = 'tei_viewer_image_annotation_dialog';
+  $mod_path = drupal_get_path('module', 'tei_viewer');
+  $variables['list']['#attached']['js']["$mod_path/js/annotation_list.js"] = array(
+    'weight' => 100,
+  );
+  $variables['list']['#attached']['js'][] = array(
+    'type' => 'setting',
+    'data' => array(
+      'teiViewerList' => array(
+        'linklist' => tei_viewer_get_linked_inclusions($variables['object']),
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_theme().
+ */
+function tei_viewer_theme($existing, $type, $theme, $path) {
+  $item = array();
+
+  $item['tei_viewer_image_annotation_dialog'] = array(
+    'template' => 'theme/tei-viewer-image-annotation-dialog',
+    'variables' => array('object' => NULL),
+    'file' => 'theme/theme.inc',
+  );
+
+  return $item;
 }

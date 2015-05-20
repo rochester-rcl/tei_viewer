@@ -1,4 +1,8 @@
 <?php
+/**
+ * @file
+ * Miscellaneous utility functions.
+ */
 
 /**
  * Get markup for the given object as a renderable array.
@@ -118,4 +122,36 @@ function tei_viewer_lookup_occluded(AbstractObject $object) {
     $result = reset($results);
     return $result['PID'];
   }
+}
+
+/**
+ * Map annotation URNs to inclusion URLs.
+ *
+ * @param AbstractObject $object
+ *   The object for which to get annotations.
+ *
+ * @return array
+ *   An associative array mapping annotation URN URIs to Islandora URLs for
+ *   inclusions, if applicable.
+ */
+function tei_viewer_get_linked_inclusions(AbstractObject $object) {
+  module_load_include('inc', 'islandora_image_annotation', 'includes/utils');
+  $settings = islandora_image_annotation_get_settings($object);
+  $annotations = $settings['islandoraImageAnnotationList']['annotations'];
+  $map_to_url = function ($info) {
+    $annotation = islandora_object_load($info['pid']);
+    if ($descriptions = $annotation->relationships->get(FEDORA_RELS_EXT_URI, 'isDescriptionOf')) {
+      $description = reset($descriptions);
+      return url("islandora/object/{$description['object']['value']}");
+    }
+    return FALSE;
+  };
+  $results = array_filter(array_map($map_to_url, $annotations));
+  $map_pid_to_urn = function ($pid) {
+    $annotation = islandora_object_load($pid);
+    $urns = $annotation->relationships->get(ISLANDORA_RELS_EXT_URI, 'hasURN');
+    $urn = reset($urns);
+    return $urn['object']['value'];
+  };
+  return array_combine(array_map($map_pid_to_urn, array_keys($results)), array_values($results));
 }

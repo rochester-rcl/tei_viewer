@@ -30,7 +30,6 @@ Drupal.behaviors.teiViewerTEIUpdate = {
         "islandora_paged_content_page": page,
       };
       if (element.data("object") == settings.islandoraOpenSeadragon.pid) {
-        console.log("Switching to occluded.");
         $.ajax(settings.basePath + "islandora/object/" + element.data("object") + "/tei_viewer/find_occluded", {
           statusCode: {
             404: function () {
@@ -51,7 +50,6 @@ Drupal.behaviors.teiViewerTEIUpdate = {
         });
       }
       else {
-        console.log("Switching to unoccluded.");
         link.removeClass("active");
         Drupal.settings.islandora_paged_tei_seadragon_update_page(
           element.data("object"),

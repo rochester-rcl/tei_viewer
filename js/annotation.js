@@ -33,7 +33,7 @@ Drupal.behaviors.teiViewerAnnotation = {
           },
           success: function (pid) {
             var url = IIAUtils.url('islandora/object/' + settings.pid + '/annotation/get/' + pid);
-            //Drupal.IslandoraImageAnnotation.getInstance().fetchTriples(url);
+            Drupal.IslandoraImageAnnotation.getInstance().fetchTriples(url);
           },
           error: function () {
             console.log('Failed to Create Annotation for: ' + settings.pid);

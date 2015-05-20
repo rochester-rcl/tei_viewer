@@ -12,7 +12,8 @@
  * (so no blocks and the like).
  */
 function tei_viewer_render_and_print($results) {
-  print (is_string($results) || is_int($results)) ? $results : drupal_render($results);
+  $message = (is_string($results) || is_int($results)) ? $results : drupal_render($results);
+  print $message;
 }
 
 /**
@@ -93,7 +94,7 @@ function tei_viewer_preprocess_islandora_paged_tei_seadragon_viewer(&$variables)
   $variables['markup'] = tei_viewer_get_markup(islandora_object_load($variables['page_pid']));
   $variables['tei_viewer_links'] = array(
     '#type' => 'markup',
-    array(
+    'annotate' => array(
       '#theme' => 'html_tag',
       '#tag' => 'a',
       '#value' => t('Annotate'),
@@ -102,7 +103,7 @@ function tei_viewer_preprocess_islandora_paged_tei_seadragon_viewer(&$variables)
         'href' => '#',
       ),
     ),
-    array(
+    'occluded' => array(
       '#theme' => 'html_tag',
       '#tag' => 'a',
       '#value' => t('Occluded Version'),
@@ -120,6 +121,7 @@ function tei_viewer_preprocess_islandora_paged_tei_seadragon_viewer(&$variables)
 function tei_viewer_process_islandora_paged_tei_seadragon_viewer(&$variables) {
   $variables['tei'] = $variables['left_pane'] = drupal_render($variables['markup']);
   $variables['pages_populated'] = TRUE;
+
   $variables['clipper'] .= drupal_render($variables['tei_viewer_links']);
 
   $params = drupal_get_query_parameters();
@@ -141,7 +143,6 @@ function tei_viewer_process_islandora_paged_tei_seadragon_viewer(&$variables) {
         'fedora_object' => $page,
       )
     );
-
 
     $dsids_to_render = array('PDF', 'JP2', 'TIFF');
     $download_prefix = t('<strong>Download: </strong>');
@@ -165,6 +166,9 @@ function tei_viewer_process_islandora_paged_tei_seadragon_viewer(&$variables) {
   }
 }
 
+/**
+ * Preprocess variables for "islandora_image_annotation" templates.
+ */
 function tei_viewer_preprocess_islandora_image_annotation(&$variables) {
   module_load_include('inc', 'tei_viewer', 'includes/utilities');
   $variables['dialog_box']['#theme'] = 'tei_viewer_image_annotation_dialog';

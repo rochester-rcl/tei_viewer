@@ -155,3 +155,47 @@ function tei_viewer_get_linked_inclusions(AbstractObject $object) {
   };
   return array_combine(array_map($map_pid_to_urn, array_keys($results)), array_values($results));
 }
+
+/**
+ * Helper to get inclusions.
+ *
+ * @param AbstractObject $object
+ *   An AbstractObject representing either the occluded or unoccluded image.
+ *
+ * @return array
+ *   An associtive array mapping inclusion PIDs to their labels.
+ */
+function tei_viewer_get_inclusions(AbstractObject $object) {
+  // We need the page in order to get down to the inclusions/occlusions... Let's
+  // find it.
+  $page_cmodel = 'islandora:pageCModel';
+  $page_pid = NULL;
+  if (in_array($page_cmodel, $object->models)) {
+    // The object itself is a page.
+    $page_pid = $object->id;
+  }
+  else {
+    foreach ($object->relationships->get(FEDORA_RELS_EXT_URI, 'isPartOf') as $relationship) {
+      $parent = islandora_object_load($relationship['object']['value']);
+      if (in_array($page_cmodel, $parent->models)) {
+        $page_pid = $parent->id;
+        break;
+      }
+    }
+  }
+
+  if ($page_pid === NULL) {
+    // Failed to find the page... Nothing from which to select.
+    return array();
+  }
+
+  $results = islandora_compound_object_get_parts($page_pid, TRUE);
+  $not_already_an_annotation = function ($info) {
+    $object = islandora_object_load($info['pid']);
+    return !in_array('islandora:OACCModel', $object->models);
+  };
+  $map_to_title = function ($info) {
+    return $info['title'];
+  };
+  return array_map($map_to_title, array_filter($results, $not_already_an_annotation));
+}

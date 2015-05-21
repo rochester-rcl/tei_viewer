@@ -1,0 +1,1041 @@
+/**
+ * Base styles for various TEI elements shared between both Diplomatic / Reading Transcriptions.
+ *
+ * This has largely been lifted from the CWRC-Writer.
+ */
+
+.abbr {
+  display: inline;
+}
+
+.anchor {
+  display: none;
+}
+
+.argument {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.att {
+  display: inline;
+  font-family: sans-serif;
+  color: blue;
+  background-color: inherit;
+}
+
+.att:before {
+  content: "@";
+}
+
+.author {
+  display: inline;
+}
+
+.back {
+  display: block;
+  border: thin solid black;
+  margin-top: 1em;
+  padding: 0.5em;
+}
+
+.bibl {
+  display: inline;
+}
+
+.bibl > .note {
+  display: inline;
+}
+
+.bibl > .title.class--type--subtitle {
+  content: "";
+}
+
+.argument > .bibl, .body > .bibl, .cit > .bibl > .bibl, .div0 > .bibl, .div1 > .bibl, .div2 > .bibl, .div3 > .bibl, .div4 > .bibl, .div5 > .bibl, .div6 > .bibl, .div7 > .bibl, > .bibl, .listBibl > .bibl > .bibl, .taxonomy > .bibl {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.biblFull {
+  display: inline;
+}
+
+.argument > .biblFull, .body > .biblFull, .cit > .biblFull > .biblFull, .div0 > .biblFull, .div1 > .biblFull, .div2 > .biblFull, .div3 > .biblFull, .div4 > .biblFull, .div5 > .biblFull, .div6 > .biblFull, .div7 > .biblFull, > .biblFull, .listBibl > .biblFull > .biblFull, .taxonomy > .biblFull {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.biblScope {
+  display: inline;
+}
+
+.imprint > .biblScope {
+  display: block;
+}
+
+.body {
+  margin-top: 5px;
+  padding: 0px 2em 0px 0px;
+  display: block;
+  counter-reset: div1;
+}
+
+.category {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.catRef {
+  display: none;
+}
+
+.cell {
+  display: table-cell;
+  border: 1px solid rgb(238, 239, 238);
+  padding: 3px;
+  color: inherit;
+  background-color: inherit;
+}
+
+.cell.class--role--label {
+  color: inherit;
+  background-color: rgb(187, 187, 187);
+}
+
+.change {
+  display: block;
+  margin-bottom: 1em;
+  margin-left: 2em;
+}
+
+.cit {
+  display: inline;
+}
+
+.argument > .cit, .body > .cit > .cit, .div0 > .cit, .div1 > .cit, .div2 > .cit, .div3 > .cit, .div4 > .cit, .div5 > .cit, .div6 > .cit, .div7 > .cit, > .cit {
+  display: block;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+
+.classCode {
+  display: block;
+}
+
+.elementSpec, .macroSpec, .classSpec {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.closer {
+  display: block;
+  margin-bottom: 1em;
+  width: 95%;
+}
+
+.code {
+  display: inline;
+  font-family: monospace;
+}
+
+.corr {
+  display: inline;
+  color: green;
+  background-color: inherit;
+}
+
+.creation {
+  display: block;
+}
+
+.date {
+  display: inline;
+}
+
+.change > .date, .publicationStmt > .date {
+  display: block;
+  font-weight: bold;
+}
+
+.dateline {
+  display: inline;
+}
+
+.distributor {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.body > .div {
+  display: block;
+  counter-increment: div1;
+  counter-reset: div2;
+  margin: 0px 0px 1.5em;
+}
+
+.body > .div > .div {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div2;
+  counter-reset: div3;
+}
+
+.body > .div > .div > .div {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div3;
+}
+
+.body > .div.class--type--letter {
+  margin-bottom: 2em ! important;
+}
+
+.div.class--type--poem {
+  counter-reset: line;
+}
+
+.div1 {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div1;
+  counter-reset: div2;
+}
+
+.div2 {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div2;
+  counter-reset: div3;
+}
+
+.div3 {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div3;
+  counter-reset: div4;
+}
+
+.div4 {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div4;
+  counter-reset: div5;
+}
+
+.div5 {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div5;
+  counter-reset: div6;
+}
+
+.div6 {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div6;
+  counter-reset: div7;
+}
+
+.div7 {
+  display: block;
+  margin-bottom: 1em;
+  counter-increment: div7;
+}
+
+.divGen {
+  display: none;
+}
+
+.docAuthor {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.titlePage .docAuthor {
+}
+
+.titlePage .docTitle {
+}
+
+.edition {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.bibl .edition {
+  display: inline;
+}
+
+.editionStmt {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.editor {
+  display: block;
+}
+
+.bibl .editor {
+  display: inline;
+}
+
+.eg {
+  font-family: monospace;
+  padding-top: 3mm;
+  padding-left: 4pt;
+  padding-bottom: 2pt;
+  display: block;
+  margin-top: 12pt;
+  margin-bottom: 12pt;
+  white-space: pre;
+  color: inherit;
+  background-color: rgb(255, 204, 153);
+}
+
+.argument > .eg, .body > .eg, .div > .eg, .div0 > .eg, .div1 > .eg, .div2 > .eg, .div3 > .eg, .div4 > .eg, .div5 > .eg, .div6 > .eg, .div7 > .eg, > .eg {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.emph {
+  display: inline;
+}
+
+.extent {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.bibl .extent {
+  display: inline;
+}
+
+.graphic {
+  color: gray;
+  background-color: inherit;
+  content: "{" attr(url) "}";
+}
+
+.figure {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.foreign {
+  display: inline;
+  font-style: italic;
+}
+
+.formula {
+  display: inline;
+  font-style: italic;
+}
+
+.front {
+  display: block;
+  margin-bottom: 1em;
+  padding: 0.5em;
+}
+
+.funder {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.gap {
+  display: none;
+}
+
+.gap:after {
+  content: "[...]";
+  font-style: italic;
+}
+
+.gi, .tag {
+  display: inline;
+  font-family: sans-serif;
+  color: blue;
+  background-color: inherit;
+}
+
+.tag:before, .gi:before {
+  content: "<";
+}
+
+.tag:after, .gi:after {
+  content: ">";
+}
+
+.gloss {
+  display: inline;
+}
+
+.group {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.body > .div.class--type--poem > .head .author {
+  font-weight: normal;
+}
+
+.body > .div > .div > .head {
+  display: block;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  color: inherit;
+  background-color: rgb(187, 187, 187);
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  margin-top: 11px;
+}
+
+.body > .div > .div > .div > .head {
+  display: block;
+  padding-top: 14px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  color: inherit;
+  background-color: rgb(187, 187, 187);
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+.div .opener .dateline {
+  display: block;
+  text-align: right;
+  width: 95%;
+}
+
+.hi {
+  display: inline;
+}
+
+.hi.class--rend--it {
+  display: inline;
+  font-style: italic;
+}
+
+.hi.class--rend--sc {
+  display: inline;
+  font-variant: small-caps;
+}
+
+.hi.class--rend--sup {
+  display: inline;
+  vertical-align: super;
+  font-size: smaller;
+}
+
+.hi.class--rend--sub {
+  display: inline;
+  vertical-align: sub;
+  font-size: smaller;
+}
+
+.hi.class--rend--ul {
+  display: inline;
+  text-decoration: underline;
+}
+
+.ident {
+  display: inline;
+  font-family: monospace;
+}
+
+.idno {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.bibl .idno {
+  display: inline;
+}
+
+.imprint {
+  display: inline;
+}
+
+.index {
+  display: none;
+}
+
+.interp {
+  display: none;
+}
+
+.interpGrp {
+  display: none;
+}
+
+.list.class--type--gloss .item {
+  display: block;
+  margin-left: 1em;
+}
+
+.list .item {
+  display: list-item;
+  margin-left: 12pt;
+}
+
+.item {
+  display: list-item;
+  margin-left: 12pt;
+}
+
+.item.class--n:before {
+  content: attr(n) ". ";
+  list-style: none outside none;
+}
+
+.change .item {
+  display: block;
+  margin-bottom: 0.5em;
+  margin-left: 1em;
+  margin-top: 0.5em;
+}
+
+.keywords {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.kw {
+  display: inline;
+  font-style: italic;
+}
+
+.Label {
+  display: inline;
+  font-weight: bold;
+  color: rgb(47, 79, 79);
+  background-color: inherit;
+}
+
+.argument > .body > .div > .div0 > .div1 > .div2 > .div3 > .div4 > .div5 > .div6 > .div7 > {
+  display: block;
+  font-weight: bold;
+}
+
+.langUsage {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.lb {
+  display: block;
+}
+
+.lg {
+  counter-reset: line;
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.l {
+  display: block;
+  white-space: nowrap;
+}
+
+.list {
+  display: block;
+  list-style-type: disc;
+  margin-bottom: 1em;
+  margin-left: 2em;
+  margin-top: 1em;
+}
+
+.list.class--rend--runon {
+  display: inline;
+}
+
+.listBibl {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.mentioned {
+  display: inline;
+  font-style: italic;
+}
+
+.milestone {
+  display: none;
+}
+
+.name {
+  display: inline;
+}
+
+.note {
+  display: block;
+  color: rgb(153, 153, 153);
+}
+
+.note:before {
+  content: "note: ";
+  font-variant: small-caps;
+}
+
+.note[data-type]:before {
+  content: attr(data-type) ": ";
+}
+
+.opener .note {
+  display: block;
+  color: rgb(153, 153, 153);
+}
+
+.opener .note:before {
+  content: "";
+  font-variant: normal;
+}
+
+.opener .note.class--type:before {
+  content: "";
+}
+
+.note.class--n:before {
+  content: attr(n) " ";
+  vertical-align: super;
+}
+
+.div .note .persName, .div .note .orgName, .div .note .title, .div .note .placeName {
+  color: rgb(109, 176, 204) ! important;
+}
+
+.notesStmt {
+  display: block;
+}
+
+.num {
+  display: inline;
+}
+
+.opener {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.opener .p {
+  text-align: justify ! important;
+}
+
+.orig {
+  display: inline;
+}
+
+.p {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.pb {
+  display: none;
+}
+
+.pb:after {
+  content: attr(n);
+  font-weight: bold;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  text-align: center;
+}
+
+.div .persName, .div .placeName, .div .orgName, .div .title {
+  color: rgb(51, 102, 153);
+}
+
+.principal {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.ptr {
+  color: navy;
+  text-decoration: underline;
+  background-color: inherit;
+}
+
+.ptr:before {
+  background-color: inherit;
+  color: red;
+  content: "[" attr(target) "]";
+}
+
+.publicationStmt {
+}
+
+.publicationStmt .p {
+  display: block;
+  margin-bottom: 0px;
+}
+
+.publisher {
+  display: inline;
+}
+
+.imprint > .publisher, .publicationStmt > .publisher {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.pubPlace {
+  display: inline;
+}
+
+.imprint > .pubPlace, .publicationStmt > .pubPlace {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.q {
+  display: inline;
+  quotes: "\"" "\"" "\'" "\'";
+  margin: 0em;
+}
+
+.q.class--rend--display, .argument > .q, .body > .q, .cit > .q, .div > .q, .div0 > .q, .div1 > .q, .div2 > .q, .div3 > .q, .div4 > .q, .div5 > .q, .div6 > .q, .div7 > .q > .q {
+  display: block;
+  margin-bottom: 0.5em;
+  margin-left: 3em;
+  margin-right: 3em;
+  quotes: none;
+}
+
+.quote {
+  display: inline;
+  quotes: "\"" "\"" "\'" "\'";
+  margin: 0em;
+}
+
+.quote.class--rend--display, .argument > .quote, .body > .quote, .cit > .quote, .div > .quote, .div0 > .quote, .div1 > .quote, .div2 > .quote, .div3 > .quote, .div4 > .quote, .div5 > .quote, .div6 > .quote, .div7 > .quote > .quote {
+  display: block;
+  margin-bottom: 0.5em;
+  margin-left: 3em;
+  margin-right: 3em;
+  quotes: none;
+}
+
+.ref {
+  display: inline;
+  color: blue;
+  background-color: inherit;
+}
+
+.ref:before {
+  color: gray;
+  background-color: inherit;
+  text-decoration: underline;
+}
+
+.reg {
+  display: inline;
+  font-style: italic;
+}
+
+.rendition {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.resp {
+  display: block;
+}
+
+.respStmt {
+  display: block;
+  margin-left: 1em;
+}
+
+.respStmt > .name:before {
+  content: attr(role) ": ";
+  display: block ! important;
+  font-variant: small-caps;
+}
+
+.bibl .respStmt {
+  display: inline;
+}
+
+.rdg:before {
+  background-color: inherit;
+  content: "[" attr(wit) "]";
+  color: red;
+}
+
+.row {
+  display: table-row;
+}
+
+.row.class--role--label {
+  color: inherit;
+  background-color: rgb(187, 187, 187);
+}
+
+.rs {
+  display: inline;
+}
+
+.s {
+  display: inline;
+}
+
+.salute {
+  display: block;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+.samplingDecl {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.seriesStmt {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.sic {
+  display: inline;
+  color: red;
+  background-color: inherit;
+}
+
+.sic:after {
+  content: " [sic]";
+}
+
+.signed {
+  display: block;
+  text-align: right;
+}
+
+.soCalled {
+  display: inline;
+  font-style: italic;
+  quotes: "\'" "\'";
+}
+
+.soCalled:before {
+  content: open-quote;
+}
+
+.soCalled:after {
+  content: close-quote;
+}
+
+.sp {
+  display: block;
+  margin-bottom: 0.5em;
+  margin-left: 2em;
+}
+
+.div .p {
+  text-align: justify;
+}
+
+.speaker {
+  display: inline;
+}
+
+.sponsor {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.stage {
+  display: inline;
+}
+
+.table {
+  text-align: center;
+  display: table;
+  margin: 1em;
+}
+
+.table > .head {
+  display: table-caption;
+  font-style: italic;
+  margin-bottom: 6pt;
+}
+
+.tagUsage {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.taxonomy {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.term {
+  font-family: sans-serif;
+  color: blue;
+  background-color: inherit;
+  display: inline;
+}
+
+.textClass {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.time {
+  display: inline;
+}
+
+.title {
+  display: inline;
+}
+
+.title.class--type--subtitle {
+  display: block;
+  font-weight: normal;
+}
+
+.title.class--level--m, .title.class--level--j {
+  font-style: italic;
+}
+
+.title.class--level--s {
+  font-style: normal;
+}
+
+.title.class--level--a, .title.class--level--u {
+  font-style: normal;
+}
+
+.title.class--level--a:before, .title.class--level--u:before {
+  content: open-quote;
+}
+
+.title.class--level--a:after, .title.class--level--u:after {
+  content: close-quote;
+}
+
+.seriesStmt > .title, .titleStmt > .title {
+  color: green;
+  font-weight: bold;
+}
+
+.titlePage {
+  display: block;
+  border: thin solid black;
+  margin-bottom: 2em;
+  text-align: center;
+  padding: 1em;
+}
+
+.titlePart {
+  display: block;
+}
+
+.titleStmt {
+  margin-bottom: 1em;
+  color: rgb(51, 51, 51);
+}
+
+.trailer {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.teiHeader {
+  display: block;
+  color: gray;
+  background-color: rgb(251, 242, 234);
+  padding: 0.5em;
+}
+
+.teiHeader .author:before {
+  font-variant: small-caps;
+  content: "author: ";
+}
+
+.teiHeader .editor:before {
+  font-variant: small-caps;
+  content: "editor: ";
+}
+
+.teiHeader .title {
+  color: gray;
+}
+
+.titleStmt > .author {
+  display: block;
+  margin-left: 1em;
+}
+
+.authority {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.availability {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.fileDesc {
+}
+
+.sourceDesc {
+}
+
+.sourceDesc .p {
+  margin: 0px;
+}
+
+.revisionDesc {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.catDesc {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.encodingDesc {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.profileDesc {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.projectDesc {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.docDate {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.docImprint .docDate {
+  display: inline;
+}
+
+.docEdition {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.docImprint {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.docTitle {
+  display: block;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+}

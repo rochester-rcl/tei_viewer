@@ -153,7 +153,9 @@ function tei_viewer_get_linked_inclusions(AbstractObject $object) {
     $urn = reset($urns);
     return $urn['object']['value'];
   };
-  return array_combine(array_map($map_pid_to_urn, array_keys($results)), array_values($results));
+  return $results ?
+    array_combine(array_map($map_pid_to_urn, array_keys($results)), array_values($results)) :
+    array();
 }
 
 /**

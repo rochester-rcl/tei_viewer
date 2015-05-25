@@ -1,15 +1,17 @@
-# MODULE NAME
+# TEI Viewer
 
 ## Introduction
 
-DESCRIPTION
+Hooks into the:
+* `islandora_paged_tei_seadragon` viewer to add links and
+* `islandora_image_annotation` to allow occlusion/inclusion objects to be linked.
 
 ## Requirements
 
 This module requires the following modules/libraries:
 
-* [Islandora](https://github.com/islandora/islandora)
-* [Tuque](https://github.com/islandora/tuque)
+* [Islandora Image Annotation](https://github.com/islandora/islandora_image_annotation)
+* [Islandora Paged TEI Seadragon Viewer](https://github.com/discoverygarden/islandora_paged_tei_seadragon)
 
 ## Installation
 

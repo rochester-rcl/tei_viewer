@@ -22,8 +22,10 @@ Drupal.behaviors.teiViewerTEIUpdate = {
     });
     $("#tei-viewer-annotate").click(function() {
       window.location = Drupal.settings.basePath + "islandora/object/" + settings.islandoraOpenSeadragon.pid + "/annotation";
+      return false;
     });
-    $("#tei-viewer-occluded").click(function() {
+    var $occluded = $("#tei-viewer-occluded");
+    $occluded.click(function() {
       var link = $(this);
       var page = get_page().text();
       var params = {
@@ -38,26 +40,20 @@ Drupal.behaviors.teiViewerTEIUpdate = {
               }));
             }
           },
+          beforeSend: function () {
+            $occluded.after('<div class="ajax-progress ajax-progress-throbber"><div class="throbber">&nbsp;</div></div>');
+          },
           success: function (data, status, jqXHR) {
-            link.addClass("active");
-            Drupal.settings.islandora_paged_tei_seadragon_update_page(
-              data.pid,
-              page
-            );
             params.occluded = true;
-            history.pushState({}, "", location.pathname + "?" + $.param(params));
+            window.location = location.pathname + "?" + $.param(params);
           }
         });
       }
       else {
-        link.removeClass("active");
-        Drupal.settings.islandora_paged_tei_seadragon_update_page(
-          element.data("object"),
-          get_page().text()
-        );
-        history.pushState({}, "", location.pathname + "?" + $.param(params));
+        window.location = location.pathname + "?" + $.param(params);
       }
     });
+    return false;
   }
 };
 })(jQuery);

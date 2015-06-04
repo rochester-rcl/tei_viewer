@@ -38,6 +38,7 @@ Drupal.behaviors.teiViewerTEIUpdate = {
               alert(Drupal.t("An occluded version could not be found for @pid.", {
                 "@pid": element.data("object")
               }));
+              $(".ajax-progress-throbber").remove();
             }
           },
           beforeSend: function () {

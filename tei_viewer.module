@@ -101,6 +101,7 @@ function tei_viewer_preprocess_islandora_paged_tei_seadragon_viewer(&$variables)
       '#attributes' => array(
         'id' => 'tei-viewer-annotate',
         'href' => '#',
+        'title' => t('Annotate'),
       ),
     ),
     'occluded' => array(
@@ -110,6 +111,7 @@ function tei_viewer_preprocess_islandora_paged_tei_seadragon_viewer(&$variables)
       '#attributes' => array(
         'id' => 'tei-viewer-occluded',
         'href' => '#',
+        'title' => t('View Occluded'),
       ),
     ),
   );
@@ -119,15 +121,17 @@ function tei_viewer_preprocess_islandora_paged_tei_seadragon_viewer(&$variables)
  * Implements hook_process_islandora_paged_tei_seadragon_viewer().
  */
 function tei_viewer_process_islandora_paged_tei_seadragon_viewer(&$variables) {
+  drupal_add_css(drupal_get_path('module', 'tei_viewer') . '/css/tei_viewer.css');
   $variables['tei'] = $variables['left_pane'] = drupal_render($variables['markup']);
   $variables['pages_populated'] = TRUE;
-
-  $variables['clipper'] .= drupal_render($variables['tei_viewer_links']);
 
   $params = drupal_get_query_parameters();
 
   if (isset($params['occluded']) && $params['occluded'] == 'true') {
     module_load_include('inc', 'tei_viewer', 'includes/utilities');
+    // Set new title text and class.
+    $variables['tei_viewer_links']['occluded']['#attributes']['class'] = "unoccluded";
+    $variables['tei_viewer_links']['occluded']['#attributes']['title'] = t("View Unoccluded");
     $occluded = tei_viewer_lookup_occluded(islandora_object_load($variables['page_pid']));
     $token = islandora_get_object_token($occluded, 'JP2', 2);
     $page = islandora_object_load($occluded);
@@ -143,7 +147,6 @@ function tei_viewer_process_islandora_paged_tei_seadragon_viewer(&$variables) {
         'fedora_object' => $page,
       )
     );
-
     $dsids_to_render = array('PDF', 'JP2', 'TIFF');
     $download_prefix = t('<strong>Download: </strong>');
     $datastreams = array();
@@ -164,6 +167,7 @@ function tei_viewer_process_islandora_paged_tei_seadragon_viewer(&$variables) {
     }
     $variables['datastreams'] = drupal_render($datastreams);
   }
+  $variables['clipper'] .= drupal_render($variables['tei_viewer_links']);
 }
 
 /**

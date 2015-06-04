@@ -20,11 +20,8 @@ Drupal.behaviors.teiViewerTEIUpdate = {
       old_page_update(pid, page_number);
 
       $.ajax(settings.basePath + "islandora/object/" + pid + "/tei_viewer/markup", {
-        beforeSend: function (jqXHR, settings) {
-          element.data("object", pid);
-        },
         success: function (data, status, jqXHR) {
-          if (element.data("object") == pid) {
+          if (pid == Drupal.settings.islandora_paged_tei_seadragon.current_page) {
             element.html(data);
           }
         }
@@ -35,11 +32,15 @@ Drupal.behaviors.teiViewerTEIUpdate = {
       $.ajax(settings.basePath + "islandora/object/" + pid + "/tei_viewer/find_occluded", {
         statusCode: {
           404: function () {
-            $("#tei-viewer-occluded").hide();
+            if (pid == Drupal.settings.islandora_paged_tei_seadragon.current_page) {
+              $("#tei-viewer-occluded").hide();
+            }
           }
         },
         success: function (data, status, jqXHR) {
-          $("#tei-viewer-occluded").show();
+          if (pid == Drupal.settings.islandora_paged_tei_seadragon.current_page) {
+            $("#tei-viewer-occluded").show();
+          }
         }
       });
     };

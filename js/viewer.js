@@ -19,6 +19,18 @@ Drupal.behaviors.teiViewerTEIUpdate = {
           }
         }
       });
+      // Check if the new page has an occluded object and update the occluded
+      // link display.
+      $.ajax(settings.basePath + "islandora/object/" + pid + "/tei_viewer/find_occluded", {
+        statusCode: {
+          404: function () {
+            $("#tei-viewer-occluded").hide();
+          }
+        },
+        success: function (data, status, jqXHR) {
+          $("#tei-viewer-occluded").show();
+        }
+      });
     });
     $("#tei-viewer-annotate").click(function() {
       window.location = Drupal.settings.basePath + "islandora/object/" + settings.islandoraOpenSeadragon.pid + "/annotation";

@@ -7,19 +7,44 @@ Drupal.behaviors.teiViewerTEIUpdate = {
       return pager.children("option:selected");
     };
     element.data("object", get_page().val());
-    pager.change(function () {
-      var pid = this.value;
+    // Monkey patch Drupal.settings.islandora_paged_tei_seadragon_update_page
+    // to update compound block to ensure we always get the current one.
+    var old_page_update = Drupal.settings.islandora_paged_tei_seadragon_update_page;
+
+    Drupal.settings.islandora_paged_tei_seadragon_update_page = function (pid, page_number) {
+      // Drop out here if we are the most current request.
+      if (pid == Drupal.settings.islandora_paged_tei_seadragon.current_page) {
+        return;
+      }
+
+      old_page_update(pid, page_number);
+
       $.ajax(settings.basePath + "islandora/object/" + pid + "/tei_viewer/markup", {
-        beforeSend: function (jqXHR, settings) {
-          element.data("object", pid);
-        },
         success: function (data, status, jqXHR) {
-          if (element.data("object") == pid) {
+          if (pid == Drupal.settings.islandora_paged_tei_seadragon.current_page) {
             element.html(data);
           }
         }
       });
-    });
+
+      // Check if the new page has an occluded object and update the occluded
+      // link display.
+      $.ajax(settings.basePath + "islandora/object/" + pid + "/tei_viewer/find_occluded", {
+        statusCode: {
+          404: function () {
+            if (pid == Drupal.settings.islandora_paged_tei_seadragon.current_page) {
+              $("#tei-viewer-occluded").hide();
+            }
+          }
+        },
+        success: function (data, status, jqXHR) {
+          if (pid == Drupal.settings.islandora_paged_tei_seadragon.current_page) {
+            $("#tei-viewer-occluded").show();
+          }
+        }
+      });
+    };
+
     $("#tei-viewer-annotate").click(function() {
       window.location = Drupal.settings.basePath + "islandora/object/" + settings.islandoraOpenSeadragon.pid + "/annotation";
       return false;

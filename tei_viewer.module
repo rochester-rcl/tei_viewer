@@ -121,18 +121,24 @@ function tei_viewer_preprocess_islandora_paged_tei_seadragon_viewer(&$variables)
  * Implements hook_process_islandora_paged_tei_seadragon_viewer().
  */
 function tei_viewer_process_islandora_paged_tei_seadragon_viewer(&$variables) {
+  module_load_include('inc', 'tei_viewer', 'includes/utilities');
+  $occluded = tei_viewer_lookup_occluded(islandora_object_load($variables['page_pid']));
+  // If the default page loaded does not have an occluded object associated do
+  // not display the occluded link.
+  if ($occluded === FALSE) {
+    $variables['tei_viewer_links']['occluded']['#attributes']['style'] = "display:none;";
+  }
+
   drupal_add_css(drupal_get_path('module', 'tei_viewer') . '/css/tei_viewer.css');
   $variables['tei'] = $variables['left_pane'] = drupal_render($variables['markup']);
   $variables['pages_populated'] = TRUE;
 
   $params = drupal_get_query_parameters();
 
-  if (isset($params['occluded']) && $params['occluded'] == 'true') {
-    module_load_include('inc', 'tei_viewer', 'includes/utilities');
+  if (isset($params['occluded']) && $params['occluded'] == 'true' && $occluded) {
     // Set new title text and class.
     $variables['tei_viewer_links']['occluded']['#attributes']['class'] = "unoccluded";
     $variables['tei_viewer_links']['occluded']['#attributes']['title'] = t("View Unoccluded");
-    $occluded = tei_viewer_lookup_occluded(islandora_object_load($variables['page_pid']));
     $token = islandora_get_object_token($occluded, 'JP2', 2);
     $page = islandora_object_load($occluded);
     $variables['seadragon'] = theme(

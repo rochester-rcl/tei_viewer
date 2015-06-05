@@ -20,6 +20,9 @@ Drupal.behaviors.teiViewerTEIUpdate = {
       old_page_update(pid, page_number);
 
       $.ajax(settings.basePath + "islandora/object/" + pid + "/tei_viewer/markup", {
+        beforeSend: function (jqXHR, settings) {
+          element.data("object", pid);
+        },
         success: function (data, status, jqXHR) {
           if (pid == Drupal.settings.islandora_paged_tei_seadragon.current_page) {
             element.html(data);
@@ -34,12 +37,20 @@ Drupal.behaviors.teiViewerTEIUpdate = {
           404: function () {
             if (pid == Drupal.settings.islandora_paged_tei_seadragon.current_page) {
               $("#tei-viewer-occluded").hide();
+              // When the page updates the class needs to be removed and the title
+              // needs to be reset.
+              $("#tei-viewer-occluded").removeClass();
+              $("#tei-viewer-occluded").attr('title', Drupal.t('View Occulated'));
             }
           }
         },
         success: function (data, status, jqXHR) {
           if (pid == Drupal.settings.islandora_paged_tei_seadragon.current_page) {
             $("#tei-viewer-occluded").show();
+            // When the page updates the class needs to be removed and the title
+            // needs to be reset.
+            $("#tei-viewer-occluded").removeClass();
+            $("#tei-viewer-occluded").attr('title', Drupal.t('View Occulated'));
           }
         }
       });

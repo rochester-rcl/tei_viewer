@@ -76,6 +76,7 @@ Drupal.behaviors.teiViewerTEIUpdate = {
         });
       }
       else {
+        $occluded.after('<div class="ajax-progress ajax-progress-throbber"><div class="throbber">&nbsp;</div></div>');
         window.location = location.pathname + "?" + $.param(params);
       }
     });

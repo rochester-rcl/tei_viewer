@@ -40,7 +40,7 @@ Drupal.behaviors.teiViewerTEIUpdate = {
               // When the page updates the class needs to be removed and the title
               // needs to be reset.
               $("#tei-viewer-occluded").removeClass();
-              $("#tei-viewer-occluded").attr('title', Drupal.t('View Occulated'));
+              $("#tei-viewer-occluded").attr('title', Drupal.t('View Occluded'));
             }
           }
         },
@@ -50,7 +50,7 @@ Drupal.behaviors.teiViewerTEIUpdate = {
             // When the page updates the class needs to be removed and the title
             // needs to be reset.
             $("#tei-viewer-occluded").removeClass();
-            $("#tei-viewer-occluded").attr('title', Drupal.t('View Occulated'));
+            $("#tei-viewer-occluded").attr('title', Drupal.t('View Occluded'));
           }
         }
       });

@@ -115,6 +115,9 @@ function tei_viewer_preprocess_islandora_paged_tei_seadragon_viewer(&$variables)
       ),
     ),
   );
+  if (isset($variables['button_label'])) {
+    $variables['button_label'] = t('Toggle Text');
+  }
 }
 
 /**

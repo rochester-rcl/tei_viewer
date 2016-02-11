@@ -267,21 +267,5 @@
     </xsl:for-each>
   </xsl:template>
 
-  <!-- Swap out new lines for br tags. -->
-  <xsl:template match="text()" name="nl2br" mode="#all">
-    <xsl:param name="text" select="."/>
-    <xsl:choose>
-      <xsl:when test="not(contains($text, '&#xa;'))">
-        <xsl:copy-of select="$text"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="substring-before($text, '&#xa;')"/>
-        <br/>
-        <xsl:call-template name="nl2br">
-          <xsl:with-param name="text" select="substring-after($text, '&#xa;')"/>
-        </xsl:call-template>
-      </xsl:otherwise>
-    </xsl:choose>
-  </xsl:template>
 
 </xsl:stylesheet>

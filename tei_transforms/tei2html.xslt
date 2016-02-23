@@ -268,12 +268,13 @@
   </xsl:template>
 
   <!-- Swap out brackets inside of caption tags.-->
-  <xsl:template match="/">
-    <xsl:apply-templates>
+
+  <xsl:template match="caption" mode="#all">
+    <xsl:value-of select="translate(., '&#91;&#93;[]&lt;&gt;', '')"/>
   </xsl:template>
 
-  <xsl:template match="caption">
-    <xsl:value-of select="translate(., '&#91;&#93;[]&lt;&gt;', '')"/>
+  <xsl:template match="/" >
+    <xsl:apply-templates mode="#current">
   </xsl:template>
 
 </xsl:stylesheet>

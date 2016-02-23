@@ -269,14 +269,8 @@
 
   <!-- Swap out brackets inside of caption tags.-->
 
-  <xsl:template match="caption" mode="#all">
-    <!-- <xsl:value-of select="translate(., '&#91;&#93;[]', '')"/> -->
-    <!-- <xsl:value-of select="replace(., '&#91;', '')"/> -->
-    <foo>
-  </xsl:template>
-
-  <xsl:template match="/" >
-    <xsl:apply-templates mode="#current">
+  <xsl:template match="tei:caption" mode="#all">
+    <xsl:value-of select="translate(., '&#91;&#93;[]&lt;&gt;', '')"/>
   </xsl:template>
 
 </xsl:stylesheet>

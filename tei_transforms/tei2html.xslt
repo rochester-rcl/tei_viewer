@@ -269,7 +269,8 @@
 
   <!-- Swap out brackets inside of caption tags. -->
     <xsl:template match="caption">
-      <xsl:value-of select="translate( $text, '[]', '')" />
+      <xsl:param name="text" select="."/>
+      <xsl:value-of select="translate($text, '[]', '')"/>
     </xsl:template>
 
 </xsl:stylesheet>

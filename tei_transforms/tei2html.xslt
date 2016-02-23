@@ -270,7 +270,9 @@
   <!-- Swap out brackets inside of caption tags.-->
 
   <xsl:template match="caption" mode="#all">
-    <xsl:value-of select="translate(., '&#91;&#93;[]&lt;&gt;', '')"/>
+    <!-- <xsl:value-of select="translate(., '&#91;&#93;[]', '')"/> -->
+    <xsl:value-of select="replace(., '&#91;', '')"/>
+    
   </xsl:template>
 
   <xsl:template match="/" >

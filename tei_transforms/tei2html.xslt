@@ -271,8 +271,8 @@
 
   <xsl:template match="caption" mode="#all">
     <!-- <xsl:value-of select="translate(., '&#91;&#93;[]', '')"/> -->
-    <xsl:value-of select="replace(., '&#91;', '')"/>
-    
+    <!-- <xsl:value-of select="replace(., '&#91;', '')"/> -->
+    <foo>
   </xsl:template>
 
   <xsl:template match="/" >

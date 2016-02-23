@@ -74,7 +74,6 @@ function tei_viewer_get_markup(AbstractObject $object) {
       //super big hack
       $mods_data = tei_viewer_get_data($object);
       
-      dpm($mods_data);
       $my_data->loadHTML($result->data);
       
       $identifier = "";
@@ -95,9 +94,6 @@ function tei_viewer_get_markup(AbstractObject $object) {
           $atts = $node->attributes;
           $data_when = $atts->getNamedItem("data-when");
           if(!empty($data_when)){
-              dpm($node->textContent);
-              dpm($data_when->textContent);
-              
              $css_class = $atts->getNamedItem("class");
              if(!empty($css_class)){
                  $css_class->value = $css_class->value . " " . $page . " " . $identifier;
@@ -105,18 +101,7 @@ function tei_viewer_get_markup(AbstractObject $object) {
                  $node->setAttribute("class", "");
              }
           }
-          
-          /*
-          foreach($atts as $attribute){ 
-              
-              
-          }*/
       }
-      
-      dpm($my_data->saveHTML());
-      
-      
-      
       
       $markup = $my_data->saveHTML();
     }

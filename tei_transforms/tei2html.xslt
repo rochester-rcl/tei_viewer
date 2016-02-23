@@ -267,10 +267,13 @@
     </xsl:for-each>
   </xsl:template>
 
-  <!-- Swap out brackets inside of caption tags.
-    <xsl:template match="caption">
-      <xsl:param name="text" select="."/>
-      <xsl:value-of select="translate($text, '&#91;&#93;[]', '')"/>
-    </xsl:template>-->
+  <!-- Swap out brackets inside of caption tags.-->
+  <xsl:template match="/">
+    <xsl:apply-templates select="p/caption"/>
+  </xsl:template>
+
+  <xsl:template match="caption">
+    <xsl:value-of select="translate(., '&#91;&#93;[]&lt;&gt;', '')"/>
+  </xsl:template>
 
 </xsl:stylesheet>

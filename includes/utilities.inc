@@ -275,9 +275,7 @@ function tei_viewer_get_data($object) {
 
     $xml = simplexml_load_string($object['MODS']->content);
 
-    $import = importFromXMLString($object['MODS']->content, 'http://www.loc.gov/mods/v3');
-
-
+    $import = tei_viewer_import_from_xml_string($object['MODS']->content, 'http://www.loc.gov/mods/v3');
 
     $xml->registerXPathNamespace('mods', 'http://www.loc.gov/mods/v3');
     $to_string = function($o) {
@@ -306,4 +304,26 @@ function tei_viewer_get_data($object) {
     }
     // Remove empty fields.
     return array_filter($fields);
+}
+
+/**
+ * Creates a new instance of the class by parsing the specifed namespace
+ *
+ * @param string $xml data stream to load
+ * @param namespace information e.g. http://www.loc.gov/mods/v3
+ *
+ * @return key/value pair of xml data or null if the data stream does not exist
+ *
+ */
+function tei_viewer_import_from_xml_string($xml, $namespace) {
+    $dc_doc = new DomDocument();
+    if (!empty($xml) && $dc_doc->loadXML($xml)) {
+        $tags = $dc_doc->getElementsByTagNameNS($namespace, '*');
+        $xml_data = array();
+        foreach ($tags as $child) {
+            $xml_data[$child->nodeName][] = $child->nodeValue;
+        }
+        return $xml_data;
+    }
+    return NULL;
 }

@@ -66,7 +66,12 @@ function tei_viewer_get_markup(AbstractObject $object) {
       $markup = "$saxon_url $result->error";
     }
     else {
-      $markup = $result->data;
+     
+      // don't show errors
+      libxml_use_internal_errors(true);
+      $my_data = new DOMDocument();
+      $my_data->loadHTML($result->data);
+      $markup = $my_data->saveHTML();
     }
   }
 

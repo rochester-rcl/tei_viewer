@@ -269,7 +269,7 @@
 
   <!-- Swap out brackets inside of caption tags.-->
   <xsl:template match="/">
-    <xsl:apply-templates select="p/caption"/>
+    <xsl:apply-templates>
   </xsl:template>
 
   <xsl:template match="caption">

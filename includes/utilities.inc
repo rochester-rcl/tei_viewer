@@ -66,7 +66,44 @@ function tei_viewer_get_markup(AbstractObject $object) {
       $markup = "$saxon_url $result->error";
     }
     else {
-      $markup = $result->data;
+     
+      // don't show errors
+      libxml_use_internal_errors(true);
+      $my_data = new DOMDocument();
+      
+      //super big hack
+      $mods_data = tei_viewer_get_data($object);
+      
+      $my_data->loadHTML($result->data);
+      
+      $identifier = "";
+      $page = "";
+      if(!empty($mods_data)){
+          if(!empty($mods_data["Identifier"]) && !empty($mods_data["Identifier"][0])){
+              $identifier = "diary_" . str_replace( array(" ", "."), "_", $mods_data["Identifier"][0]);
+          }
+          
+          if(!empty($mods_data["Page"]) && !empty($mods_data["Page"][0])){
+              $page = "page_" . str_replace( array(" ", "."), "_", $mods_data["Page"][0]);
+          }
+      }
+              
+      $span_tags = $my_data->getElementsByTagName("span");
+      foreach ($span_tags as $node){
+          
+          $atts = $node->attributes;
+          $data_when = $atts->getNamedItem("data-when");
+          if(!empty($data_when)){
+             $css_class = $atts->getNamedItem("class");
+             if(!empty($css_class)){
+                 $css_class->value = $css_class->value . " " . $page . " " . $identifier;
+             } else {
+                 $node->setAttribute("class", "");
+             }
+          }
+      }
+      
+      $markup = $my_data->saveHTML();
     }
   }
 
@@ -200,4 +237,93 @@ function tei_viewer_get_inclusions(AbstractObject $object) {
     return $info['title'];
   };
   return array_map($map_to_title, array_filter($results, $not_already_an_annotation));
+}
+
+/**
+ * Method to get the mods data if needed
+ *
+ * @param type $object
+ * @return type
+ */
+function tei_viewer_get_data($object) {
+
+    if (!(isset($object['MODS']) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $object['MODS']))) {
+        return array();
+    }
+    $fields = array(
+        'Title' => '//mods:title',
+        'Subtitle' => '//mods:subTitle',
+        'Date' => '//mods:dateCreated | //mods:dateIssued',
+        'Name' => array('//mods:name', 'mods:namePart'),
+        'Abstract' => '//mods:abstract',
+        'Identifier' => '//mods:identifier',
+        'Physical Description' => array('//mods:physicalDescription', 'mods:extent | mods:form | mods:note[not(@*)] | mods:note[@type="physical"] | mods:note[@type="details"] | mods:scale | mods:coordinates'),
+        'Page' => array('//mods:physicalDescription', 'mods:extent'),
+        'Topic' => '/mods:mods/mods:subject/mods:topic',
+        'Continent' => '//mods:continent',
+        'Country' => '//mods:country',
+        'Province' => '//mods:province',
+        'County' => '//mods:county',
+        'Region/Lot' => '//mods:region',
+        'City' => '//mods:city',
+        'City Section' => '//mods:citySection',
+        'Access' => '//mods:accessCondition',
+        'Use and Reproduction' => '//mods:accessCondition[@type="useAndReproduction"]',
+        'Restrictions on Access' => '//mods:accessCondition[@type="restrictionOnAccess"]',
+        'Physical Location' => '//mods:physicalLocation',
+    );
+
+    $xml = simplexml_load_string($object['MODS']->content);
+
+    $import = tei_viewer_import_from_xml_string($object['MODS']->content, 'http://www.loc.gov/mods/v3');
+
+    $xml->registerXPathNamespace('mods', 'http://www.loc.gov/mods/v3');
+    $to_string = function($o) {
+        return (string) $o;
+    };
+    // Query each context node with the given xpath.
+    $query_each_context = function (array $contexts, $xpath) {
+        $query = function(&$context, $key, $xpath) {
+            $context->registerXPathNamespace('mods', 'http://www.loc.gov/mods/v3');
+            $context = $context->xpath($xpath);
+        };
+        // Map values to each context node.
+        array_walk($contexts, $query, $xpath);
+        // Flatten to an array of values.
+        return count($contexts) ? call_user_func_array('array_merge', $contexts) : array();
+    };
+    // Query the given xpath. If the xpath is any array the first value is the
+    // xpath for the context node(s) and the second the path to the value fields.
+    $query = function(SimpleXMLElement $xml, $xpath) use(&$query_each_context) {
+        return is_string($xpath) ? $xml->xpath($xpath) : $query_each_context($xml->xpath($xpath[0]), $xpath[1]);
+    };
+    foreach ($fields as $label => $xpath) {
+        $results = $query($xml, $xpath);
+        // Remove empty values.
+        $fields[$label] = array_filter(array_map($to_string, $results));
+    }
+    // Remove empty fields.
+    return array_filter($fields);
+}
+
+/**
+ * Creates a new instance of the class by parsing the specifed namespace
+ *
+ * @param string $xml data stream to load
+ * @param namespace information e.g. http://www.loc.gov/mods/v3
+ *
+ * @return key/value pair of xml data or null if the data stream does not exist
+ *
+ */
+function tei_viewer_import_from_xml_string($xml, $namespace) {
+    $dc_doc = new DomDocument();
+    if (!empty($xml) && $dc_doc->loadXML($xml)) {
+        $tags = $dc_doc->getElementsByTagNameNS($namespace, '*');
+        $xml_data = array();
+        foreach ($tags as $child) {
+            $xml_data[$child->nodeName][] = $child->nodeValue;
+        }
+        return $xml_data;
+    }
+    return NULL;
 }

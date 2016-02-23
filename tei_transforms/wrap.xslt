@@ -25,6 +25,7 @@
     </xsl:copy>
   </xsl:template>
 
+  <!--
   <xsl:template match="tei:del">
     <xsl:param name="count" select="1"/>
     <xsl:copy>
@@ -33,7 +34,8 @@
         <xsl:with-param name="count" select="$count * -1"/>
       </xsl:apply-templates>
     </xsl:copy>
-  </xsl:template>
+  </xsl:template> 
+ --> 
 
   <xsl:template match="text()">
     <xsl:param name="count" select="1"/>

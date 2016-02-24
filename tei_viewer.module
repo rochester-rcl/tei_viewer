@@ -107,7 +107,7 @@ function tei_viewer_preprocess_islandora_paged_tei_seadragon_viewer(&$variables)
     'occluded' => array(
       '#theme' => 'html_tag',
       '#tag' => 'a',
-      '#value' => t('Occluded Version'),
+      '#value' => t('View Occluded'),
       '#attributes' => array(
         'id' => 'tei-viewer-occluded',
         'href' => '#',
@@ -142,6 +142,7 @@ function tei_viewer_process_islandora_paged_tei_seadragon_viewer(&$variables) {
     // Set new title text and class.
     $variables['tei_viewer_links']['occluded']['#attributes']['class'] = "unoccluded";
     $variables['tei_viewer_links']['occluded']['#attributes']['title'] = t("View Unoccluded");
+    $variables['tei_viewer_links']['occluded']['#value'] = t("View Unoccluded");
     $token = islandora_get_object_token($occluded, 'JP2', 2);
     $page = islandora_object_load($occluded);
     $variables['seadragon'] = theme(

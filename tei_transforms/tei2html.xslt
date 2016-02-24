@@ -57,6 +57,13 @@
     <br/>
   </xsl:template>
 
+  <!-- Swap out brackets inside of caption tags.-->
+
+  <xsl:template match="tei:caption" mode="#all">
+    <xsl:value-of select="translate(., '&#91;&#93;[]&lt;&gt;', '')"/>
+  </xsl:template>
+
+
   <xsl:template match="tei:list[@type='ordered']" mode="#all">
     <ol>
       <xsl:call-template name="element_attributes"/>
@@ -266,6 +273,5 @@
       </xsl:attribute>
     </xsl:for-each>
   </xsl:template>
-
 
 </xsl:stylesheet>

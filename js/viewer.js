@@ -78,7 +78,7 @@ Drupal.behaviors.teiViewerTEIUpdate = {
             }
           },
           beforeSend: function () {
-            $occluded.after('<div class="ajax-progress ajax-progress-throbber"><div class="throbber">&nbsp;</div></div>');
+            $occluded.after('<div class="ajax-progress ajax-progress-throbber"><div class="loader">&nbsp;</div></div>');
           },
           success: function (data, status, jqXHR) {
             params.occluded = true;
@@ -87,7 +87,7 @@ Drupal.behaviors.teiViewerTEIUpdate = {
         });
       }
       else {
-        $occluded.after('<div class="ajax-progress ajax-progress-throbber"><div class="throbber">&nbsp;</div></div>');
+        $occluded.after('<div class="ajax-progress ajax-progress-throbber"><div class="loader">&nbsp;</div></div>');
         window.location = location.pathname + "?" + $.param(params);
       }
     });

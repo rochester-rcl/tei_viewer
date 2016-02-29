@@ -74,7 +74,9 @@ function tei_viewer_get_markup(AbstractObject $object) {
       //super big hack
       $mods_data = tei_viewer_get_data($object);
       
-      $my_data->loadHTML($result->data);
+      
+      
+      $my_data->loadHTML('<?xml encoding="utf-8" ?>' . $result->data);
       
       $identifier = "";
       $page = "";

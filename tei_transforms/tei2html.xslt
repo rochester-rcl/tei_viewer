@@ -70,7 +70,7 @@
   <xsl:template match="tei:persName | tei:placeName | tei:name" mode="#all">
       <a>
            <xsl:call-template name="element_attributes"/>
-           <xsl:if test="(@data-ref)">
+           <xsl:if test="(@ref)">
              <xsl:attribute name="data-toggle">modal</xsl:attribute>
              <xsl:attribute name="data-target">#OgraphyModal</xsl:attribute>
            </xsl:if>

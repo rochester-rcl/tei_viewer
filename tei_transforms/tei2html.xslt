@@ -66,9 +66,10 @@
   <!-- format ography tags as anchors to setup modal dialog boxes  HVN-->
 
   <xsl:template match="tei:persName | tei:placeName | tei:name" mode="#all">
-    <a href="#HModal">
+    <a>
       <xsl:call-template name="element_attributes"/>
-      <xsl:apply-templates mode="#current"/>
+      <xsl:attribute name="data-toggle">modal</xsl:attribute>
+      <xsl:attribute name="data-target">#OgraphyModal</xsl:attribute>
     </a>
   </xsl:template>
 
@@ -195,8 +196,8 @@
   </xsl:template>
 
   <xsl:template match="tei:note[not(@place='footnote')]" mode="#all">
-    
-      <div  class="note"> 
+
+      <div  class="note">
           <xsl:attribute name="data-content">
               <xsl:value-of select="text()"/>
           </xsl:attribute>

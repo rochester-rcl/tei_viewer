@@ -104,16 +104,16 @@ function tei_viewer_get_markup(AbstractObject $object) {
           }
       }
 
-      $a_tags = $my_data->getElementsByTagName("a");
-      foreach ($a_tags as $node){
-          $anchor_atts = $node->attributes;
-          /* Ography Modal setup - 3012016HVN */
-          $data_ref = $atts->getNamedItem("data-ref");
-          if(!empty($data_ref)){
-            $node->setAttribute("data-toggle", "modal");
-            $node->setAttribute("data-target", "#OgraphyModal");
-          }
-      }
+      // $a_tags = $my_data->getElementsByTagName("a");
+      // foreach ($a_tags as $node){
+      //     $anchor_atts = $node->attributes;
+      //     /* Ography Modal setup - 3012016HVN */
+      //     $data_ref = $atts->getNamedItem("data-ref");
+      //     if(!empty($data_ref)){
+      //       $node->setAttribute("data-toggle", "modal");
+      //       $node->setAttribute("data-target", "#OgraphyModal");
+      //     }
+      // }
 
 
       $markup = $my_data->saveHTML();

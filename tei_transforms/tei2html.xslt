@@ -60,7 +60,9 @@
   <!-- Swap out brackets inside of caption tags. HVN-->
 
   <xsl:template match="tei:caption" mode="#all">
+    <div class="caption">
     <xsl:value-of select="translate(., '&#91;&#93;[]&lt;&gt;', '')"/>
+    </div>
   </xsl:template>
 
   <!-- format ography tags as anchors to setup modal dialog boxes  HVN-->

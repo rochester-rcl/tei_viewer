@@ -57,10 +57,19 @@
     <br/>
   </xsl:template>
 
-  <!-- Swap out brackets inside of caption tags.-->
+  <!-- Swap out brackets inside of caption tags. HVN-->
 
   <xsl:template match="tei:caption" mode="#all">
     <xsl:value-of select="translate(., '&#91;&#93;[]&lt;&gt;', '')"/>
+  </xsl:template>
+
+  <!-- format ography tags as anchors to setup modal dialog boxes  HVN-->
+
+  <xsl:template match="tei:persName | tei:placeName | tei:name" mode="#all">
+    <a href="#HModal">
+      <xsl:call-template name="element_attributes"/>
+      <xsl:apply-templates mode="#current"/>
+    </a>
   </xsl:template>
 
 

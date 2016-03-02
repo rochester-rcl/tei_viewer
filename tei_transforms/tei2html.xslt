@@ -66,8 +66,7 @@
   </xsl:template>
 
   <!-- format ography tags as anchors to setup modal dialog boxes  HVN-->
-
-  <xsl:template match="tei:persName | tei:placeName | tei:name" mode="#all">
+  <xsl:template match="tei:persName/@ref | tei:placeName/@ref | tei:name/@ref" mode="#all">
       <a>
            <xsl:call-template name="element_attributes"/>
            <xsl:attribute name="data-toggle">modal</xsl:attribute>

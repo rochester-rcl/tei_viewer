@@ -74,7 +74,8 @@
               <xsl:when test="@ref or @data-ref">
                 <xsl:attribute name="data-toggle">modal</xsl:attribute>
                 <xsl:attribute name="data-target">#OgraphyModal</xsl:attribute>
-              <xsl:otherwise> </xsl:otherwise>  
+              </xsl:when>
+              <xsl:otherwise> </xsl:otherwise>
             </xsl:choose>
            <xsl:apply-templates/>
       </a>

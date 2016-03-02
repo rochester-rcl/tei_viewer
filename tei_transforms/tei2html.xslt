@@ -66,14 +66,11 @@
   <!-- format ography tags as anchors to setup modal dialog boxes  HVN-->
 
   <xsl:template match="tei:persName | tei:placeName | tei:name" mode="#all">
-    <xsl:copy>
       <a>
            <xsl:call-template name="element_attributes"/>
            <xsl:attribute name="data-toggle">modal</xsl:attribute>
            <xsl:attribute name="data-target">#OgraphyModal</xsl:attribute>
       </a>
-      <xsl:apply-templates select="node()|@*"/>
-    </xsl:copy>
   </xsl:template>
 
 

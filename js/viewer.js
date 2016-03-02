@@ -1,4 +1,10 @@
 (function ($) {
+    
+// add popovers to notes    
+$(function() {
+    $('.note').popover();
+});
+    
 Drupal.behaviors.teiViewerTEIUpdate = {
   attach: function (context, settings) {
     var element = $("#paged-tei-seadragon-viewer-tei");
@@ -26,6 +32,7 @@ Drupal.behaviors.teiViewerTEIUpdate = {
         success: function (data, status, jqXHR) {
           if (pid == Drupal.settings.islandora_paged_tei_seadragon.current_page) {
             element.html(data);
+            $('.note').popover();
           }
         }
       });

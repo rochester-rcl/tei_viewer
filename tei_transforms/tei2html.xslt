@@ -194,7 +194,17 @@
     </p>
   </xsl:template>
 
-  <xsl:template match="tei:note[not(@place='footnote')] | tei:epigraph | tei:label" mode="#all">
+  <xsl:template match="tei:note[not(@place='footnote')]" mode="#all">
+    
+      <div  class="note"> 
+          <xsl:attribute name="data-content">
+              <xsl:value-of select="text()"/>
+          </xsl:attribute>
+           <i class="fa fa-file-text"></i>
+      </div>
+  </xsl:template>
+
+  <xsl:template match="tei:epigraph | tei:label" mode="#all">
     <div>
       <xsl:call-template name="element_attributes"/>
       <xsl:apply-imports/>

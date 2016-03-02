@@ -70,6 +70,7 @@
            <xsl:call-template name="element_attributes"/>
            <xsl:attribute name="data-toggle">modal</xsl:attribute>
            <xsl:attribute name="data-target">#OgraphyModal</xsl:attribute>
+           <xsl:apply-templates/>
       </a>
   </xsl:template>
 

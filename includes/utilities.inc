@@ -66,33 +66,32 @@ function tei_viewer_get_markup(AbstractObject $object) {
       $markup = "$saxon_url $result->error";
     }
     else {
-     
+
       // don't show errors
       libxml_use_internal_errors(true);
       $my_data = new DOMDocument();
-      
+
       //super big hack
       $mods_data = tei_viewer_get_data($object);
-      
-      
-      
+
+
+
       $my_data->loadHTML('<?xml encoding="utf-8" ?>' . $result->data);
-      
+
       $identifier = "";
       $page = "";
       if(!empty($mods_data)){
           if(!empty($mods_data["Identifier"]) && !empty($mods_data["Identifier"][0])){
               $identifier = "diary_" . str_replace( array(" ", "."), "_", $mods_data["Identifier"][0]);
           }
-          
+
           if(!empty($mods_data["Page"]) && !empty($mods_data["Page"][0])){
               $page = "page_" . str_replace( array(" ", "."), "_", $mods_data["Page"][0]);
           }
       }
-              
+
       $span_tags = $my_data->getElementsByTagName("span");
       foreach ($span_tags as $node){
-          
           $atts = $node->attributes;
           $data_when = $atts->getNamedItem("data-when");
           if(!empty($data_when)){
@@ -103,8 +102,14 @@ function tei_viewer_get_markup(AbstractObject $object) {
                  $node->setAttribute("class", "");
              }
           }
+          /* Ography Modal setup - 3012016HVN */
+          $data_ref = $atts->getNamedItem("data-ref");
+          if(!empty($data_ref)){
+            $node->setAttribute("data-toggle", "modal");
+            $node->setAttribute("data-target", "#OgraphyModal");
+          }
       }
-      
+
       $markup = $my_data->saveHTML();
     }
   }

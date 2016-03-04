@@ -103,17 +103,7 @@ function tei_viewer_preprocess_islandora_paged_tei_seadragon_viewer(&$variables)
         'href' => '#',
         'title' => t('Annotate'),
       ),
-    ),
-    'occluded' => array(
-      '#theme' => 'html_tag',
-      '#tag' => 'a',
-      '#value' => t('View Occluded'),
-      '#attributes' => array(
-        'id' => 'tei-viewer-occluded',
-        'href' => '#',
-        'title' => t('View Occluded'),
-      ),
-    ),
+    )
   );
   if (isset($variables['button_label'])) {
     $variables['button_label'] = t('Toggle Text');

@@ -67,7 +67,7 @@
 
   <!-- format ography tags as anchors to setup modal dialog boxes  HVN-->
 
-  <xsl:template match="tei:persName | tei:placeName | tei:name" mode="#all">
+  <xsl:template match="tei:persName[not(tei:note)] | tei:placeName | tei:name" mode="#all">
       <a>
            <xsl:call-template name="element_attributes"/>
             <xsl:choose>

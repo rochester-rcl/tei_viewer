@@ -67,7 +67,7 @@
 
   <!-- format ography tags as anchors to setup modal dialog boxes  HVN-->
 
-  <xsl:template match="tei:persName[not(tei:note)] | tei:placeName | tei:name" mode="#all">
+  <xsl:template match="tei:persName | tei:placeName | tei:name" mode="#all">
       <a>
            <xsl:call-template name="element_attributes"/>
             <xsl:choose>
@@ -79,6 +79,14 @@
             </xsl:choose>
            <xsl:apply-templates/>
       </a>
+      <xsl:when test="tei:persName/tei:note | tei:placeName/tei:note | tei:name/tei:note">
+        <!-- do something to move the note element up to sibling of the current ography tag  -->
+        <xsl:copy>
+          <xsl:apply-templates/>
+        </xsl:copy>
+      </xsl:when>
+      <!-- END do something to move the note element up to sibling of the current ography tag  -->
+      <xsl:otherwise> </xsl:otherwise>
   </xsl:template>
 
 

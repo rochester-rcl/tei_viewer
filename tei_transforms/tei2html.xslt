@@ -79,14 +79,12 @@
             </xsl:choose>
            <xsl:apply-templates/>
       </a>
-      <xsl:when test="*/tei:note"> -->
-        <!-- do something to move the note element up to sibling of the current ography tag  -->
+      <!-- <xsl:when test="*/tei:note">
         <xsl:copy>
           <xsl:apply-templates/>
         </xsl:copy>
       </xsl:when>
-      <!-- END do something to move the note element up to sibling of the current ography tag  -->
-      <xsl:otherwise> </xsl:otherwise>
+      <xsl:otherwise> </xsl:otherwise> -->
   </xsl:template>
 
 

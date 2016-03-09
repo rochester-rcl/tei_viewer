@@ -81,10 +81,10 @@
       </a>
       <xsl:when test="tei:persName/tei:note | tei:placeName/tei:note | tei:name/tei:note">
         <!-- do something to move the note element up to sibling of the current ography tag  -->
-        <xsl:copy>
+        <!-- <xsl:copy>
           <xsl:apply-templates/>
         </xsl:copy>
-      </xsl:when>
+      </xsl:when> -->
       <!-- END do something to move the note element up to sibling of the current ography tag  -->
       <xsl:otherwise> </xsl:otherwise>
   </xsl:template>

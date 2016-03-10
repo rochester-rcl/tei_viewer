@@ -162,7 +162,7 @@ function tei_viewer_process_islandora_paged_tei_seadragon_viewer(&$variables) {
 
   if (isset($params['occluded']) && $params['occluded'] == 'true' && $occluded) {
     // Set new title text and class.
-    $variables['tei_viewer_links']['original']['#attributes']['class'] = "active";
+    $variables['tei_viewer_state_links']['original']['#attributes']['class'] = "active";
     $token = islandora_get_object_token($occluded, 'JP2', 2);
     $page = islandora_object_load($occluded);
     $variables['seadragon'] = theme(
@@ -197,7 +197,7 @@ function tei_viewer_process_islandora_paged_tei_seadragon_viewer(&$variables) {
     }
     $variables['datastreams'] = drupal_render($datastreams);
   } else{
-      $variables['tei_viewer_links']['manuscript']['#attributes']['class'] = "active";
+      $variables['tei_viewer_state_links']['manuscript']['#attributes']['class'] = "active";
   }
   
   if($occluded){

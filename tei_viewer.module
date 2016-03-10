@@ -63,14 +63,18 @@ function tei_viewer_find_occluded(AbstractObject $object) {
   $occluded = tei_viewer_lookup_occluded($object);
 
   if ($occluded === FALSE) {
-    return MENU_NOT_FOUND;
-  }
-  else {
     drupal_json_output(array(
+      'found' => false,  
       'url' => url("islandora/object/$occluded"),
       'pid' => $occluded,
     ));
-    drupal_exit();
+  }
+  else {
+    drupal_json_output(array(
+      'found' => true,   
+      'url' => url("islandora/object/$occluded"),
+      'pid' => $occluded,
+    ));
   }
 }
 

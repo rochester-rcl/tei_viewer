@@ -40,24 +40,22 @@ Drupal.behaviors.teiViewerTEIUpdate = {
       // Check if the new page has an occluded object and update the occluded
       // link display.
       $.ajax(settings.basePath + "islandora/object/" + pid + "/tei_viewer/find_occluded", {
-        statusCode: {
-          404: function () {
-            if (pid == Drupal.settings.islandora_paged_tei_seadragon.current_page) {
-              $("#tei-viewer-occluded").hide();
-              // When the page updates the class needs to be removed and the title
-              // needs to be reset.
-              $("#tei-viewer-occluded").removeClass();
-              $("#tei-viewer-occluded").attr('title', Drupal.t('View Occluded'));
-            }
-          }
-        },
         success: function (data, status, jqXHR) {
           if (pid == Drupal.settings.islandora_paged_tei_seadragon.current_page) {
-            $("#tei-viewer-occluded").show();
-            // When the page updates the class needs to be removed and the title
-            // needs to be reset.
-            $("#tei-viewer-occluded").removeClass();
-            $("#tei-viewer-occluded").attr('title', Drupal.t('View Occluded'));
+            if(data.found == true){
+                $("#tei-viewer-occluded").show();
+                
+                // When the page updates the class needs to be removed and the title
+                // needs to be reset.
+                $("#tei-viewer-occluded").removeClass();
+                $("#tei-viewer-occluded").attr('title', Drupal.t('View Occluded'));
+            } else {
+                $("#tei-viewer-occluded").hide();
+                // When the page updates the class needs to be removed and the title
+                // needs to be reset.
+                $("#tei-viewer-occluded").removeClass();
+                $("#tei-viewer-occluded").attr('title', Drupal.t('View Occluded'));
+            }              
           }
         }
       });

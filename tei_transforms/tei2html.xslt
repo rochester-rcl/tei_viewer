@@ -79,6 +79,12 @@
             </xsl:choose>
            <xsl:apply-templates/>
       </a>
+      <!-- <xsl:when test="*/tei:note">
+        <xsl:copy>
+          <xsl:apply-templates/>
+        </xsl:copy>
+      </xsl:when>
+      <xsl:otherwise> </xsl:otherwise> -->
   </xsl:template>
 
 

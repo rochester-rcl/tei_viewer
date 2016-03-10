@@ -103,6 +103,28 @@ function tei_viewer_preprocess_islandora_paged_tei_seadragon_viewer(&$variables)
         'href' => '#',
         'title' => t('Annotate'),
       ),
+    ),
+    'original' => array(
+      '#theme' => 'html_tag',
+      '#tag' => 'a',
+      '#value' => t('Original'),
+      '#prefix' => '<div class="tei-viewer-original-manuscript">',
+      '#attributes' => array(
+        'id' => 'tei-viewer-original',
+        'href' => '#',
+        'title' => t('Original'),
+      ),
+    ),
+    'manuscript' => array(
+      '#theme' => 'html_tag',
+      '#tag' => 'a',
+      '#value' => t('Manuscript'),
+      '#suffix' => '</div>',
+      '#attributes' => array(
+        'id' => 'tei-viewer-manuscript',
+        'href' => '#',
+        'title' => t('Manuscript'),
+      ),
     )
   );
   if (isset($variables['button_label'])) {
@@ -130,9 +152,7 @@ function tei_viewer_process_islandora_paged_tei_seadragon_viewer(&$variables) {
 
   if (isset($params['occluded']) && $params['occluded'] == 'true' && $occluded) {
     // Set new title text and class.
-    $variables['tei_viewer_links']['occluded']['#attributes']['class'] = "unoccluded";
-    $variables['tei_viewer_links']['occluded']['#attributes']['title'] = t("View Unoccluded");
-    $variables['tei_viewer_links']['occluded']['#value'] = t("View Unoccluded");
+    $variables['tei_viewer_links']['original']['#attributes']['class'] = "active";
     $token = islandora_get_object_token($occluded, 'JP2', 2);
     $page = islandora_object_load($occluded);
     $variables['seadragon'] = theme(
@@ -166,6 +186,8 @@ function tei_viewer_process_islandora_paged_tei_seadragon_viewer(&$variables) {
       }
     }
     $variables['datastreams'] = drupal_render($datastreams);
+  } else{
+      $variables['tei_viewer_links']['manuscript']['#attributes']['class'] = "active";
   }
   $variables['clipper'] .= drupal_render($variables['tei_viewer_links']);
 }

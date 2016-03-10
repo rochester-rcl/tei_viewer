@@ -103,7 +103,16 @@ function tei_viewer_preprocess_islandora_paged_tei_seadragon_viewer(&$variables)
         'href' => '#',
         'title' => t('Annotate'),
       ),
-    ),
+    )
+  );
+  
+  $variables['tei_viewer_original_only'] = array(
+      '#type' => 'markup',
+      '#markup' => '<div class="tei-viewer-original-only">'. t('Original Only') . '</div>'
+  );
+  
+  $variables['tei_viewer_state_links'] = array(
+    '#type' => 'markup',
     'original' => array(
       '#theme' => 'html_tag',
       '#tag' => 'a',
@@ -127,6 +136,7 @@ function tei_viewer_preprocess_islandora_paged_tei_seadragon_viewer(&$variables)
       ),
     )
   );
+  
   if (isset($variables['button_label'])) {
     $variables['button_label'] = t('Toggle Text');
   }
@@ -189,7 +199,13 @@ function tei_viewer_process_islandora_paged_tei_seadragon_viewer(&$variables) {
   } else{
       $variables['tei_viewer_links']['manuscript']['#attributes']['class'] = "active";
   }
-  $variables['clipper'] .= drupal_render($variables['tei_viewer_links']);
+  
+  if($occluded){
+      $variables['clipper'] .= drupal_render($variables['tei_viewer_links']) . drupal_render($variables['tei_viewer_state_links']);
+  } else {
+      $variables['clipper'] .= drupal_render($variables['tei_viewer_links']) . drupal_render($variables['tei_viewer_original_only']);
+  }
+  
 }
 
 /**

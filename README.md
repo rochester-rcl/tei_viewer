@@ -6,6 +6,10 @@ Hooks into the:
 * `islandora_paged_tei_seadragon` viewer to add links and
 * `islandora_image_annotation` to allow occlusion/inclusion objects to be linked.
 
+
+Overrides the islandora_paged_tei_sedragon viewer update_page.js to allow
+occlusion/inclusion state to be set
+
 ## Requirements
 
 This module requires the following modules/libraries:

@@ -14,8 +14,11 @@
                 return pager.children("option:selected");
             };
             element.data("object", get_page().val());
+            
             // Monkey patch Drupal.settings.islandora_paged_tei_seadragon_update_page
             // to update compound block to ensure we always get the current one.
+            // 
+            // This overrides the existing islandora_paged_tei_seadragon_update_page
             var old_page_update = Drupal.settings.islandora_paged_tei_seadragon_update_page;
 
             Drupal.settings.islandora_paged_tei_seadragon_update_page = function (pid, page_number) {

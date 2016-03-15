@@ -110,10 +110,6 @@ function tei_viewer_preprocess_islandora_paged_tei_seadragon_viewer(&$variables)
     )
   );
   
-  $variables['tei_viewer_original_only'] = array(
-      '#type' => 'markup',
-      '#markup' => '<div class="tei-viewer-original-only">'. t('Original Only') . '</div>'
-  );
   
   $variables['tei_viewer_state_links'] = array(
     '#type' => 'markup',
@@ -126,6 +122,16 @@ function tei_viewer_preprocess_islandora_paged_tei_seadragon_viewer(&$variables)
         'id' => 'tei-viewer-original',
         'href' => '#',
         'title' => t('Original'),
+      ),
+    ),
+    'original-only' => array(
+      '#theme' => 'html_tag',
+      '#tag' => 'a',
+      '#value' => t('Original Only'),
+      '#attributes' => array(
+        'id' => 'tei-viewer-original-only',
+        'href' => '#',
+        'title' => t('Original Only'),
       ),
     ),
     'manuscript' => array(
@@ -165,6 +171,7 @@ function tei_viewer_process_islandora_paged_tei_seadragon_viewer(&$variables) {
   $params = drupal_get_query_parameters();
 
   if (isset($params['occluded']) && $params['occluded'] == 'true' && $occluded) {
+    $variables['tei_viewer_state_links']['original-only']['#attributes']['class'] = "hidden";
     // Set new title text and class.
     $variables['tei_viewer_state_links']['original']['#attributes']['class'] = "active";
     $token = islandora_get_object_token($occluded, 'JP2', 2);
@@ -201,14 +208,17 @@ function tei_viewer_process_islandora_paged_tei_seadragon_viewer(&$variables) {
     }
     $variables['datastreams'] = drupal_render($datastreams);
   } else{
-      $variables['tei_viewer_state_links']['manuscript']['#attributes']['class'] = "active";
+      if($occluded){
+           $variables['tei_viewer_state_links']['manuscript']['#attributes']['class'] = "active";
+           $variables['tei_viewer_state_links']['original-only']['#attributes']['class'] = "hidden";
+      } else {
+          $variables['tei_viewer_state_links']['manuscript']['#attributes']['class'] = "hidden";
+          $variables['tei_viewer_state_links']['original']['#attributes']['class'] = "hidden";
+      }
+      
   }
   
-  if($occluded){
-      $variables['clipper'] .= drupal_render($variables['tei_viewer_links']) . drupal_render($variables['tei_viewer_state_links']);
-  } else {
-      $variables['clipper'] .= drupal_render($variables['tei_viewer_links']) . drupal_render($variables['tei_viewer_original_only']);
-  }
+  $variables['clipper'] .= drupal_render($variables['tei_viewer_links']) . drupal_render($variables['tei_viewer_state_links']);
   
 }
 

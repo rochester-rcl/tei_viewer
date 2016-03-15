@@ -102,6 +102,10 @@
         },
         _handleNewPage: function (pid, contentPid, page_number, settings, viewOccluded, hasOccluded) {
 
+            // Drop out here if we are the most current request.
+            if (contentPid !== Drupal.settings.islandora_paged_tei_seadragon.current_page) {
+                return;
+            }
 
             // Update current URL.
             // @todo preserve query params here.
@@ -129,14 +133,23 @@
                 $("#tei-viewer-manuscript").addClass("hidden");
             }
 
+            // Update current page to prevent race conditions.
+            Drupal.settings.islandora_paged_tei_seadragon.current_page = contentPid;
             $.ajax(settings.basePath + "islandora/object/" + contentPid + "/tei_viewer/markup", {
                 success: function (data, status, jqXHR) {
+                    // Drop out here if we are not the most current request.
+                    if (contentPid !== Drupal.settings.islandora_paged_tei_seadragon.current_page) {
+                        return;
+                    }
+                    var element = $("#paged-tei-seadragon-viewer-tei");
+                    element.html(data);
                     $('.note').popover();
                 }
             });
+            
+            
             history.pushState({}, "", location.pathname + "?" + $.param(params));
-            // Update current page to prevent race conditions.
-            Drupal.settings.islandora_paged_tei_seadragon.current_page = contentPid;
+            
 
             // Update page rendering.
             $.ajax({
@@ -173,7 +186,7 @@
                             cache: false,
                             success: function (datastream_info) {
                                 // Drop out here if we are not the most current request.
-                                if (pid !== Drupal.settings.islandora_paged_tei_seadragon.current_page) {
+                                if (contentPid !== Drupal.settings.islandora_paged_tei_seadragon.current_page) {
                                     return;
                                 }
                                 var kilobyte = 1024;

@@ -20,14 +20,11 @@
 
             Drupal.settings.islandora_paged_tei_seadragon_update_page = function (pid, page_number) {
 
-                console.log("pid = " + pid);
-                console.log("current page = " + Drupal.settings.islandora_paged_tei_seadragon.current_page);
                 // Drop out here if we are the most current request.
                 if (pid === Drupal.settings.islandora_paged_tei_seadragon.current_page) {
                     return;
                 }
 
-                console.log("keep going");
                 Drupal.settings.islandora_paged_tei_seadragon.current_page = pid;
 
                 //old_page_update(pid, page_number);
@@ -55,7 +52,6 @@
                 // link display.
                 $.ajax(settings.basePath + "islandora/object/" + pid + "/tei_viewer/find_occluded", {
                     success: function (data, status, jqXHR) {
-                        console.log("success");
                         var imagePid = pid;
                         if (data.found && viewOccluded) {
                             imagePid = data.pid;
@@ -106,11 +102,6 @@
         },
         _handleNewPage: function (pid, contentPid, page_number, settings, viewOccluded, hasOccluded) {
 
-            console.log("success pid = ", pid);
-            console.log("content pid = ", contentPid);
-            console.log("page number = ", page_number);
-            console.log("settings = ", settings);
-            console.log("viewOccluded", viewOccluded);
 
             // Update current URL.
             // @todo preserve query params here.

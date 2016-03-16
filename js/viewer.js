@@ -14,7 +14,7 @@
                 return pager.children("option:selected");
             };
             element.data("object", get_page().val());
-            
+
             // Monkey patch Drupal.settings.islandora_paged_tei_seadragon_update_page
             // to update compound block to ensure we always get the current one.
             // 
@@ -100,6 +100,23 @@
                 }
             });
 
+            $(document).keydown(function (e) {
+                switch (e.which) {
+                    case 37: // left
+                        $("#islandora-paged-tei-seadragon-navigate-left").trigger("click");
+                        break;
+
+
+                    case 39: // right
+                        $("#islandora-paged-tei-seadragon-navigate-right").trigger("click");
+                        break;
+
+                    default:
+                        return; // exit this handler for other keys
+                }
+                e.preventDefault(); // prevent the default action (scroll / move caret)
+            });
+
 
             return false;
         },
@@ -149,10 +166,10 @@
                     $('.note').popover();
                 }
             });
-            
-            
+
+
             history.pushState({}, "", location.pathname + "?" + $.param(params));
-            
+
 
             // Update page rendering.
             $.ajax({

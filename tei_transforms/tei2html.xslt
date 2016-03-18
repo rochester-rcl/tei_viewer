@@ -211,11 +211,14 @@
 
   <xsl:template match="tei:note[not(@place='footnote')]" mode="#all">
 
-      <div  class="note">
+      <div class="note">
           <xsl:attribute name="data-content">
               <xsl:value-of select="text()"/>
           </xsl:attribute>
-           <i class="fa fa-file-text"></i>
+          
+           
+          <i class="fa fa-file-text"></i>
+           
       </div>
   </xsl:template>
 

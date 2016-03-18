@@ -1,10 +1,5 @@
 (function ($) {
 
-// add popovers to notes    
-    $(function () {
-        $('.note').popover();
-    });
-
     Drupal.behaviors.teiViewerTEIUpdate = {
         attach: function (context, settings) {
             var self = this;
@@ -14,6 +9,17 @@
                 return pager.children("option:selected");
             };
             element.data("object", get_page().val());
+
+            $('.note').popover({trigger: 'manual'});
+            $(document).on('click', function (e) {
+                $(".note").popover('hide');
+            });
+            $(".note").click(function () {
+                console.log("click");
+                $(".note").popover('toggle');
+                return false;
+            });
+
 
             // Monkey patch Drupal.settings.islandora_paged_tei_seadragon_update_page
             // to update compound block to ensure we always get the current one.
@@ -163,7 +169,16 @@
                     }
                     var element = $("#paged-tei-seadragon-viewer-tei");
                     element.html(data);
-                    $('.note').popover();
+
+                    // handle the popover manually
+                    $('.note').popover({trigger: 'manual'});
+                    $(document).on('click', function (e) {
+                        $(".note").popover('hide');
+                    });
+                    $(".note").click(function () {
+                        $(".note").popover('toggle');
+                        return false;
+                    });
                 }
             });
 

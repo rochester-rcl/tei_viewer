@@ -15,10 +15,14 @@
                 $(".note").popover('hide');
             });
             $(".note").click(function () {
-                console.log("click");
                 $(".note").popover('toggle');
                 return false;
             });
+            
+            $("#paged-tei-seadragon-viewer-tei").scroll(function() {
+                $(".popover").fadeOut( 100);
+                $(".note").popover('hide');
+}           );
 
 
             // Monkey patch Drupal.settings.islandora_paged_tei_seadragon_update_page
@@ -179,6 +183,13 @@
                         $(".note").popover('toggle');
                         return false;
                     });
+                    
+                    $("#paged-tei-seadragon-viewer-tei").scroll(function() {
+                        $(".popover").fadeOut( 100);
+                        $(".note").popover('hide');
+}                   );
+                    
+                    
                 }
             });
 

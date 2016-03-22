@@ -15,14 +15,21 @@
                 $(".note").popover('hide');
             });
             $(".note").click(function () {
-                $(".note").popover('toggle');
+                var self = this;
+                $.each($(".note"), function (index, element) {
+                    if (element !== self) {
+                        $(element).popover('hide');
+                    } else {
+                        $(self).popover('toggle');
+                    }
+                });
                 return false;
             });
-            
-            $("#paged-tei-seadragon-viewer-tei").scroll(function() {
-                $(".popover").fadeOut( 100);
+
+            $("#paged-tei-seadragon-viewer-tei").scroll(function () {
+                $(".popover").fadeOut(100);
                 $(".note").popover('hide');
-}           );
+            });
 
 
             // Monkey patch Drupal.settings.islandora_paged_tei_seadragon_update_page
@@ -180,16 +187,23 @@
                         $(".note").popover('hide');
                     });
                     $(".note").click(function () {
-                        $(".note").popover('toggle');
+                        var self = this;
+                        $.each($(".note"), function (index, element) {
+                            if (element !== self) {
+                                $(element).popover('hide');
+                            } else {
+                                $(self).popover('toggle');
+                            }
+                        });
                         return false;
                     });
-                    
-                    $("#paged-tei-seadragon-viewer-tei").scroll(function() {
-                        $(".popover").fadeOut( 100);
+
+                    $("#paged-tei-seadragon-viewer-tei").scroll(function () {
+                        $(".popover").fadeOut(100);
                         $(".note").popover('hide');
-}                   );
-                    
-                    
+                    });
+
+
                 }
             });
 

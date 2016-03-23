@@ -31,6 +31,12 @@
                 $(".note").popover('hide');
             });
 
+            if ($(".no-markup").length > 0) {
+                $("#yourButton").hide();
+            } else {
+                $("#yourButton").show();
+            }
+
 
             // Monkey patch Drupal.settings.islandora_paged_tei_seadragon_update_page
             // to update compound block to ensure we always get the current one.
@@ -181,6 +187,12 @@
                     var element = $("#paged-tei-seadragon-viewer-tei");
                     element.html(data);
 
+                    if ($(".no-markup").length > 0) {
+                        $("#yourButton").hide();
+                    } else {
+                        $("#yourButton").show();
+                    }
+
                     // handle the popover manually
                     $('.note').popover({trigger: 'manual'});
                     $(document).on('click', function (e) {
@@ -261,16 +273,16 @@
                                     size = bytes + ' B';
                                 }
                                 else if ((bytes >= kilobyte) && (bytes < megabyte)) {
-                                    size = Math.round(bytes / kilobyte * 100)/100 + ' KiB';
+                                    size = Math.round(bytes / kilobyte * 100) / 100 + ' KiB';
                                 }
                                 else if ((bytes >= megabyte) && (bytes < gigabyte)) {
-                                    size = Math.round(bytes / megabyte * 100)/100 + ' MiB';
+                                    size = Math.round(bytes / megabyte * 100) / 100 + ' MiB';
                                 }
                                 else if ((bytes >= gigabyte) && (bytes < terabyte)) {
-                                    size = Math.round(bytes / gigabyte * 100)/100 + ' GiB';
+                                    size = Math.round(bytes / gigabyte * 100) / 100 + ' GiB';
                                 }
                                 else if (bytes >= terabyte) {
-                                    size = Math.round(bytes / terabyte * 100)/100 + ' TiB';
+                                    size = Math.round(bytes / terabyte * 100) / 100 + ' TiB';
                                 }
                                 else {
                                     size = bytes + ' B';

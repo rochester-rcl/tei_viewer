@@ -261,23 +261,23 @@
                                     size = bytes + ' B';
                                 }
                                 else if ((bytes >= kilobyte) && (bytes < megabyte)) {
-                                    size = Math.round(bytes / kilobyte) + ' KiB';
+                                    size = Math.round(bytes / kilobyte * 100)/100 + ' KiB';
                                 }
                                 else if ((bytes >= megabyte) && (bytes < gigabyte)) {
-                                    size = Math.round(bytes / megabyte) + ' MiB';
+                                    size = Math.round(bytes / megabyte * 100)/100 + ' MiB';
                                 }
                                 else if ((bytes >= gigabyte) && (bytes < terabyte)) {
-                                    size = Math.round(bytes / gigabyte) + ' GiB';
+                                    size = Math.round(bytes / gigabyte * 100)/100 + ' GiB';
                                 }
                                 else if (bytes >= terabyte) {
-                                    size = Math.round(bytes / terabyte) + ' TiB';
+                                    size = Math.round(bytes / terabyte * 100)/100 + ' TiB';
                                 }
                                 else {
                                     size = bytes + ' B';
                                 }
                                 download = "<div>" + Drupal.settings.islandora_paged_tei_seadragon.download_prefix
                                         + "<a href=" + Drupal.settings.basePath + "islandora/object/"
-                                        + pid + "/datastream/" + datastream_info.dsid + "/download" + ">" + datastream_info.dsid + " (" + size + ")" + "</a></div>";
+                                        + pid + "/datastream/" + datastream_info.dsid + "/download" + ">" + datastream_info.dsid + "<span> " + size + " </span>" + "</a></div>";
                                 $("#paged-tei-seadragon-viewer-download-datastream-" + datastream_info.dsid).html(download);
                             }
                         });

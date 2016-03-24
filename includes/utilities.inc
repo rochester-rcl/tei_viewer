@@ -146,7 +146,7 @@ function tei_viewer_get_markup(AbstractObject $object) {
     ),
     '#type' => 'item',
     '#title' => $object->label,
-    '#markup' => isset($markup) ? $markup : '<div class="no-markup">' . t('No markup available.') . "</div>",
+    '#markup' => isset($markup) ? $markup : '<div class="no-markup">' . t('No Transcript Available') . "</div>",
   );
 }
 

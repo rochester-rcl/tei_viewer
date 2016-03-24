@@ -118,8 +118,14 @@ function tei_viewer_get_markup(AbstractObject $object) {
 
       $markup = $my_data->saveHTML();
     }
+  } else  if (isset($object['OCR'])) {
+         $markup = '<div class="tei reading"><div class="line-magic"><span class="text"><span class="body">' . 
+                 $object['OCR']->content . '</span></span></div></div>';
+  } else if (isset($object['HOCR'])) {
+          $markup = '<div class="tei reading"><div class="line-magic"><span class="text"><span class="body">' . 
+                  $object['HOCR']->content . '</span></span></div></div>';
   }
-
+  
   return array(
     '#attached' => array(
       'css' => array(

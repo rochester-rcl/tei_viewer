@@ -86,7 +86,6 @@ function tei_viewer_theme_registry_alter(&$theme_registry) {
     if (isset($theme_registry['islandora_paged_tei_seadragon_viewer'])) {
         $theme_registry['islandora_paged_tei_seadragon_viewer']['template'] = $module_path . '/theme/islandora-paged-tei-seadragon-viewer';
     }
-     dpm($theme_registry);
 }
 
 /**

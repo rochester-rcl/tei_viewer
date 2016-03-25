@@ -12,44 +12,44 @@
  * (so no blocks and the like).
  */
 function tei_viewer_render_and_print($results) {
-  $message = (is_string($results) || is_int($results)) ? $results : drupal_render($results);
-  print $message;
+    $message = (is_string($results) || is_int($results)) ? $results : drupal_render($results);
+    print $message;
 }
 
 /**
  * Implements hook_menu().
  */
 function tei_viewer_menu() {
-  $item = array();
+    $item = array();
 
-  $item['islandora/object/%islandora_object/tei_viewer/markup'] = array(
-    'title' => 'TEI Viewer Markup Callback',
-    'page callback' => 'tei_viewer_get_markup',
-    'page arguments' => array(2),
-    'delivery callback' => 'tei_viewer_render_and_print',
-    'access callback' => TRUE,
-    'type' => MENU_CALLBACK,
-    'file' => 'includes/utilities.inc',
-  );
+    $item['islandora/object/%islandora_object/tei_viewer/markup'] = array(
+        'title' => 'TEI Viewer Markup Callback',
+        'page callback' => 'tei_viewer_get_markup',
+        'page arguments' => array(2),
+        'delivery callback' => 'tei_viewer_render_and_print',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+        'file' => 'includes/utilities.inc',
+    );
 
-  $item['islandora/object/%islandora_object/tei_viewer/find_occluded'] = array(
-    'title' => 'Get the URI of the occluded page version',
-    'page callback' => 'tei_viewer_find_occluded',
-    'page arguments' => array(2),
-    'access callback' => TRUE,
-  );
+    $item['islandora/object/%islandora_object/tei_viewer/find_occluded'] = array(
+        'title' => 'Get the URI of the occluded page version',
+        'page callback' => 'tei_viewer_find_occluded',
+        'page arguments' => array(2),
+        'access callback' => TRUE,
+    );
 
-  $item['islandora/object/%islandora_object/tei_viewer/annotation/add'] = array(
-    'title' => 'Add annotation callback',
-    'page callback' => 'tei_viewer_add_annotation',
-    'page arguments' => array(2),
-    'access callback' => 'islandora_image_annotation_access',
-    'access arguments' => array(ISLANDORA_IMAGE_ANNOTATION_CREATE, 2),
-    'type' => MENU_CALLBACK,
-    'file' => 'includes/annotation.inc',
-  );
+    $item['islandora/object/%islandora_object/tei_viewer/annotation/add'] = array(
+        'title' => 'Add annotation callback',
+        'page callback' => 'tei_viewer_add_annotation',
+        'page arguments' => array(2),
+        'access callback' => 'islandora_image_annotation_access',
+        'access arguments' => array(ISLANDORA_IMAGE_ANNOTATION_CREATE, 2),
+        'type' => MENU_CALLBACK,
+        'file' => 'includes/annotation.inc',
+    );
 
-  return $item;
+    return $item;
 }
 
 /**
@@ -59,200 +59,246 @@ function tei_viewer_menu() {
  *   The object for which to check for an occluded version.
  */
 function tei_viewer_find_occluded(AbstractObject $object) {
-  module_load_include('inc', 'tei_viewer', 'includes/utilities');
-  $occluded = tei_viewer_lookup_occluded($object);
+    module_load_include('inc', 'tei_viewer', 'includes/utilities');
+    $occluded = tei_viewer_lookup_occluded($object);
 
-  if ($occluded === FALSE) {
-    drupal_json_output(array(
-      'found' => false,  
-      'url' => url("islandora/object/$occluded"),
-      'pid' => $occluded,
-    ));
-  }
-  else {
-    drupal_json_output(array(
-      'found' => true,   
-      'url' => url("islandora/object/$occluded"),
-      'pid' => $occluded,
-    ));
-  }
+    if ($occluded === FALSE) {
+        drupal_json_output(array(
+            'found' => false,
+            'url' => url("islandora/object/$occluded"),
+            'pid' => $occluded,
+        ));
+    } else {
+        drupal_json_output(array(
+            'found' => true,
+            'url' => url("islandora/object/$occluded"),
+            'pid' => $occluded,
+        ));
+    }
+}
+
+/**
+ * modify the theme registry to use the rochester template
+ */
+function tei_viewer_theme_registry_alter(&$theme_registry) {
+   
+    $module_path = drupal_get_path('module', 'tei_viewer');
+    if (isset($theme_registry['islandora_paged_tei_seadragon_viewer'])) {
+        $theme_registry['islandora_paged_tei_seadragon_viewer']['template'] = $module_path . '/theme/islandora-paged-tei-seadragon-viewer';
+    }
+     dpm($theme_registry);
 }
 
 /**
  * Implements hook_preprocess_islandora_paged_tei_seadragon_viewer().
  */
 function tei_viewer_preprocess_islandora_paged_tei_seadragon_viewer(&$variables) {
-  module_load_include('inc', 'tei_viewer', 'includes/utilities');
+    module_load_include('inc', 'tei_viewer', 'includes/utilities');
 
-  $mod_path = drupal_get_path('module', 'tei_viewer');
-  drupal_add_js(
-    array(
-      'islandora_paged_tei_tei' => array(
-        'populated_tei' => TRUE,
-      ),
-    ),
-    'setting'
-  );
-  drupal_add_js("$mod_path/js/viewer.js");
+    $mod_path = drupal_get_path('module', 'tei_viewer');
+    drupal_add_js(
+            array(
+        'islandora_paged_tei_tei' => array(
+            'populated_tei' => TRUE,
+        ),
+            ), 'setting'
+    );
+    drupal_add_js("$mod_path/js/viewer.js");
 
-  $variables['markup'] = tei_viewer_get_markup(islandora_object_load($variables['page_pid']));
-  $variables['tei_viewer_links'] = array(
-    '#type' => 'markup',
-    'annotate' => array(
-      '#theme' => 'html_tag',
-      '#tag' => 'a',
-      '#value' => t('Annotate'),
-      '#attributes' => array(
-        'id' => 'tei-viewer-annotate',
-        'href' => '#',
-        'title' => t('Annotate'),
-      ),
-    )
-  );
-  
-  
-  $variables['tei_viewer_state_links'] = array(
-    '#type' => 'markup',
-    'original' => array(
-      '#theme' => 'html_tag',
-      '#tag' => 'a',
-      '#value' => t('Original'),
-      '#prefix' => '<div class="tei-viewer-original-manuscript">',
-      '#attributes' => array(
-        'id' => 'tei-viewer-original',
-        'href' => '#',
-        'title' => t('Original'),
-      ),
-    ),
-    'original-only' => array(
-      '#theme' => 'html_tag',
-      '#tag' => 'a',
-      '#value' => t('Original Only'),
-      '#attributes' => array(
-        'id' => 'tei-viewer-original-only',
-        'href' => '#',
-        'title' => t('Original Only'),
-      ),
-    ),
-    'manuscript' => array(
-      '#theme' => 'html_tag',
-      '#tag' => 'a',
-      '#value' => t('Manuscript'),
-      '#suffix' => '</div>',
-      '#attributes' => array(
-        'id' => 'tei-viewer-manuscript',
-        'href' => '#',
-        'title' => t('Manuscript'),
-      ),
-    )
-  );
-  
-  if (isset($variables['button_label'])) {
-    $variables['button_label'] = t('Toggle Text');
-  }
+    $variables['markup'] = tei_viewer_get_markup(islandora_object_load($variables['page_pid']));
+    $variables['tei_viewer_links'] = array(
+        '#type' => 'markup',
+        'annotate' => array(
+            '#theme' => 'html_tag',
+            '#tag' => 'a',
+            '#value' => t('Annotate'),
+            '#attributes' => array(
+                'id' => 'tei-viewer-annotate',
+                'href' => '#',
+                'title' => t('Annotate'),
+            ),
+        )
+    );
+
+    $page_pid = $variables['page_pid'];
+
+    $options = array();
+    $page_number_options = array();
+    foreach ($variables['pages'] as $pid => $page_info) {
+        $aPage = islandora_object_load($pid);
+        $mods_data = get_data($aPage);
+        $page = $page_info['page']; // just in case there is no page number
+        if (array_key_exists('Page', $mods_data)) {
+            if (array_key_exists(0, $mods_data['Page'])) {
+                $page = trim(str_replace("p.", "", $mods_data['Page'][0]));
+            }
+        }
+        $options[$pid] = $page;
+        $page_number_options[$pid] = $page_info['page']; 
+    }
+
+    $pager_variables = array(
+        '#options' => $options,
+        '#attributes' => array('id' => array('islandora_paged_tei_seadragon_pager')),
+        '#value' => $page_pid,
+    );
+    
+    //this is a hidden select tha has all the real page numbers
+    $hidden_pager_variables = array(
+        '#options' => $page_number_options,
+        '#attributes' => array('id' => array('hidden_paged_tei_seadragon_pager')),
+        '#value' => $page_pid,
+    );
+    
+    $variables['pager'] = '<strong>' . t('Page:') . ' </strong>' . t('!page_selector of @total', array(
+                '!page_selector' => theme('select', array('element' => $pager_variables)),
+                '@total' => count($variables['pages']),
+    ));
+    
+    $variables['hidden_pager'] = '<strong>' . t('Page2:') . ' </strong>' . t('!page_selector of @total', array(
+      '!page_selector' => theme('select', array('element' => $hidden_pager_variables)),
+      '@total' => count($variables['pages']),
+    ));
+
+
+    $variables['tei_viewer_state_links'] = array(
+        '#type' => 'markup',
+        'original' => array(
+            '#theme' => 'html_tag',
+            '#tag' => 'a',
+            '#value' => t('Original'),
+            '#prefix' => '<div class="tei-viewer-original-manuscript">',
+            '#attributes' => array(
+                'id' => 'tei-viewer-original',
+                'href' => '#',
+                'title' => t('Original'),
+            ),
+        ),
+        'original-only' => array(
+            '#theme' => 'html_tag',
+            '#tag' => 'a',
+            '#value' => t('Original Only'),
+            '#attributes' => array(
+                'id' => 'tei-viewer-original-only',
+                'href' => '#',
+                'title' => t('Original Only'),
+            ),
+        ),
+        'manuscript' => array(
+            '#theme' => 'html_tag',
+            '#tag' => 'a',
+            '#value' => t('Manuscript'),
+            '#suffix' => '</div>',
+            '#attributes' => array(
+                'id' => 'tei-viewer-manuscript',
+                'href' => '#',
+                'title' => t('Manuscript'),
+            ),
+        )
+    );
+
+    if (isset($variables['button_label'])) {
+        $variables['button_label'] = t('Toggle Text');
+    }
 }
 
 /**
  * Implements hook_process_islandora_paged_tei_seadragon_viewer().
  */
 function tei_viewer_process_islandora_paged_tei_seadragon_viewer(&$variables) {
-  module_load_include('inc', 'tei_viewer', 'includes/utilities');
-  $occluded = tei_viewer_lookup_occluded(islandora_object_load($variables['page_pid']));
-  // If the default page loaded does not have an occluded object associated do
-  // not display the occluded link.
-  if ($occluded === FALSE) {
-    $variables['tei_viewer_links']['occluded']['#attributes']['style'] = "display:none;";
-  }
-
-  drupal_add_css(drupal_get_path('module', 'tei_viewer') . '/css/tei_viewer.css');
-  $variables['tei'] = $variables['left_pane'] = drupal_render($variables['markup']);
-  $variables['pages_populated'] = TRUE;
-
-  $params = drupal_get_query_parameters();
-
-  if (isset($params['occluded']) && $params['occluded'] == 'true' && $occluded) {
-    $variables['tei_viewer_state_links']['original-only']['#attributes']['class'] = "hidden";
-    // Set new title text and class.
-    $variables['tei_viewer_state_links']['original']['#attributes']['class'] = "active";
-    $token = islandora_get_object_token($occluded, 'JP2', 2);
-    $page = islandora_object_load($occluded);
-    $variables['seadragon'] = theme(
-      'islandora_openseadragon_viewer',
-      array(
-        'uri' => url("islandora/object/$occluded/datastream/JP2/view", array(
-          'absolute' => TRUE,
-          'query' => array(
-            'token' => $token,
-          ),
-        )),
-        'fedora_object' => $page,
-      )
-    );
-    $dsids_to_render = array('PDF', 'JP2', 'TIFF');
-    $download_prefix = t('<strong>Download: </strong>');
-    $datastreams = array();
-    foreach ($dsids_to_render as $key => $dsid) {
-      if (isset($page[$dsid]) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $page[$dsid])) {
-        $size = islandora_datastream_get_human_readable_size($page[$dsid]);
-        $link = l(t("@dsid (@size)", array('@dsid' => $dsid, '@size' => $size)), islandora_datastream_get_url($page[$dsid], 'download'));
-        $datastreams[$dsid] = array(
-          '#markup' => "$download_prefix$link",
-          '#prefix' => '<div id="paged-tei-seadragon-viewer-download-datastream-' . $dsid . '">',
-          '#suffix' => '</div>',
-        );
-      }
-      else {
-        // Prevents some extra calls from JS, this is a heuristic choice.
-        unset($dsids_to_render[$key]);
-      }
+    module_load_include('inc', 'tei_viewer', 'includes/utilities');
+    $occluded = tei_viewer_lookup_occluded(islandora_object_load($variables['page_pid']));
+    // If the default page loaded does not have an occluded object associated do
+    // not display the occluded link.
+    if ($occluded === FALSE) {
+        $variables['tei_viewer_links']['occluded']['#attributes']['style'] = "display:none;";
     }
-    $variables['datastreams'] = drupal_render($datastreams);
-  } else{
-      if($occluded){
-           $variables['tei_viewer_state_links']['manuscript']['#attributes']['class'] = "active";
-           $variables['tei_viewer_state_links']['original-only']['#attributes']['class'] = "hidden";
-      } else {
-          $variables['tei_viewer_state_links']['manuscript']['#attributes']['class'] = "hidden";
-          $variables['tei_viewer_state_links']['original']['#attributes']['class'] = "hidden";
-      }
-      
-  }
-  
-  $variables['clipper'] .= drupal_render($variables['tei_viewer_links']) . drupal_render($variables['tei_viewer_state_links']);
-  
+
+    drupal_add_css(drupal_get_path('module', 'tei_viewer') . '/css/tei_viewer.css');
+    $variables['tei'] = $variables['left_pane'] = drupal_render($variables['markup']);
+    $variables['pages_populated'] = TRUE;
+
+    $params = drupal_get_query_parameters();
+
+    if (isset($params['occluded']) && $params['occluded'] == 'true' && $occluded) {
+        $variables['tei_viewer_state_links']['original-only']['#attributes']['class'] = "hidden";
+        // Set new title text and class.
+        $variables['tei_viewer_state_links']['original']['#attributes']['class'] = "active";
+        $token = islandora_get_object_token($occluded, 'JP2', 2);
+        $page = islandora_object_load($occluded);
+        $variables['seadragon'] = theme(
+                'islandora_openseadragon_viewer', array(
+            'uri' => url("islandora/object/$occluded/datastream/JP2/view", array(
+                'absolute' => TRUE,
+                'query' => array(
+                    'token' => $token,
+                ),
+            )),
+            'fedora_object' => $page,
+                )
+        );
+        $dsids_to_render = array('PDF', 'JP2', 'TIFF');
+        $download_prefix = t('<strong>Download: </strong>');
+        $datastreams = array();
+        foreach ($dsids_to_render as $key => $dsid) {
+            if (isset($page[$dsid]) && islandora_datastream_access(ISLANDORA_VIEW_OBJECTS, $page[$dsid])) {
+                $size = islandora_datastream_get_human_readable_size($page[$dsid]);
+                $link = l(t("@dsid (@size)", array('@dsid' => $dsid, '@size' => $size)), islandora_datastream_get_url($page[$dsid], 'download'));
+                $datastreams[$dsid] = array(
+                    '#markup' => "$download_prefix$link",
+                    '#prefix' => '<div id="paged-tei-seadragon-viewer-download-datastream-' . $dsid . '">',
+                    '#suffix' => '</div>',
+                );
+            } else {
+                // Prevents some extra calls from JS, this is a heuristic choice.
+                unset($dsids_to_render[$key]);
+            }
+        }
+        $variables['datastreams'] = drupal_render($datastreams);
+    } else {
+        if ($occluded) {
+            $variables['tei_viewer_state_links']['manuscript']['#attributes']['class'] = "active";
+            $variables['tei_viewer_state_links']['original-only']['#attributes']['class'] = "hidden";
+        } else {
+            $variables['tei_viewer_state_links']['manuscript']['#attributes']['class'] = "hidden";
+            $variables['tei_viewer_state_links']['original']['#attributes']['class'] = "hidden";
+        }
+    }
+
+    $variables['clipper'] .= drupal_render($variables['tei_viewer_links']) . drupal_render($variables['tei_viewer_state_links']);
 }
 
 /**
  * Preprocess variables for "islandora_image_annotation" templates.
  */
 function tei_viewer_preprocess_islandora_image_annotation(&$variables) {
-  module_load_include('inc', 'tei_viewer', 'includes/utilities');
-  $variables['dialog_box']['#theme'] = 'tei_viewer_image_annotation_dialog';
-  $mod_path = drupal_get_path('module', 'tei_viewer');
-  $variables['list']['#attached']['js']["$mod_path/js/annotation_list.js"] = array(
-    'weight' => 100,
-  );
-  $variables['list']['#attached']['js'][] = array(
-    'type' => 'setting',
-    'data' => array(
-      'teiViewerList' => array(
-        'linklist' => tei_viewer_get_linked_inclusions($variables['object']),
-      ),
-    ),
-  );
+    module_load_include('inc', 'tei_viewer', 'includes/utilities');
+    $variables['dialog_box']['#theme'] = 'tei_viewer_image_annotation_dialog';
+    $mod_path = drupal_get_path('module', 'tei_viewer');
+    $variables['list']['#attached']['js']["$mod_path/js/annotation_list.js"] = array(
+        'weight' => 100,
+    );
+    $variables['list']['#attached']['js'][] = array(
+        'type' => 'setting',
+        'data' => array(
+            'teiViewerList' => array(
+                'linklist' => tei_viewer_get_linked_inclusions($variables['object']),
+            ),
+        ),
+    );
 }
 
 /**
  * Implements hook_theme().
  */
 function tei_viewer_theme($existing, $type, $theme, $path) {
-  $item = array();
+    $item = array();
 
-  $item['tei_viewer_image_annotation_dialog'] = array(
-    'template' => 'theme/tei-viewer-image-annotation-dialog',
-    'variables' => array('object' => NULL),
-    'file' => 'theme/theme.inc',
-  );
+    $item['tei_viewer_image_annotation_dialog'] = array(
+        'template' => 'theme/tei-viewer-image-annotation-dialog',
+        'variables' => array('object' => NULL),
+        'file' => 'theme/theme.inc',
+    );
 
-  return $item;
+    return $item;
 }

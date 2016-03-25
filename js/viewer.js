@@ -5,10 +5,16 @@
             var self = this;
             var element = $("#paged-tei-seadragon-viewer-tei");
             var pager = $("#islandora_paged_tei_seadragon_pager");
-            var get_page = function () {
-                return pager.children("option:selected");
+            var get_pid = function () {
+                return pager.children("option:selected").val();
             };
-            element.data("object", get_page().val());
+            
+            
+            var get_url_page_number = function (pid) {
+                return $("#hidden_paged_tei_seadragon_pager option[value='" + pid + "']" ).text();
+            };
+            
+            element.data("object", get_url_page_number(get_pid()));
 
             $('.note').popover({trigger: 'manual'});
             $(document).on('click', function (e) {
@@ -46,6 +52,7 @@
 
             Drupal.settings.islandora_paged_tei_seadragon_update_page = function (pid, page_number) {
 
+                page_number = get_url_page_number(pid);           
                 // Drop out here if we are the most current request.
                 if (pid === Drupal.settings.islandora_paged_tei_seadragon.current_page) {
                     return;
@@ -96,7 +103,7 @@
             });
 
             $("#tei-viewer-original").click(function () {
-                var page = get_page().text();
+                var page = get_url_page_number(get_pid());
                 var params = {
                     "islandora_paged_content_page": page,
                     "occluded": true
@@ -110,7 +117,7 @@
             });
 
             $("#tei-viewer-manuscript").click(function () {
-                var page = get_page().text();
+                var page = get_url_page_number(get_pid());
                 var params = {
                     "islandora_paged_content_page": page
                 };

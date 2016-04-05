@@ -50,6 +50,16 @@
     </span>
   </xsl:template>
 
+  <!-- To print out: <span class=“gap”>[illegible]</span> -->
+  <xsl:template match=“gap”>
+    <span>
+      <xsl:attribute name=“class” select=“‘gap’”/>
+      <xsl:text>[</xsl:text>
+      <xsl:value-of select=“@reason”>
+      <xsl:text>[</xsl:text>
+    </span>
+  </xsl:template>
+
   <!-- Delete things which are not from TEI. -->
   <xsl:template match="*[not(self::tei:*)]" mode="#all"/>
 
@@ -215,10 +225,10 @@
           <xsl:attribute name="data-content">
               <xsl:value-of select="text()"/>
           </xsl:attribute>
-          
-           
+
+
           <i class="fa fa-file-text"></i>
-           
+
       </div>
   </xsl:template>
 

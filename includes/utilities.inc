@@ -74,8 +74,6 @@ function tei_viewer_get_markup(AbstractObject $object) {
       //super big hack
       $mods_data = tei_viewer_get_data($object);
 
-
-
       $my_data->loadHTML('<?xml encoding="utf-8" ?>' . $result->data);
 
       $identifier = "";
@@ -294,8 +292,6 @@ function tei_viewer_get_data($object) {
 
     $xml = simplexml_load_string($object['MODS']->content);
 
-    $import = tei_viewer_import_from_xml_string($object['MODS']->content, 'http://www.loc.gov/mods/v3');
-
     $xml->registerXPathNamespace('mods', 'http://www.loc.gov/mods/v3');
     $to_string = function($o) {
         return (string) $o;
@@ -324,6 +320,100 @@ function tei_viewer_get_data($object) {
     // Remove empty fields.
     return array_filter($fields);
 }
+
+/**
+ * Method to get the mods data if needed
+ *
+ * @param type $object
+ * @return type
+ */
+function tei_viewer_get_pages($object) {
+    $pageInfo = array();
+    if ((isset($object['PN']))) {
+        $xml = simplexml_load_string($object['PN']->content);
+
+        $query = '/pages/page';
+        $results = $xml->xpath($query);
+
+        foreach ($results as $result) {
+            $pageInfo[(string)$result->pid] = (string)$result->pageNumber;
+        }
+    } 
+    return $pageInfo;
+}
+
+function tei_viewer_build_pages_file(AbstractObject $object) {
+    
+    
+    module_load_include('inc', 'islandora_paged_content', 'includes/utilities');
+    module_load_include('inc', 'islandora', 'includes/solution_packs');
+    module_load_include('inc', 'islandora', 'includes/metadata');
+ 
+    
+    // don't write the file if it doesn't exist
+    if (isset($object['PN'])) {
+        return("Page numbers already exist for object " . $object->id);
+    } 
+    
+    //create an empty file
+    $tempfile_object = file_save_data("", file_default_scheme() . '://');
+    
+    $wrapper= file_stream_wrapper_get_instance_by_uri(file_default_scheme() . '://');
+    $file = $wrapper->realpath() . '/' . $tempfile_object->filename;
+   
+    //build an xml document for the paging structure
+    $xml = new DOMDocument();
+    
+    $xml_pages = $xml->createElement("pages"); 
+    $pages = islandora_paged_content_get_pages($object);
+    $page_keys = array_keys($pages);
+    foreach ($page_keys as $index => $pid) {
+        $xml_page = $xml->createElement("page"); 
+        $aPage = islandora_object_load($pid);
+        $mods_data = get_data($aPage);
+        $page = $index; // just in case there is no page number
+        if (array_key_exists('Page', $mods_data)) {
+            if (array_key_exists(0, $mods_data['Page'])) {
+                $page = trim(str_replace("p.", "", $mods_data['Page'][0]));
+            }
+        }
+        
+        $xml_page_number = $xml->createElement("pageNumber", $page);
+        $xml_page->appendChild($xml_page_number);
+        $xml_pid = $xml->createElement("pid", $pid);
+        $xml_page->appendChild($xml_pid);
+        
+        $xml_pages->appendChild($xml_page);
+        
+    }
+  
+    $xml->appendChild($xml_pages);
+    $xml->save($file);
+    $ds = $object->constructDatastream("PN", 'M');
+    $ds->label = "page numbers";
+    $ds->mimetype = "text/xml";
+    $ds->setContentFromFile($file);
+    $return = $object->ingestDatastream($ds);
+    
+    return ("Page Numbers rebuilt for " . $object->id );
+    
+    /*
+    // This is for downloads
+    drupal_add_http_header('Pragma', 'public');
+    drupal_add_http_header('Expires', '0');
+    drupal_add_http_header('Cache-Control', 'must-revalidate, post-check=0, pre-check=0');
+    drupal_add_http_header('Content-Type', 'text/plain');
+    drupal_add_http_header('Content-Disposition', 'attachment; filename=' . basename($file) . '.xml;');
+    drupal_add_http_header('Content-Transfer-Encoding', 'binary');
+    drupal_add_http_header('Content-Length', filesize($file));
+    readfile($file);
+    unlink($file);
+    //return "file downloading";
+    drupal_exit();*/
+    
+ 
+}
+
 
 /**
  * Creates a new instance of the class by parsing the specifed namespace

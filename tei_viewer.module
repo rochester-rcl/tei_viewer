@@ -125,7 +125,7 @@ function tei_viewer_preprocess_islandora_paged_tei_seadragon_viewer(&$variables)
     $page_number_options = array();
     foreach ($variables['pages'] as $pid => $page_info) {
         $aPage = islandora_object_load($pid);
-        $mods_data = get_data($aPage);
+        $mods_data = tei_viewer_get_data($aPage);
         $page = $page_info['page']; // just in case there is no page number
         if (array_key_exists('Page', $mods_data)) {
             if (array_key_exists(0, $mods_data['Page'])) {

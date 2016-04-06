@@ -58,6 +58,7 @@
       <xsl:value-of select=“@reason”>
       <xsl:text>[</xsl:text>
     </span>
+    <xsl:apply-templates/>
   </xsl:template>
 
   <!-- Delete things which are not from TEI. -->
@@ -228,7 +229,7 @@
           <i class="fa fa-sticky-note-o"></i>
       </div>
   </xsl:template>
-  
+
   <xsl:template match="*" mode="note">
     <xsl:value-of select ="name(.)"/> : <xsl:apply-templates/>
   </xsl:template>

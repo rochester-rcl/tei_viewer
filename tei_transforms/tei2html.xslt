@@ -225,6 +225,10 @@
           <xsl:attribute name="data-content">
               <xsl:value-of select="text()"/>
           </xsl:attribute>
+          
+          <xsl:attribute name="title">
+              Editorial Note
+          </xsl:attribute>
 
 
           <i class="fa fa-sticky-note-o"></i>

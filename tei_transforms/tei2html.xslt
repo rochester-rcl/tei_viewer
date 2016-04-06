@@ -219,17 +219,18 @@
     </p>
   </xsl:template>
 
-  <xsl:template match="tei:note[not(@place='footnote')]" mode="#all">
-
+   <xsl:template match="tei:note[not(@place='footnote')]" mode="#all">
       <div class="note">
           <xsl:attribute name="data-content">
-              <xsl:value-of select="text()"/>
+              <xsl:apply-templates mode="note"/>
           </xsl:attribute>
-
-
+          <xsl:attribute name="title">Editorial Note</xsl:attribute>
           <i class="fa fa-sticky-note-o"></i>
-
       </div>
+  </xsl:template>
+  
+  <xsl:template match="*" mode="note">
+    <xsl:value-of select ="name(.)"/> : <xsl:apply-templates/>
   </xsl:template>
 
   <xsl:template match="tei:epigraph | tei:label" mode="#all">

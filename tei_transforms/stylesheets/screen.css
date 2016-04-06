@@ -407,15 +407,7 @@
   display: block;
   margin-bottom: 0.5em;
 }
-/* line 345, ../sass/_tei_elements.scss */
-.tei .gap {
-  display: none;
-}
-/* line 349, ../sass/_tei_elements.scss */
-.tei .gap:after {
-  content: "[...]";
-  font-style: italic;
-}
+
 /* line 354, ../sass/_tei_elements.scss */
 .tei .gi, .tei .tag {
   display: inline;

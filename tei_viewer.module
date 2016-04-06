@@ -48,6 +48,24 @@ function tei_viewer_menu() {
         'type' => MENU_CALLBACK,
         'file' => 'includes/annotation.inc',
     );
+    
+    $item['islandora/object/%islandora_object/tei_viewer/rebuild_pages'] = array(
+        'title' => 'Rebuild diary pages xml',
+        'page callback' => 'tei_viewer_build_pages_file',
+        'page arguments' => array(2),
+        'file' => 'includes/utilities.inc',
+        'access callback' => 'islandora_object_manage_access_callback',
+        'access arguments' => array(
+         array(
+            ISLANDORA_MANAGE_PROPERTIES,
+            ISLANDORA_METADATA_EDIT,
+            ISLANDORA_ADD_DS,
+            ISLANDORA_PURGE,
+            ISLANDORA_INGEST,
+         ), 2),
+    );
+    
+
 
     return $item;
 }
@@ -93,7 +111,7 @@ function tei_viewer_theme_registry_alter(&$theme_registry) {
  */
 function tei_viewer_preprocess_islandora_paged_tei_seadragon_viewer(&$variables) {
     module_load_include('inc', 'tei_viewer', 'includes/utilities');
-
+    
     $mod_path = drupal_get_path('module', 'tei_viewer');
     drupal_add_js(
             array(
@@ -122,19 +140,21 @@ function tei_viewer_preprocess_islandora_paged_tei_seadragon_viewer(&$variables)
     $page_pid = $variables['page_pid'];
 
     $options = array();
-    $page_number_options = array();
+    $page_number_options = array();    
+    $stored_pages = tei_viewer_get_pages($variables['object']);
+
     foreach ($variables['pages'] as $pid => $page_info) {
-        $aPage = islandora_object_load($pid);
-        $mods_data = tei_viewer_get_data($aPage);
+        //$aPage = islandora_object_load($pid);
+        //$mods_data = tei_viewer_get_data($aPage);
         $page = $page_info['page']; // just in case there is no page number
-        if (array_key_exists('Page', $mods_data)) {
-            if (array_key_exists(0, $mods_data['Page'])) {
-                $page = trim(str_replace("p.", "", $mods_data['Page'][0]));
-            }
+        if (array_key_exists($pid, $stored_pages)) {
+            $page = $stored_pages[$pid];
         }
+        
         $options[$pid] = $page;
-        $page_number_options[$pid] = $page_info['page']; 
+        $page_number_options[$pid] = $page_info['page'];
     }
+    
 
     $pager_variables = array(
         '#options' => $options,

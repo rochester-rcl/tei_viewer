@@ -227,7 +227,7 @@
           </xsl:attribute>
 
 
-          <i class="fa fa-file-text"></i>
+          <i class="fa fa-sticky-note-o"></i>
 
       </div>
   </xsl:template>

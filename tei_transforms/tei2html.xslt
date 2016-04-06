@@ -51,16 +51,15 @@
   </xsl:template>
 
   <!-- To print out: <span class=“gap”>[illegible]</span> -->
-  <!-- <xsl:template match="tei:gap" mode="#all">
+  <!-- <xsl:template match=“tei:gap” mode="#all">
     <span>
       <xsl:attribute name=“class” select=“‘gap’”/>
       <xsl:text>[</xsl:text>
       <xsl:value-of select=“@reason”>
       <xsl:text>[</xsl:text>
     </span>
-    <xsl:apply-templates/>
-  </xsl:template> -->
-
+  </xsl:template>
+ -->
   <!-- Delete things which are not from TEI. -->
   <xsl:template match="*[not(self::tei:*)]" mode="#all"/>
 
@@ -220,18 +219,17 @@
     </p>
   </xsl:template>
 
-   <xsl:template match="tei:note[not(@place='footnote')]" mode="#all">
+  <xsl:template match="tei:note[not(@place='footnote')]" mode="#all">
+
       <div class="note">
           <xsl:attribute name="data-content">
-              <xsl:apply-templates mode="note"/>
+              <xsl:value-of select="text()"/>
           </xsl:attribute>
-          <xsl:attribute name="title">Editorial Note</xsl:attribute>
-          <i class="fa fa-sticky-note-o"></i>
-      </div>
-  </xsl:template>
 
-  <xsl:template match="*" mode="note">
-    <xsl:value-of select ="name(.)"/> : <xsl:apply-templates/>
+
+          <i class="fa fa-sticky-note-o"></i>
+
+      </div>
   </xsl:template>
 
   <xsl:template match="tei:epigraph | tei:label" mode="#all">

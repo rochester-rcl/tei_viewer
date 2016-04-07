@@ -226,8 +226,15 @@
                 }
             });
 
-
-            history.pushState({}, "", location.pathname + "?" + $.param(params));
+            //only push on if this is not a back action
+            if(!window.popped_state){
+                var historyData = {};
+                historyData.pid = pid;
+                 history.pushState(historyData, 
+                "", location.pathname + "?" + $.param(params));
+            }
+           
+            window.popped_state = false;
 
 
             // Update page rendering.
@@ -306,4 +313,42 @@
             });
         }
     };
+    
+    
+    window.onpopstate = function (event) {
+        //set pop state to prevent pushing onto history state later on
+        window.popped_state = true;
+        //force navigation
+        if (event.state && event.state && event.state.pid) {
+            $("#islandora_paged_tei_seadragon_pager").val(event.state.pid).trigger('change');
+        } else {
+            //use url if no state available
+            var match,
+                    pl = /\+/g, // Regex for replacing addition symbol with a space
+                    search = /([^&=]+)=?([^&]*)/g,
+                    decode = function (s) {
+                        return decodeURIComponent(s.replace(pl, " "));
+                    },
+                    query = window.location.search.substring(1);
+
+            urlParams = {};
+            while (match = search.exec(query))
+                urlParams[decode(match[1])] = decode(match[2]);
+
+            
+            if (urlParams && urlParams['islandora_paged_content_page']) {
+                var $option = $('#hidden_paged_tei_seadragon_pager option').filter(function (i, e) {
+                    //console.log($(e).text(), urlParams['islandora_paged_content_page'])
+                    return $(e).text() == urlParams['islandora_paged_content_page'];
+                });
+
+                if($option && $option.val()){
+                    $("#islandora_paged_tei_seadragon_pager").val($option.val()).trigger('change');
+                }
+                
+            }
+        }
+
+    };
+
 })(jQuery);

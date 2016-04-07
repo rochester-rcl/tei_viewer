@@ -71,10 +71,10 @@
 
   <xsl:template match="tei:caption" mode="#all">
     <div class="caption">
-    <xsl:value-of select="translate(., '&#91;&#93;[]&lt;&gt;', '')"/>
+        <xsl:apply-templates/>   
     </div>
   </xsl:template>
-
+  
   <!-- format ography tags as anchors to setup modal dialog boxes  HVN-->
 
   <xsl:template match="tei:persName | tei:placeName | tei:name" mode="#all">

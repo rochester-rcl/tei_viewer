@@ -71,8 +71,12 @@
 
   <xsl:template match="tei:caption" mode="#all">
     <div class="caption">
-        <xsl:apply-templates/>   
+        <xsl:apply-templates/>
     </div>
+  </xsl:template>
+  
+  <xsl:template match="tei:caption/text()"  mode="#all">
+        <xsl:value-of select="translate(., '&#91;&#93;[]&lt;&gt;', '')"/>
   </xsl:template>
   
   <!-- format ography tags as anchors to setup modal dialog boxes  HVN-->

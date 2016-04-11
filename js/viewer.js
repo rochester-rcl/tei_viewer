@@ -8,12 +8,11 @@
             var get_pid = function () {
                 return pager.children("option:selected").val();
             };
-            
-            
+
             var get_url_page_number = function (pid) {
-                return $("#hidden_paged_tei_seadragon_pager option[value='" + pid + "']" ).text();
+                return $("#hidden_paged_tei_seadragon_pager option[value='" + pid + "']").text();
             };
-            
+
             element.data("object", get_url_page_number(get_pid()));
 
             $('.note').popover({trigger: 'manual'});
@@ -52,7 +51,10 @@
 
             Drupal.settings.islandora_paged_tei_seadragon_update_page = function (pid, page_number) {
 
-                page_number = get_url_page_number(pid);           
+                page_number = get_url_page_number(pid);
+                var urlData = self._getUrlParams();
+                self._updateViewer(urlData.readerView);
+
                 // Drop out here if we are the most current request.
                 if (pid === Drupal.settings.islandora_paged_tei_seadragon.current_page) {
                     return;
@@ -60,36 +62,16 @@
 
                 Drupal.settings.islandora_paged_tei_seadragon.current_page = pid;
 
-                //old_page_update(pid, page_number);
-                // get the url parameters
-                (function () {
-                    var match,
-                            pl = /\+/g, // Regex for replacing addition symbol with a space
-                            search = /([^&=]+)=?([^&]*)/g,
-                            decode = function (s) {
-                                return decodeURIComponent(s.replace(pl, " "));
-                            },
-                            query = window.location.search.substring(1);
-
-                    urlParams = {};
-                    while (match = search.exec(query))
-                        urlParams[decode(match[1])] = decode(match[2]);
-                })();
-
-                var viewOccluded = false;
-                if (urlParams && urlParams['occluded'] && urlParams['occluded'] === "true") {
-                    viewOccluded = true;
-                }
 
                 // Check if the new page has an occluded object and update the occluded
                 // link display.
                 $.ajax(settings.basePath + "islandora/object/" + pid + "/tei_viewer/find_occluded", {
                     success: function (data, status, jqXHR) {
                         var imagePid = pid;
-                        if (data.found && viewOccluded) {
+                        if (data.found && urlData.viewOccluded) {
                             imagePid = data.pid;
                         }
-                        self._handleNewPage(imagePid, pid, page_number, settings, viewOccluded, data.found);
+                        self._handleNewPage(imagePid, pid, page_number, settings, urlData.viewOccluded, data.found, urlData.readerView);
                     },
                     error: function (error) {
                         console.log("error", error);
@@ -102,11 +84,33 @@
                 return false;
             });
 
-            $("#tei-viewer-original").click(function () {
+            $('#yourButton').click(function () {
+                var urlData = self._getUrlParams();
+                var pid = get_pid();
                 var page = get_url_page_number(get_pid());
+                var readerButton = $("#yourButton #texticon.fa.fa-align-left");
+                var readerView = readerButton && readerButton.length > 0;
                 var params = {
                     "islandora_paged_content_page": page,
-                    "occluded": true
+                    "occluded": urlData.viewOccluded,
+                    "readerView": readerView
+                };
+                var historyData = {};
+                historyData.pid = pid;
+                historyData.readerView = readerView;
+                history.pushState(historyData,
+                        "", location.pathname + "?" + $.param(params));
+            });
+
+            $("#tei-viewer-original").click(function () {
+                var page = get_url_page_number(get_pid());
+                var readerButton = $("#yourButton #texticon.fa.fa-align-left");
+                var readerView = readerButton && readerButton.length > 0;
+
+                var params = {
+                    "islandora_paged_content_page": page,
+                    "occluded": true,
+                    "readerView": readerView
                 };
                 var $current = $(this)
                 if (!$current.hasClass("active")) {
@@ -117,9 +121,12 @@
             });
 
             $("#tei-viewer-manuscript").click(function () {
+                var readerButton = $("#yourButton #texticon.fa.fa-align-left");
+                var readerView = readerButton && readerButton.length > 0;
                 var page = get_url_page_number(get_pid());
                 var params = {
-                    "islandora_paged_content_page": page
+                    "islandora_paged_content_page": page,
+                    "readerView": readerView
                 };
 
                 var $current = $(this)
@@ -150,9 +157,69 @@
 
             return false;
         },
-        _handleNewPage: function (pid, contentPid, page_number, settings, viewOccluded, hasOccluded) {
+        _getUrlParams: function () {
+            //old_page_update(pid, page_number);
+            // get the url parameters
+            (function () {
+                var match,
+                        pl = /\+/g, // Regex for replacing addition symbol with a space
+                        search = /([^&=]+)=?([^&]*)/g,
+                        decode = function (s) {
+                            return decodeURIComponent(s.replace(pl, " "));
+                        },
+                        query = window.location.search.substring(1);
 
+                urlParams = {};
+                while (match = search.exec(query))
+                    urlParams[decode(match[1])] = decode(match[2]);
+            })();
+
+            var viewOccluded = false;
+            if (urlParams && urlParams['occluded'] && urlParams['occluded'] === "true") {
+                viewOccluded = true;
+            }
+
+            var readerView = false;
+            if (urlParams && urlParams['readerView'] && urlParams['readerView'] === "true") {
+                readerView = true;
+            }
+            return {readerView: readerView, viewOccluded: viewOccluded};
+        },
+        _updateViewer: function (readerView) {
+            if (!readerView) {
+                $('#texticon').removeClass("fa-align-left");
+                $('#texticon').addClass("fa-align-justify");
+                $("#yourButton").attr({
+                    alt: "This is for reading",
+                    title: "Reader View",
+                    //   data-toggle: "tooltip"
+                });
+                $('br').css({
+                    'content': '"A"',
+                    'height': 'auto',
+                    'display': 'block',
+                    'border-bottom': '1px solid #e8e6dc',
+                    'width': '100%'
+                });
+            } else {
+                $('#texticon').removeClass("fa-align-justify");
+                $('#texticon').addClass("fa-align-left");
+                $('br').css({
+                    'content': '"A"',
+                    'margin-bottom': '1.5em !important',
+                    'border-right': '1px dotted #7cbcff',
+                    'height': '17px',
+                    'width': '4px',
+                    'margin': '0 5px',
+                    'border-bottom': 'none',
+                    'display': 'inline'
+                });
+            }
+        },
+        _handleNewPage: function (pid, contentPid, page_number, settings, viewOccluded, hasOccluded, readerView) {
+            var self = this;
             // Drop out here if we are the most current request.
+            self._updateViewer(readerView);
             if (contentPid !== Drupal.settings.islandora_paged_tei_seadragon.current_page) {
                 return;
             }
@@ -163,6 +230,10 @@
             params.islandora_paged_content_page = page_number;
             if (viewOccluded) {
                 params.occluded = true;
+            }
+
+            if (readerView) {
+                params.readerView = true;
             }
 
             if (viewOccluded) {
@@ -191,14 +262,16 @@
                     if (contentPid !== Drupal.settings.islandora_paged_tei_seadragon.current_page) {
                         return;
                     }
-                    var element = $("#paged-tei-seadragon-viewer-tei");
-                    element.html(data);
+                    var $element = $("#paged-tei-seadragon-viewer-tei");
+                    $element.html(data);
 
                     if ($(".no-markup").length > 0) {
                         $("#yourButton").hide();
                     } else {
                         $("#yourButton").show();
                     }
+
+                    self._updateViewer(readerView);
 
                     // handle the popover manually
                     $('.note').popover({trigger: 'manual'});
@@ -222,18 +295,19 @@
                         $(".note").popover('hide');
                     });
 
-
                 }
             });
 
             //only push on if this is not a back action
-            if(!window.popped_state){
+            if (!window.popped_state) {
                 var historyData = {};
                 historyData.pid = pid;
-                 history.pushState(historyData, 
-                "", location.pathname + "?" + $.param(params));
+                historyData.readerView = readerView;
+                history.pushState(historyData,
+                        "", location.pathname + "?" + $.param(params));
+
             }
-           
+
             window.popped_state = false;
 
 
@@ -313,13 +387,48 @@
             });
         }
     };
-    
-    
+
+
     window.onpopstate = function (event) {
         //set pop state to prevent pushing onto history state later on
         window.popped_state = true;
+
+        var readerView = false;
+        if (event.state) {
+            readerView = event.state.readerView;
+        }
+        if (!readerView) {
+            $('#texticon').removeClass("fa-align-left");
+            $('#texticon').addClass("fa-align-justify");
+            $("#yourButton").attr({
+                alt: "This is for reading",
+                title: "Reader View",
+                //   data-toggle: "tooltip"
+            });
+            $('br').css({
+                'content': '"A"',
+                'height': 'auto',
+                'display': 'block',
+                'border-bottom': '1px solid #e8e6dc',
+                'width': '100%'
+            });
+        } else {
+            $('#texticon').removeClass("fa-align-justify");
+            $('#texticon').addClass("fa-align-left");
+            $('br').css({
+                'content': '"A"',
+                'margin-bottom': '1.5em !important',
+                'border-right': '1px dotted #7cbcff',
+                'height': '17px',
+                'width': '4px',
+                'margin': '0 5px',
+                'border-bottom': 'none',
+                'display': 'inline'
+            });
+        }
+
         //force navigation
-        if (event.state && event.state && event.state.pid) {
+        if (event.state && event.state.pid) {
             $("#islandora_paged_tei_seadragon_pager").val(event.state.pid).trigger('change');
         } else {
             //use url if no state available
@@ -335,20 +444,17 @@
             while (match = search.exec(query))
                 urlParams[decode(match[1])] = decode(match[2]);
 
-            
             if (urlParams && urlParams['islandora_paged_content_page']) {
                 var $option = $('#hidden_paged_tei_seadragon_pager option').filter(function (i, e) {
                     //console.log($(e).text(), urlParams['islandora_paged_content_page'])
                     return $(e).text() == urlParams['islandora_paged_content_page'];
                 });
 
-                if($option && $option.val()){
+                if ($option && $option.val()) {
                     $("#islandora_paged_tei_seadragon_pager").val($option.val()).trigger('change');
                 }
-                
             }
         }
-
     };
 
 })(jQuery);

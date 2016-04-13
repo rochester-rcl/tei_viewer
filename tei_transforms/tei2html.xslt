@@ -63,8 +63,12 @@
   <!-- Delete things which are not from TEI. -->
   <xsl:template match="*[not(self::tei:*)]" mode="#all"/>
 
-  <xsl:template match="tei:lb | tei:pb" mode="#all">
-    <br/>
+  <xsl:template match="tei:lb" mode="#all">
+    <span class="line-break"/>
+  </xsl:template>
+  
+  <xsl:template match="tei:pb" mode="#all">
+    <br class="pb"/>
   </xsl:template>
 
   <!-- Swap out brackets inside of caption tags. HVN-->

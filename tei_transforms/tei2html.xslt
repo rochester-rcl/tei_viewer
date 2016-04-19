@@ -79,6 +79,15 @@
     </div>
   </xsl:template>
   
+  <xsl:template match="tei:unclear | tei:illegible" mode="#all">
+      <xsl:apply-templates/>
+      <div class="note">
+          <xsl:attribute name="data-content"><xsl:value-of select ="local-name()"/></xsl:attribute>
+          <xsl:attribute name="title">Editorial Note</xsl:attribute>
+          <i class="fa fa-sticky-note-o"></i>
+      </div>
+  </xsl:template>
+  
   <xsl:template match="tei:caption/text()"  mode="#all">
         <xsl:value-of select="translate(., '&#91;&#93;[]&lt;&gt;', '')"/>
   </xsl:template>

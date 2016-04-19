@@ -189,31 +189,16 @@
             if (!readerView) {
                 $('#texticon').removeClass("fa-align-left");
                 $('#texticon').addClass("fa-align-justify");
+                $('span.line-break').removeClass("inline");
                 $("#yourButton").attr({
                     alt: "This is for reading",
                     title: "Reader View",
                     //   data-toggle: "tooltip"
                 });
-                $('br').css({
-                    'content': '"A"',
-                    'height': 'auto',
-                    'display': 'block',
-                    'border-bottom': '1px solid #e8e6dc',
-                    'width': '100%'
-                });
             } else {
                 $('#texticon').removeClass("fa-align-justify");
                 $('#texticon').addClass("fa-align-left");
-                $('br').css({
-                    'content': '"A"',
-                    'margin-bottom': '1.5em !important',
-                    'border-right': '1px dotted #7cbcff',
-                    'height': '17px',
-                    'width': '4px',
-                    'margin': '0 5px',
-                    'border-bottom': 'none',
-                    'display': 'inline'
-                });
+                $('span.line-break').addClass("inline");
             }
         },
         _handleNewPage: function (pid, contentPid, page_number, settings, viewOccluded, hasOccluded, readerView) {
@@ -400,31 +385,16 @@
         if (!readerView) {
             $('#texticon').removeClass("fa-align-left");
             $('#texticon').addClass("fa-align-justify");
-            $("#yourButton").attr({
-                alt: "This is for reading",
-                title: "Reader View",
-                //   data-toggle: "tooltip"
-            });
-            $('br').css({
-                'content': '"A"',
-                'height': 'auto',
-                'display': 'block',
-                'border-bottom': '1px solid #e8e6dc',
-                'width': '100%'
+            $('span.line-break').removeClass("inline");
+            $( "#yourButton" ).attr({
+              alt: "This is for reading",
+              title: "Reader View",
+            //   data-toggle: "tooltip"
             });
         } else {
             $('#texticon').removeClass("fa-align-justify");
             $('#texticon').addClass("fa-align-left");
-            $('br').css({
-                'content': '"A"',
-                'margin-bottom': '1.5em !important',
-                'border-right': '1px dotted #7cbcff',
-                'height': '17px',
-                'width': '4px',
-                'margin': '0 5px',
-                'border-bottom': 'none',
-                'display': 'inline'
-            });
+            $('span.line-break').addClass("inline");
         }
 
         //force navigation

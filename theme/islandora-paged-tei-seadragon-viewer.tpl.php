@@ -19,13 +19,13 @@
       </div>
     </div>
   <?php endif; ?>
+  <div class="nav_left"><?php print $nav_left ?></div>
+  <div class="nav_right"><?php print $nav_right ?></div>
   <div class="paged-tei-seadragon-viewer-pane" id="paged-tei-seadragon-viewer-seadragon-pane">
     <div class="paged-tei-seadragon-viewer-wrapper">
       <div class="paged-tei-seadragon-viewer-left-toolbar">
-        <?php print $nav_left ?>
         <?php print isset($pager) ? $pager : '';?>
           <div class="hidden"><?php print isset($hidden_pager) ? $hidden_pager : '';?></div>
-        <?php print $nav_right ?>
       </div>
       <div class="paged-tei-seadragon-viewer-right-toolbar">
         <?php print isset($clipper) ? $clipper : '';?>

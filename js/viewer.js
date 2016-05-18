@@ -275,6 +275,13 @@
                         return false;
                     });
 
+                    var $prev_next = $('#block-islandora-compound-object-compound-navigation .islandora-compound-prev-next');
+                    if($prev_next.length > 0 ){
+                        $('#paged-tei-seadragon-viewer-tei').removeClass("no-inclusion-tab");
+                    } else {
+                        $('#paged-tei-seadragon-viewer-tei').addClass("no-inclusion-tab");
+                    }
+                    
                     $("#paged-tei-seadragon-viewer-tei").scroll(function () {
                         $(".popover").fadeOut(100);
                         $(".note").popover('hide');

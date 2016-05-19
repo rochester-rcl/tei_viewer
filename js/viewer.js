@@ -62,7 +62,7 @@
                 }
 
                 Drupal.settings.islandora_paged_tei_seadragon.current_page = pid;
-
+                
 
                 // Check if the new page has an occluded object and update the occluded
                 // link display.
@@ -72,6 +72,8 @@
                         if (data.found && urlData.viewOccluded) {
                             imagePid = data.pid;
                         }
+                        //TODO - remove this line after done testing
+                        console.log("image pid:", imagePid);
                         self._handleNewPage(imagePid, pid, page_number, settings, urlData.viewOccluded, data.found, urlData.readerView);
                     },
                     error: function (error) {

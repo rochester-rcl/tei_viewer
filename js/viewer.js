@@ -36,6 +36,7 @@
                 $(".note").popover('hide');
             });
 
+            $('#yourButton').tooltip({trigger:"hover"});
             if ($(".no-markup").length > 0) {
                 $("#yourButton").hide();
             } else {
@@ -193,7 +194,6 @@
                 $("#yourButton").attr({
                     alt: "This is for reading",
                     title: "Reader View",
-                    //   data-toggle: "tooltip"
                 });
             } else {
                 $('#texticon').removeClass("fa-align-justify");
@@ -396,13 +396,14 @@
             $( "#yourButton" ).attr({
               alt: "This is for reading",
               title: "Reader View",
-            //   data-toggle: "tooltip"
             });
         } else {
             $('#texticon').removeClass("fa-align-justify");
             $('#texticon').addClass("fa-align-left");
             $('span.line-break').addClass("inline");
         }
+        
+        $('#yourButton').tooltip({trigger:"focus"});
 
         //force navigation
         if (event.state && event.state.pid) {

@@ -35,6 +35,16 @@ function tei_viewer_get_markup(AbstractObject $object) {
     $unwrapper_xslt->setParameter('', 'type', $type);
     $unwrapped_doc = $unwrapper_xslt->transformToDoc($wrapped);
 
+    
+    $xml = simplexml_load_string($object["TEI"]->content);
+    $xml->registerXPathNamespace('tei', 'http://www.tei-c.org/ns/1.0');
+    $idNums = $xml->xpath('(/tei:TEI/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:msDesc/tei:msIdentifier/tei:idno)');
+    $diary_id = NULL;
+    
+    foreach($idNums as $idnum ){
+        $diary_id = preg_replace('/[^\da-z]/i', '_', (string)$idnum);
+    }
+    
     // Remove non-display info from reading TEI.
     $xpath = new DOMXpath($unwrapped_doc);
     $xpath->registerNamespace('tei', 'http://www.tei-c.org/ns/1.0');
@@ -87,7 +97,18 @@ function tei_viewer_get_markup(AbstractObject $object) {
               $page = "page_" . str_replace( array(" ", "."), "_", $mods_data["Page"][0]);
           }
       }
-
+      
+      if(isset($diary_id)){
+        $div_tags = $my_data->getElementsByTagName("div");
+        foreach($div_tags as $div){
+           $atts = $div->attributes;
+           $css_class = $atts->getNamedItem("class");
+           if(!empty($css_class) && strpos($css_class->value, 'tei') !== false){
+                 $css_class->value = $css_class->value . " " . strtolower($diary_id);
+           } 
+        }
+      }
+      
       $span_tags = $my_data->getElementsByTagName("span");
       foreach ($span_tags as $node){
           $atts = $node->attributes;

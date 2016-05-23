@@ -371,7 +371,7 @@
                                 }
                                 download = "<div>" + Drupal.settings.islandora_paged_tei_seadragon.download_prefix
                                         + "<a href=" + Drupal.settings.basePath + "islandora/object/"
-                                        + pid + "/datastream/" + datastream_info.dsid + "/download" + ">" + datastream_info.dsid + "<span> " + size + " </span>" + "</a></div>";
+                                        + pid + "/datastream/" + datastream_info.dsid + "/download" + ">Download<span> " + size + " </span>" + "</a></div>";
                                 $("#paged-tei-seadragon-viewer-download-datastream-" + datastream_info.dsid).html(download);
                             }
                         });

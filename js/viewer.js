@@ -72,8 +72,6 @@
                         if (data.found && urlData.viewOccluded) {
                             imagePid = data.pid;
                         }
-                        //TODO - remove this line after done testing
-                        console.log("image pid:", imagePid);
                         self._handleNewPage(imagePid, pid, page_number, settings, urlData.viewOccluded, data.found, urlData.readerView);
                     },
                     error: function (error) {
@@ -211,6 +209,8 @@
                 return;
             }
 
+            
+
             // Update current URL.
             // @todo preserve query params here.
             var params = {};
@@ -297,8 +297,30 @@
                 var historyData = {};
                 historyData.pid = pid;
                 historyData.readerView = readerView;
+                
                 history.pushState(historyData,
                         "", location.pathname + "?" + $.param(params));
+                        
+                if (ga !== null) {
+                    ga("send", "pageview", window.location.href);
+                    ga('create', 'UA-30107616-1', 'auto', 'rcldsg');
+                    ga('create', 'UA-2917298-1', 'auto', 'uofr');
+                    ga(function () {
+                        var tracker1 = ga.getByName('rcldsg');
+                        if (tracker1 !== null) {
+                            var trackerSend1 = tracker1.get('name') + ".send";
+                            ga(trackerSend1, 'pageview', window.location.href);
+                        }
+                        var tracker2 = ga.getByName('uofr');
+                        if (tracker2 !== null) {
+                            var trackerSend2 = tracker2.get('name') + ".send";
+                            ga(trackerSend2, 'pageview', window.location.href);
+                        }
+                    });
+                } else {
+                    console.log("is null");
+                }
+
 
             }
 

@@ -301,7 +301,7 @@
                 history.pushState(historyData,
                         "", location.pathname + "?" + $.param(params));
                         
-                if (typeof variable !== 'undefined' && ga !== null){
+                if (typeof ga !== 'undefined' && ga !== null){
                     ga("send", "pageview", window.location.href);
                     ga('create', 'UA-30107616-1', 'auto', 'rcldsg');
                     ga('create', 'UA-2917298-1', 'auto', 'uofr');

@@ -301,7 +301,7 @@
                 history.pushState(historyData,
                         "", location.pathname + "?" + $.param(params));
                         
-                if (ga !== null) {
+                if (typeof variable !== 'undefined' && ga !== null){
                     ga("send", "pageview", window.location.href);
                     ga('create', 'UA-30107616-1', 'auto', 'rcldsg');
                     ga('create', 'UA-2917298-1', 'auto', 'uofr');
@@ -317,8 +317,6 @@
                             ga(trackerSend2, 'pageview', window.location.href);
                         }
                     });
-                } else {
-                    console.log("is null");
                 }
 
 

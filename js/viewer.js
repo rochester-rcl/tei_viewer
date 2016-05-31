@@ -44,6 +44,22 @@
             }
 
 
+            var urlData = self._getUrlParams();
+           
+            if (!urlData.readerView) {
+                $('#texticon').removeClass("fa-align-left");
+                $('#texticon').addClass("fa-align-justify");
+                $('span.line-break').removeClass("inline");
+                $("#yourButton").attr({
+                    alt: "This is for reading",
+                    title: "Reader View",
+                });
+            } else {
+                $('#texticon').removeClass("fa-align-justify");
+                $('#texticon').addClass("fa-align-left");
+                $('span.line-break').addClass("inline");
+            }
+
             // Monkey patch Drupal.settings.islandora_paged_tei_seadragon_update_page
             // to update compound block to ensure we always get the current one.
             // 

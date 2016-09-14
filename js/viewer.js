@@ -233,6 +233,18 @@
             params.islandora_paged_content_page = page_number;
             if (viewOccluded) {
                 params.occluded = true;
+                //HACK - this will replace anything with a colon followed by a number 
+                // and replace it with the current pid
+                $('.tabs--primary.nav.nav-tabs li a').each(function (index, element) {
+                    if ($(element).text() === "Manage" ) {
+                        var value = $(element).attr("href");
+                        var match = value.match(/\w*%3A\d*[^\/]/g);
+                        var currentPid = pid;
+                        if (currentPid) {
+                            $(element).attr("href", value.replace(match, encodeURIComponent(currentPid)));
+                        }
+                    }
+                });
             }
 
             if (readerView) {

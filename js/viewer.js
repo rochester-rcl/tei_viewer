@@ -15,6 +15,13 @@
 
             element.data("object", get_url_page_number(get_pid()));
 
+            $.each($(".note"), function (index, element) {
+                var offset = $(this).offset();
+                if(offset.top < 250){
+                    $(this).data({"placement":"bottom"});
+                }
+            });
+
             $('.note').popover({trigger: 'manual'});
             $(document).on('click', function (e) {
                 $(".note").popover('hide');
@@ -289,6 +296,13 @@
                     self._updateViewer(readerView);
 
                     // handle the popover manually
+                    $.each($(".note"), function (index, element) {
+                        var offset = $(this).offset();
+                        if(offset.top < 250){
+                            $(this).data({"placement":"bottom"});
+                        }
+                    });
+
                     $('.note').popover({trigger: 'manual'});
                     $(document).on('click', function (e) {
                         $(".note").popover('hide');
